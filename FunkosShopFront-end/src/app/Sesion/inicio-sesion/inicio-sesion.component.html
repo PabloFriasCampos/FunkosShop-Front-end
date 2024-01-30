@@ -4,12 +4,12 @@
 
   <div class="field">
     <label class="label">Usuario</label>
-    <input class="input" type="text" placeholder="Introduce tu usuario">
+    <input class="input" type="text" placeholder="Introduce tu usuario" [(ngModel)]="usuario.NombreUsuario">
   </div>
 
   <div class="field">
     <label class="label">Contraseña</label>
-    <input class="input" type="password" placeholder="Introduce tu contraseña">
+    <input class="input" type="password" placeholder="Introduce tu contraseña" [(ngModel)]="usuario.Contrasena">
   </div>
 
   <div class="remember">
@@ -17,7 +17,7 @@
     <label class="label">Recuérdame</label>
   </div>
 
-  <button class="button">Iniciar sesión</button>
+  <button class="button" (click)="iniciarSesion()">Iniciar sesión</button>
 
   <a class="register" [routerLink]="'/signup'">Crea una cuenta</a>
 
