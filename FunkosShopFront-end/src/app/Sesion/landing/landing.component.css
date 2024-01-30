@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2vw;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  border-radius: 12px;
+}
+
+.logo {
+  width: 10%;
+}
+
+.title {
+  font-size: 5vw;
+  color: transparent;
+  display: inline-block;
+}
+
+.t1 {
+  background: linear-gradient(to bottom, white, #22C4D8);
+  background-clip: text;
+}
+
+.t2 {
+  background: linear-gradient(to bottom, #F4AA0B, white);
+  background-clip: text;
+}
