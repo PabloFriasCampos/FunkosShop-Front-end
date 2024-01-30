@@ -1,0 +1,133 @@
+
+.form {
+    max-width: 20vw ;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .input {
+    width: 18vw;
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    margin-bottom: 4vw;
+  }
+
+  .label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-bottom: 1vw;
+  }
+
+  .remember {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vw;
+  }
+
+  .checkbox {
+    margin-right: 3vw;
+    margin-bottom: 1.2vw;
+    margin-left: 2vw;
+    transform: scale(2, 2);
+  }
+
+  .button {
+    width: 20vw;
+    padding: 1.5vw;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .register {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+
+
+  /* Estilo para pantallas medianas (entre 768px y 1024px) */
+@media (min-width: 200px) and (max-width: 1024px) {
+    *{
+        font-size: 3vw;
+    }
+    .form {
+        align-items: center;
+        max-width: 50vw;
+        min-height: 60vw;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .title {
+        font-size: 5vw;
+        margin-bottom: 4vw;
+      }
+      .input {
+        width: 40vw;
+        padding: 10px;
+        border: 1px solid #ccc;
+        outline: none;
+        margin-bottom: 5vw;
+        font-size: 4vw;
+      }
+      .button {
+        height: 9vw;
+        width: 27vw;
+        padding: 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 3vw;
+        align-items: center;
+        margin-left: 11.5vw;
+      }
+      .checkbox {
+        margin-right: 3vw;
+        margin-bottom: 1.2vw;
+        margin-left: 2vw;
+        margin-right: 8vw;
+        transform: scale(3, 3);
+      }
+      .register {
+        display: block;
+        margin-top: 10px;
+        text-align: center;
+        color: #007bff;
+        
+        text-decoration: none;
+        font-size: 4vw;
+      }
+      .label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        margin-bottom: 2vw;
+        font-size: 4vw;
+      }
+      .remember {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2vw;
+        margin-left: 5vw;
+      }
+      
+  }
+  
+
+  
