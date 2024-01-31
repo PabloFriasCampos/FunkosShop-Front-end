@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 10px;
+}
+
+.nav {
+    grid-column: 1 / 13;
+    grid-row: 1 / 2;
+    background-color: lightblue;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    border-radius: 5px;
+}
+
+.nav-icon {
+    width: 70px;
+    height: 70px;
+}
+
+.nav-title {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.section {
+    grid-column: 1 / 13;
+    grid-row: auto;
+    background-color: lightgreen;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.section-content {
+    font-size: 16px;
+}
+
+.members {
+    grid-column: 1 / 13;
+    grid-row: auto;
+    background-color: lightpink;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.member {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #bebdbd;
+    box-shadow: 0 0 10px rgb(82, 82, 82);
+}
+
+.member-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.member-info {
+    font-size: 17px;
+    
+}
+
+.contact {
+    height: 5rem;
+    margin-top: 2rem;
+    grid-column: 1 / 13;
+    grid-row: auto;
+    background-color: lightyellow;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.contact-item {
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .nav {
+        flex-direction: column;
+    }
+
+    .nav-title {
+        margin: 10px 0;
+    }
+
+    .members {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .contact-item {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .members {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .contact-item {
+        font-size: 5px;
+    }
+}

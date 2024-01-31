@@ -18,7 +18,7 @@ export class InicioSesionComponent {
   async iniciarSesion() {
     const headers = { 'Content-Type': `application/json` };
 
-    let request$ = await this.http.post("https://localhost:7281/Usuario/login", JSON.stringify(this.usuario), { headers });
+    let request$ = await this.http.post("https://localhost:7281/api/Usuarios/login", JSON.stringify(this.usuario), { headers });
     const correcto = await lastValueFrom(request$);
 
     if (correcto === true) {
