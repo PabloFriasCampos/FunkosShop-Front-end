@@ -7,14 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InicioSesionComponent } from './Sesion/inicio-sesion/inicio-sesion.component';
 import { RegistrarseComponent } from './Sesion/registrarse/registrarse.component';
-import { LandingComponent } from './Sesion/landing/landing.component';
+import { LandingComponent } from './General/landing/landing.component';
+import { SobreNosotrosComponent } from './General/sobre-nosotros/sobre-nosotros.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InicioSesionComponent,
     RegistrarseComponent,
-    LandingComponent
+    LandingComponent,
+    SobreNosotrosComponent
   ],
   imports: [
     BrowserModule,

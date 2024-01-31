@@ -15,7 +15,7 @@
 .title {
   width: 100%;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 150%;
 }
 
 .field {
@@ -25,12 +25,12 @@
 }
 
 .label {
-  font-size: 1.5vw;
+  font-size: 120%;
 }
 
 .input {
   height: 35px;
-  border: 1px solid #ccc;
+  border: 3px solid #ccc;
   outline: none;
 }
 
@@ -59,4 +59,22 @@
   text-align: center;
   font-size: 1.2em;
   color: #204164;
+}
+
+@media (width < 1280px) {
+  .form {
+    width: 30vw;
+  }
+}
+
+@media (width < 900px) {
+  .form {
+    width: 40vw;
+  }
+}
+
+@media (width < 650px) {
+  .form {
+    width: 50vw;
+  }
 }
