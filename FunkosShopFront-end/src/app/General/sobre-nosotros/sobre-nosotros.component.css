@@ -14,28 +14,6 @@
     grid-gap: 10px;
 }
 
-.nav {
-    grid-column: 1 / 13;
-    grid-row: 1 / 2;
-    background-color: lightblue;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    box-shadow: 0 0 10px rgb(0, 0, 0);
-    border-radius: 5px;
-}
-
-.nav-icon {
-    width: 70px;
-    height: 70px;
-}
-
-.nav-title {
-    font-size: 30px;
-    font-weight: bold;
-}
-
 .section {
     grid-column: 1 / 13;
     grid-row: auto;
@@ -54,7 +32,7 @@
     font-size: 16px;
 }
 
-.members {
+.miembros {
     grid-column: 1 / 13;
     grid-row: auto;
     background-color: lightpink;
@@ -66,7 +44,7 @@
     border-radius: 10px;
 }
 
-.member {
+.miembro {
     background-color: white;
     padding: 10px;
     border-radius: 5px;
@@ -74,19 +52,19 @@
     box-shadow: 0 0 10px rgb(82, 82, 82);
 }
 
-.member-name {
+.miembro-name {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 5px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.member-info {
+.miembro-info {
     font-size: 17px;
     
 }
 
-.contact {
+.contacto {
     height: 5rem;
     margin-top: 2rem;
     grid-column: 1 / 13;
@@ -98,7 +76,7 @@
     padding: 20px;
 }
 
-.contact-item {
+.contacto-item {
     font-size: 16px;
 }
 
@@ -107,18 +85,14 @@
         grid-template-columns: repeat(6, 1fr);
     }
 
-    .nav {
-        flex-direction: column;
-    }
-
     .nav-title {
         margin: 10px 0;
     }
 
-    .members {
+    .miembros {
         grid-template-columns: repeat(2, 1fr);
     }
-    .contact-item {
+    .contacto-item {
         font-size: 10px;
     }
 }
@@ -128,11 +102,11 @@
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .members {
+    .miembros {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .contact-item {
+    .contacto-item {
         font-size: 5px;
     }
 }

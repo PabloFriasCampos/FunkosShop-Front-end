@@ -9,6 +9,8 @@ import { InicioSesionComponent } from './Sesion/inicio-sesion/inicio-sesion.comp
 import { RegistrarseComponent } from './Sesion/registrarse/registrarse.component';
 import { LandingComponent } from './General/landing/landing.component';
 import { SobreNosotrosComponent } from './General/sobre-nosotros/sobre-nosotros.component';
+import { CatalogoComponent } from './Productos/catalogo/catalogo.component';
+import { CarritoComponent } from './Compra/carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { SobreNosotrosComponent } from './General/sobre-nosotros/sobre-nosotros.
     InicioSesionComponent,
     RegistrarseComponent,
     LandingComponent,
-    SobreNosotrosComponent
+    SobreNosotrosComponent,
+    CatalogoComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,

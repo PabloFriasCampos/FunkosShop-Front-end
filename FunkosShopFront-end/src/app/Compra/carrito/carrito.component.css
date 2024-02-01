@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.container {
+    max-width: 1200px;
+    margin-left: 5.5rem;
+    display: grid;
+}
+
+
+.productos {
+
+    background-color: lightpink;
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.producto {
+    background-color: white;
+    padding: 10px;
+    width: 80rem;
+    border-radius: 5px;
+    border: 1px solid #bebdbd;
+    box-shadow: 0 0 10px rgb(82, 82, 82);
+}
+
+.datos-producto{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw;
+    box-shadow: 0 0 10px rgb(0, 0, 0);  
+}
+
+.nombre-producto {
+    font-size: 18px;
+    width: 10rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    box-shadow: 0 0 10px rgb(0, 0, 0); 
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.boton-cantidad {
+    width: 2rem;
+    height: 2rem;
+
+}
+.cantidad-producto{
+    box-shadow: 0 0 10px rgb(0, 0, 0); 
+    margin :-15rem ;
+    
+}
+.multiplicador{
+    box-shadow: 0 0 10px rgb(0, 0, 0); 
+    font-size: 2rem;
+}
+.precio-producto{
+    box-shadow: 0 0 10px rgb(0, 0, 0); 
+    font-size: 2rem;
+}
+.euros{
+    box-shadow: 0 0 10px rgb(0, 0, 0); 
+    font-size: 2rem;
+    margin-left: -15rem;
+}
+.botones-inferiores{
+
+}
