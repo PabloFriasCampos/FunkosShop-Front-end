@@ -32,7 +32,6 @@
 }
 
 .datos-producto{
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -48,6 +47,7 @@
     box-shadow: 0 0 10px rgb(0, 0, 0); 
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 .boton-cantidad {
     width: 2rem;
     height: 2rem;
