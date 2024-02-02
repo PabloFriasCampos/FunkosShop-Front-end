@@ -8,8 +8,8 @@
 }
 
 .container {
-    max-width:80rem;
-    margin: 0 auto; /* Centrar el contenedor */
+    max-width: 60rem;
+    margin: 0 auto; 
     display: grid;
 }
 
@@ -18,14 +18,14 @@
 
     background-color: lightpink;
     padding: 20px;
-    width: 100%; /* Usar porcentaje en lugar de rem */
+    width: 100%; 
     border-radius: 10px;
 }
 
 .producto {
     background-color: white;
     padding: 10px;
-    width: 100%; /* Usar porcentaje en lugar de rem */
+    width: 100%; 
     border-radius: 5px;
     border: 1px solid #bebdbd;
     box-shadow: 0 0 10px rgb(82, 82, 82);
@@ -55,7 +55,7 @@
 }
 .cantidad-producto{
     box-shadow: 0 0 10px rgb(0, 0, 0); 
-    margin :-15rem ;
+    margin: 0;
     
 }
 .multiplicador{
@@ -69,12 +69,12 @@
 .euros{
     box-shadow: 0 0 10px rgb(0, 0, 0); 
     font-size: 2rem;
-    margin-left: -15rem;
+    margin-left: 0; 
 }
 .botones-inferiores{
     background-color: white;
     padding: 10px;
-    width: 100%; /* Usar porcentaje en lugar de rem */
+    width: 100%; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -114,32 +114,32 @@
     box-shadow: 0 0 10px rgb(0, 0, 0); 
 }
 
-/* Media query para pantallas pequeñas */
+
 @media (max-width: 600px) {
     .datos-producto {
-        flex-direction: column; /* Cambiar la dirección de los elementos a vertical */
+        flex-direction: column; 
     }
     .nombre-producto {
-        width: 100%; /* Usar todo el ancho disponible */
-        text-align: center; /* Centrar el texto */
+        width: 100%; 
+        text-align: center; 
     }
     .boton-cantidad {
-        margin: 10px; /* Añadir un margen entre los botones */
+        margin: 10px; 
     }
     .multiplicador, .precio-producto, .euros {
-        font-size: 1.5rem; /* Reducir el tamaño de la fuente */
+        font-size: 1.5rem; 
     }
     .euros {
-        margin-left: 0; /* Quitar el margen negativo */
+        margin-left: 0; 
     }
     .botones-inferiores {
-        flex-direction: column; /* Cambiar la dirección de los elementos a vertical */
+        flex-direction: column;
     }
     .boton-tramitar, .boton-seguir {
-        width: 100%; /* Usar todo el ancho disponible */
-        margin: 10px; /* Añadir un margen entre los botones */
+        width: 100%;
+        margin: 10px; 
     }
     .titulo {
-        font-size: 2rem; /* Reducir el tamaño de la fuente */
+        font-size: 2rem; 
     }
 }
