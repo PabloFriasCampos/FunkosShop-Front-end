@@ -2,12 +2,14 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 1rem;
+     
 }
 
 .container {
-    max-width: 1200px;
-    margin-left: 5.5rem;
+    max-width:80rem;
+    margin: 0 auto; /* Centrar el contenedor */
     display: grid;
 }
 
@@ -16,14 +18,14 @@
 
     background-color: lightpink;
     padding: 20px;
-    width: 100%;
+    width: 100%; /* Usar porcentaje en lugar de rem */
     border-radius: 10px;
 }
 
 .producto {
     background-color: white;
     padding: 10px;
-    width: 80rem;
+    width: 100%; /* Usar porcentaje en lugar de rem */
     border-radius: 5px;
     border: 1px solid #bebdbd;
     box-shadow: 0 0 10px rgb(82, 82, 82);
@@ -70,5 +72,74 @@
     margin-left: -15rem;
 }
 .botones-inferiores{
+    background-color: white;
+    padding: 10px;
+    width: 100%; /* Usar porcentaje en lugar de rem */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #bebdbd;
+    box-shadow: 0 0 10px rgb(0, 0, 0); 
+}
+.boton-tramitar{
+    width: 15rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    
+}
+.boton-seguir{
+    width: 15rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    margin-left: 3rem;
+}
 
+.zona-inferior{
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgb(0, 0, 0);  
+}
+.titulo{
+    width: 15rem;
+    padding: 1vw;
+    font-size: 3rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 0 10px rgb(0, 0, 0); 
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 600px) {
+    .datos-producto {
+        flex-direction: column; /* Cambiar la dirección de los elementos a vertical */
+    }
+    .nombre-producto {
+        width: 100%; /* Usar todo el ancho disponible */
+        text-align: center; /* Centrar el texto */
+    }
+    .boton-cantidad {
+        margin: 10px; /* Añadir un margen entre los botones */
+    }
+    .multiplicador, .precio-producto, .euros {
+        font-size: 1.5rem; /* Reducir el tamaño de la fuente */
+    }
+    .euros {
+        margin-left: 0; /* Quitar el margen negativo */
+    }
+    .botones-inferiores {
+        flex-direction: column; /* Cambiar la dirección de los elementos a vertical */
+    }
+    .boton-tramitar, .boton-seguir {
+        width: 100%; /* Usar todo el ancho disponible */
+        margin: 10px; /* Añadir un margen entre los botones */
+    }
+    .titulo {
+        font-size: 2rem; /* Reducir el tamaño de la fuente */
+    }
 }
