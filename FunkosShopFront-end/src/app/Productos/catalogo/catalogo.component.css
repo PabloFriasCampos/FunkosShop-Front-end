@@ -1,0 +1,40 @@
+
+ header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 2px solid black;
+ }
+ 
+ .menu-icon{
+    background-color: transparent;
+    border: none;
+ }
+ 
+ .products{
+    background-color: lightgrey; 
+    padding: 10px; 
+ }
+ 
+ .producto-carta{
+    border: 2px solid black; 
+    padding: 20px; 
+    margin: 10px; 
+ }
+ 
+ /* Media query for small screens */
+ @media (max-width :600px) {
+ 
+ .header input,
+ .cart-login button {
+        font-size :12px;
+ }
+ 
+ .product-card {
+        width: 45%;
+        float: left;
+ }
+ 
+ }
+ 
