@@ -1,32 +1,26 @@
 <div class="container">
-    
-<div class="titulo">Carrito</div>
 
     <div class="productos">
-        <div class="producto">
-            <div class="datos-producto">
-                <div class="nombre-producto">ProductoNombre</div>
-                <button class="boton-cantidad">+</button>
-                <div class="cantidad-producto">cantidad</div>
-                <button class="boton-cantidad">-</button>
-                <div class="multiplicador">X</div>
-                <div class="precio-producto">precio</div>
-                <div class="euros">€</div>
-            </div>
-            <div class="zona-inferior">
-                <div class="botones-inferioes">
-                    <button class="boton-tramitar">Tramitar pedido</button>
-                    <button class="boton-seguir">seguir comprando</button>                 
-                </div>
-                <div class="precio-producto">TOTAL:</div>
-                <div class="euros">€</div>
-            </div>
+            
+        <div class="nombre-producto">ProductoNombre</div>
 
+        <div class="cantidad">
+            <button class="boton-cantidad">-</button>
+            <div class="cantidad-producto">Cantidad</div>
+            <button class="boton-cantidad">+</button>
         </div>
+
+        <div class="totales">
+            <button class="boton-cantidad">X</button>
+            <div class="euros">€</div>
+        </div>
+
+    </div>
+
+    <div class="tramitar">
+        <button class="boton-op">Tramitar</button>
+        <button class="boton-op" [routerLink]="'/catalog'">Catalogo</button>
+        <div class="euros">€</div>
     </div>
     
-
-
-    
 </div>
-

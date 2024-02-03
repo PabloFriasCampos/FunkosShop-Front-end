@@ -2,144 +2,68 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-radius: 1rem;
-     
 }
 
-.container {
-    max-width: 60rem;
-    margin: 0 auto; 
-    display: grid;
-}
-
-
-.productos {
-
-    background-color: lightpink;
-    padding: 20px;
-    width: 100%; 
-    border-radius: 10px;
-}
-
-.producto {
-    background-color: white;
+.productos,
+.tramitar {
+    max-width: 60vw;
+    margin: 0 auto;
+    background-color: #22C4D8;
     padding: 10px;
-    width: 100%; 
-    border-radius: 5px;
-    border: 1px solid #bebdbd;
-    box-shadow: 0 0 10px rgb(82, 82, 82);
-}
-
-.datos-producto{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1vw;
-    box-shadow: 0 0 10px rgb(0, 0, 0);  
+    border: 1px solid black;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+    text-align: center;
+    font-size: 1em;
 }
 
 .nombre-producto {
-    font-size: 18px;
-    width: 10rem;
+    padding: 1vw;
     font-weight: bold;
-    margin-bottom: 5px;
-    box-shadow: 0 0 10px rgb(0, 0, 0); 
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+.cantidad {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .boton-cantidad {
     width: 2rem;
     height: 2rem;
-
-}
-.cantidad-producto{
-    box-shadow: 0 0 10px rgb(0, 0, 0); 
-    margin: 0;
-    
-}
-.multiplicador{
-    box-shadow: 0 0 10px rgb(0, 0, 0); 
-    font-size: 2rem;
-}
-.precio-producto{
-    box-shadow: 0 0 10px rgb(0, 0, 0); 
-    font-size: 2rem;
-}
-.euros{
-    box-shadow: 0 0 10px rgb(0, 0, 0); 
-    font-size: 2rem;
-    margin-left: 0; 
-}
-.botones-inferiores{
-    background-color: white;
-    padding: 10px;
-    width: 100%; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 5px;
-    border: 1px solid #bebdbd;
-    box-shadow: 0 0 10px rgb(0, 0, 0); 
-}
-.boton-tramitar{
-    width: 15rem;
-    height: 2rem;
-    font-size: 1.5rem;
-    
-}
-.boton-seguir{
-    width: 15rem;
-    height: 2rem;
-    font-size: 1.5rem;
-    margin-left: 3rem;
 }
 
-.zona-inferior{
-    margin: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.cantidad-producto {
+    box-shadow: 0 0 10px rgb(0, 0, 0);
     padding: 1vw;
-    border-radius: 1rem;
-    box-shadow: 0 0 10px rgb(0, 0, 0);  
-}
-.titulo{
-    width: 15rem;
-    padding: 1vw;
-    font-size: 3rem;
-    margin: 1rem;
-    border-radius: 1rem;
-    text-align: center;
-    box-shadow: 0 0 10px rgb(0, 0, 0); 
+    width: 60%;
 }
 
+.totales {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 
-@media (max-width: 600px) {
-    .datos-producto {
-        flex-direction: column; 
+.euros {
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: .4vw;
+}
+
+.boton-op {
+    padding: .4vw;
+}
+
+@media (max-width :900px) {
+
+    .productos {
+        grid-template-columns: repeat(1, 1fr);
     }
-    .nombre-producto {
-        width: 100%; 
-        text-align: center; 
-    }
-    .boton-cantidad {
-        margin: 10px; 
-    }
-    .multiplicador, .precio-producto, .euros {
-        font-size: 1.5rem; 
-    }
-    .euros {
-        margin-left: 0; 
-    }
-    .botones-inferiores {
-        flex-direction: column;
-    }
-    .boton-tramitar, .boton-seguir {
-        width: 100%;
-        margin: 10px; 
-    }
-    .titulo {
-        font-size: 2rem; 
-    }
+
 }

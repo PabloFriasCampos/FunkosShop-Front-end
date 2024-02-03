@@ -17,9 +17,9 @@ export class RegistrarseComponent {
   constructor(private http: HttpClient, private router: Router) { }
 
   async registrarUsuario() {
-    const headers = { 'Content-Type': `application/json` };
+    const headers = { 'Content-Type': 'application/json' };
 
-    if (this.contrasena == this.usuario.Contrasena) {
+    if (this.contrasena == this.usuario.contrasena) {
       let request$ = await this.http.post("https://localhost:7281/api/Usuarios/signup", JSON.stringify(this.usuario), { headers });
       await lastValueFrom(request$);
       this.router.navigate(['/login'])

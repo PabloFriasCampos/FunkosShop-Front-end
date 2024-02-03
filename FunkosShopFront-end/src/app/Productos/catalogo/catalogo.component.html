@@ -11,11 +11,13 @@
 <section class="seccion">
     <h1>Nombre de la seccion</h1>   
         <div class="productos">
-            <button class="producto">
-                <div class="producto-imagen"></div>
-                <div class="producto-nombre">Nombre</div>
-                <div class="euro">€</div>
-            </button>
+            <div class="producto" *ngFor="let producto of productos">
+                <img src="assets/Modongo.jpeg" class="producto-imagen">
+                <div class="detalles">
+                    <div class="producto-nombre">{{producto.nombreProducto}}</div>
+                    <div class="euro">{{producto.precioEUR}}€</div>
+                </div>
+            </div>
         </div>   
 </section>
 
