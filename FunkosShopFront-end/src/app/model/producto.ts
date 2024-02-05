@@ -1,19 +1,19 @@
 export class Producto {
 
-  productoID: number;
+  productoId: number;
   nombreProducto: string;
   precioEUR: number;
   descripcion: string;
   categoria: string;
-  Stock: number;
+  stock: number;
 
-  constructor(productoID: number, nombreProducto: string, precioEUR: number, descripcion: string, categoria: string, stock: number) {
-    this.productoID = productoID;
+  constructor(productoId: number, nombreProducto: string, precioEUR: number, descripcion: string, categoria: string, stock: number) {
+    this.productoId = productoId;
     this.nombreProducto = nombreProducto;
     this.precioEUR = precioEUR;
     this.descripcion = descripcion;
     this.categoria = categoria;
-    this.Stock = stock;
+    this.stock = stock;
   }
 
 }

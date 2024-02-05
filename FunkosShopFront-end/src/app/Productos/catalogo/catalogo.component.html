@@ -8,11 +8,11 @@
     </div>
 </header>
 
-<section class="seccion">
-    <h1>Nombre de la seccion</h1>   
+<section class="seccion" *ngFor="let categoria of productosCategoria">
+    <h1>{{categoria.categoria}}</h1>   
         <div class="productos">
-            <div class="producto" *ngFor="let producto of productos">
-                <img src="assets/Modongo.jpeg" class="producto-imagen">
+            <div class="producto" *ngFor="let producto of categoria.productos">
+                <img [src]="'https://localhost:7281/images/' + producto.productoId + '.png'" class="producto-imagen">
                 <div class="detalles">
                     <div class="producto-nombre">{{producto.nombreProducto}}</div>
                     <div class="euro">{{producto.precioEUR}}€</div>

@@ -26,7 +26,11 @@ export class InicioSesionComponent {
 
     const request$ = await this.http.post<string>("https://localhost:7281/api/Usuarios/login", JSON.stringify(this.usuario), options);
     let jsonWebToken = await lastValueFrom(request$);
-    localStorage.setItem('JsonWebToken', jsonWebToken.toString());
+    if (jsonWebToken != null) {
+      localStorage.setItem('JsonWebToken', jsonWebToken.toString());
+      this.router.navigate(['/'])
+
+    }
 
   }
 
