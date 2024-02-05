@@ -11,6 +11,7 @@ import { LandingComponent } from './General/landing/landing.component';
 import { SobreNosotrosComponent } from './General/sobre-nosotros/sobre-nosotros.component';
 import { CatalogoComponent } from './Productos/catalogo/catalogo.component';
 import { CarritoComponent } from './Compra/carrito/carrito.component';
+import { DetalleProductoComponent } from './Productos/detalle-producto/detalle-producto.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CarritoComponent } from './Compra/carrito/carrito.component';
     LandingComponent,
     SobreNosotrosComponent,
     CatalogoComponent,
-    CarritoComponent
+    CarritoComponent,
+    DetalleProductoComponent
   ],
   imports: [
     BrowserModule,

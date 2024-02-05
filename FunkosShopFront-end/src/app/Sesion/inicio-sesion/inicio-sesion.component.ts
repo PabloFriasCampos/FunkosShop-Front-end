@@ -25,9 +25,12 @@ export class InicioSesionComponent {
     };
 
     const request$ = await this.http.post<string>("https://localhost:7281/api/Usuarios/login", JSON.stringify(this.usuario), options);
-    let jsonWebToken = await lastValueFrom(request$);
-    if (jsonWebToken != null) {
-      localStorage.setItem('JsonWebToken', jsonWebToken.toString());
+    let JWTID = await lastValueFrom(request$);
+    if (JWTID != null) {
+      let id = JWTID.toString().split(';')[1];
+      let jsonWebToken = JWTID.toString().split(';')[0];
+      localStorage.setItem('JsonWebToken', jsonWebToken);
+      localStorage.setItem('usuarioId', id);
       this.router.navigate(['/'])
 
     }
