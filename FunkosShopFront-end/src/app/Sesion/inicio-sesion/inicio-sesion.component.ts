@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
 import { Usuario } from 'src/app/model/usuario';
 
 @Component({
@@ -15,6 +16,7 @@ export class InicioSesionComponent {
   constructor(private http: HttpClient, private router: Router) { }
 
   async iniciarSesion() {
+
     const options: any = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -22,15 +24,9 @@ export class InicioSesionComponent {
       responseType: 'text'
     };
 
-    this.http.post("https://localhost:7281/api/Usuarios/login", JSON.stringify(this.usuario), options)
-      .subscribe((data: any) => {
-        if (data != null) {
-          this.router.navigate([''])
-          sessionStorage.setItem('jsonWebToken', data)
-          alert("Inicio de sesión correcto")
-        }
-
-      });
+    const request$ = await this.http.post<string>("https://localhost:7281/api/Usuarios/login", JSON.stringify(this.usuario), options);
+    let jsonWebToken = await lastValueFrom(request$);
+    localStorage.setItem('JsonWebToken', jsonWebToken.toString());
 
   }
 
