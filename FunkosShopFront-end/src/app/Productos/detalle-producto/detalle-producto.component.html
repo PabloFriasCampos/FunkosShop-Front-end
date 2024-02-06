@@ -1,7 +1,21 @@
-<div>{{producto.nombreProducto}}</div>
-<div>{{producto.descripcion}}</div>
-<div>{{producto.precioEUR}}</div>
-<div>{{producto.categoria}}</div>
-<div>{{producto.productoId}}</div>
-<div>{{producto.stock}}</div>
-<button (click)="agregar()">AGREGAR A CARRITO</button>
+
+<body>
+    <div class="container">
+        <div class="product-image"><img src="/assets/icon.jpeg" width="400rem"></div>
+        <div class="product-details">
+            <div class="descripcion">
+            <h1>NOMBRE PRODUCTO</h1>
+            <p>DESCRIPCION DESCIPCION<br>DESCRIPCION DESCIPCION<br>DESCRIPCION DESCIPCION</p>
+            <div class="cantidad">
+                <button>-</button>
+                <span>x. ud</span>
+                <button>+</button>
+            </div>
+            <p class="precio">Precio €</p>
+            <button class="insertar">Añadir a la cesta</button>
+        </div>
+    </div>
+        <div class="stock">STOCK</div>
+    </div>
+</body>
+
