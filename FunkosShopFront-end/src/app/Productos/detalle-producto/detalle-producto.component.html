@@ -1,21 +1,20 @@
-
-<body>
-    <div class="container">
-        <div class="product-image"><img src="/assets/icon.jpeg" width="400rem"></div>
-        <div class="product-details">
-            <div class="descripcion">
-            <h1>NOMBRE PRODUCTO</h1>
-            <p>DESCRIPCION DESCIPCION<br>DESCRIPCION DESCIPCION<br>DESCRIPCION DESCIPCION</p>
+<div class="container">
+    <div class="product-image">
+        <img [src]="imageUrl" class="image" alt="imagen">
+    </div>
+    <div class="product-details">
+        <div class="descripcion">
+            <h1>{{producto.nombreProducto}}</h1>
+            <p>{{producto.descripcion}}</p>
             <div class="cantidad">
-                <button>-</button>
-                <span>x. ud</span>
-                <button>+</button>
+                <button (click)="actualizarCantidad(-1)">-</button>
+                <input [(ngModel)]="cantidad" class="inputCantidad">
+                <button (click)="actualizarCantidad(1)">+</button>
             </div>
-            <p class="precio">Precio €</p>
-            <button class="insertar">Añadir a la cesta</button>
+            <p class="precio">{{producto.precioEUR}}€</p>
+            <p class="precio">TOTAL: {{(producto.precioEUR * cantidad).toFixed(2)}}€</p>
+            <button class="insertar" (click)="agregar()">Añadir a la cesta</button>
         </div>
     </div>
-        <div class="stock">STOCK</div>
-    </div>
-</body>
-
+    <div class="stock">STOCK: {{producto.stock}}</div>
+</div>
