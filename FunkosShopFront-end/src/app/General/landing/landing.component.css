@@ -40,12 +40,13 @@ body{
 width: 100%;
 }
 div#slider { 
+  
   background: linear-gradient(45deg, transparent 3%, #00E6F6 7%, #00E6F6 5%, #00e6f6ad 5%);
   height: auto;
   overflow: hidden;
   margin: 10%;
   margin-top: 0 ;
-  border: 5px inset rgba(248, 18, 225, 0.4);
+
   border-radius: 36px 0px 40px 0px;
  } /* las imágenes no van a salir del márgen de la pantalla*/
 div#slider figure img { 
@@ -159,7 +160,30 @@ div#slider figure {
 @media screen and (max-width: 600px) {
   .header {
     flex-direction: column;
+    
   }
+  div#slider figure { 
+    position: relative;
+    width: auto;
+    margin: 0;
+    left: 0;
+    text-align: left;
+    animation: 10s slidy infinite; /*el movimiento se va a mantener de forma indefinida*/
+  }
+  div#slider figure img { 
+    width: 14%; float: left; 
+  
+  }
+  
+  div#slider figure { 
+    position: relative;
+    width: 700%;
+    margin: 0;
+    left: 0;
+    text-align: left;
+    animation: 10s slidy infinite; /*el movimiento se va a mantener de forma indefinida*/
+  }
+
 }
 @media (min-width: 768px) {
   .button-49,
@@ -168,6 +192,7 @@ div#slider figure {
     height: 86px;
     line-height: 88px;
   }
+  
 
 }
 
@@ -180,5 +205,6 @@ div#slider figure {
 50% { left: -200%; }
 70% { left: -200%; }
 75% { left: -300%; }
+95% { left: -300%; }
 }
 
