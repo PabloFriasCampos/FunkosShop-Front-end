@@ -6,6 +6,10 @@
     border-radius: 1rem;
 }
 
+.image {
+    width: 50%;
+}
+
 .productos,
 .tramitar {
     max-width: 60vw;

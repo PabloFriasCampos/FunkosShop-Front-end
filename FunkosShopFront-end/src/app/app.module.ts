@@ -12,6 +12,7 @@ import { SobreNosotrosComponent } from './General/sobre-nosotros/sobre-nosotros.
 import { CatalogoComponent } from './Productos/catalogo/catalogo.component';
 import { CarritoComponent } from './Compra/carrito/carrito.component';
 import { DetalleProductoComponent } from './Productos/detalle-producto/detalle-producto.component';
+import { ConfirmacionCompraComponent } from './Compra/confirmacion-compra/confirmacion-compra.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DetalleProductoComponent } from './Productos/detalle-producto/detalle-p
     SobreNosotrosComponent,
     CatalogoComponent,
     CarritoComponent,
-    DetalleProductoComponent
+    DetalleProductoComponent,
+    ConfirmacionCompraComponent
   ],
   imports: [
     BrowserModule,

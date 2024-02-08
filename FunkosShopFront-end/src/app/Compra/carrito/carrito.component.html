@@ -2,7 +2,10 @@
 
     <div class="productos" *ngFor="let producto of carrito.listaProductosCarrito">
             
-        <div class="nombre-producto">{{producto.producto.nombreProducto}}</div>
+        <div>
+            <img [src]="'https://localhost:7281/images/' + producto.producto.productoID + '.png'" class="image">
+            <div class="nombre-producto">{{producto.producto.nombreProducto}}</div>
+        </div>
 
         <div class="cantidad">
             <button class="boton-cantidad" (click)="actualizarCantidad(-1, producto)">-</button>
@@ -18,8 +21,8 @@
     </div>
 
     <div class="tramitar">
-        <button class="boton-op">Tramitar</button>
-        <button class="boton-op" [routerLink]="'/catalog'">Catalogo</button>
+        <button class="boton-op"[routerLink]="'/confirm'">Tramitar</button>
+        <button class="boton-op" [routerLink]="'/catalog'">Catálogo</button>
         <div class="euros">{{carrito.totalCarritoEUR}}€</div>
     </div>
     
