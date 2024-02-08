@@ -9,7 +9,7 @@
 </header>
 
 <section class="seccion" *ngFor="let categoria of productosCategoria">
-    <h1>{{categoria.categoria}}</h1>   
+    <h1 class="glitch">{{categoria.categoria}}</h1>   
         <div class="productos">
             <div class="producto" *ngFor="let producto of categoria.productos" [routerLink]="'/product/' + producto.productoID">
                 <img [src]="'https://localhost:7281/images/' + producto.productoID + '.png'" class="producto-imagen">
