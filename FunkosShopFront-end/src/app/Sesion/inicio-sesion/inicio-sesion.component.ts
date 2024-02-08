@@ -30,7 +30,7 @@ export class InicioSesionComponent {
       let id = JWTID.toString().split(';')[1];
       let jsonWebToken = JWTID.toString().split(';')[0];
       localStorage.setItem('JsonWebToken', jsonWebToken);
-      localStorage.setItem('usuarioId', id);
+      localStorage.setItem('usuarioID', id);
       this.router.navigate(['/'])
 
     }

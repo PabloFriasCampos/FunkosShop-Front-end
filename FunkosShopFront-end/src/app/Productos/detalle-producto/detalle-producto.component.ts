@@ -18,7 +18,7 @@ export class DetalleProductoComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private http: HttpClient) { }
 
   async ngOnInit(): Promise<void> {
-    const id = await this.activatedRoute.snapshot.paramMap.get('productoId');
+    const id = await this.activatedRoute.snapshot.paramMap.get('productoID');
     this.imageUrl = 'https://localhost:7281/images/' + id + '.png';
     if (id) {
       await this.cargarProducto(+id);
@@ -34,8 +34,8 @@ export class DetalleProductoComponent implements OnInit {
 
   async agregar() {
     const headers = { 'Content-Type': 'application/json' };
-    let idCarrito = localStorage.getItem('usuarioId');
-    const request$ = await this.http.post("https://localhost:7281/api/ListaProductosCarrito/" + this.producto.productoId + "/" + idCarrito + "/" + this.cantidad, { headers });
+    let idCarrito = localStorage.getItem('usuarioID');
+    const request$ = await this.http.post("https://localhost:7281/api/ProductosCarrito/" + this.producto.productoID + "/" + idCarrito + "/" + this.cantidad, { headers });
     const resultado = await lastValueFrom(request$);
 
   }

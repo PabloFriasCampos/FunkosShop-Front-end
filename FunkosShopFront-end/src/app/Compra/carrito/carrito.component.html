@@ -1,18 +1,18 @@
 <div class="container">
 
-    <div class="productos">
+    <div class="productos" *ngFor="let producto of carrito.listaProductosCarrito">
             
-        <div class="nombre-producto">ProductoNombre</div>
+        <div class="nombre-producto">{{producto.producto.nombreProducto}}</div>
 
         <div class="cantidad">
-            <button class="boton-cantidad">-</button>
-            <div class="cantidad-producto">Cantidad</div>
-            <button class="boton-cantidad">+</button>
+            <button class="boton-cantidad" (click)="actualizarCantidad(-1, producto)">-</button>
+            <div class="cantidad-producto">{{producto.cantidadProducto}}</div>
+            <button class="boton-cantidad" (click)="actualizarCantidad(1, producto)">+</button>
         </div>
 
         <div class="totales">
             <button class="boton-cantidad">X</button>
-            <div class="euros">€</div>
+            <div class="euros">{{(producto.producto.precioEUR * producto.cantidadProducto).toFixed(2)}}€</div>
         </div>
 
     </div>
@@ -20,7 +20,7 @@
     <div class="tramitar">
         <button class="boton-op">Tramitar</button>
         <button class="boton-op" [routerLink]="'/catalog'">Catalogo</button>
-        <div class="euros">€</div>
+        <div class="euros">{{carrito.totalCarritoEUR}}€</div>
     </div>
     
 </div>
