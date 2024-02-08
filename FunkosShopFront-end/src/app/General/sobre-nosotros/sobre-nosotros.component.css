@@ -12,8 +12,7 @@
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto;
     grid-gap: 10px;
-    background-image: url('src/assets/fondo3.jpg');
-    background-repeat: no-repeat;
+
 
     display: flex;
     justify-content: center;
@@ -53,7 +52,8 @@
 }
 
 .miembro {
-    background: linear-gradient(45deg, transparent 0%, #00E6F6 3%, #00E6F6 5%, #00e6f6dd 5%);
+    background: transparent;
+    backdrop-filter:blur(10px);  
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgb(82, 82, 82);
