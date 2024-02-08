@@ -12,12 +12,11 @@ header {
 }
 
 .seccion {
-   background-color: lightgrey;
    padding: 10px;
 }
 
 .productos {
-   background-color: #B12723;
+   background-color: #2b2e38;
    display: grid;
    grid-template-columns: repeat(4, 1fr);
    place-items: center;
@@ -28,10 +27,11 @@ header {
 }
 
 .producto {
-   background-color: white;
+   background: transparent;
+   backdrop-filter:blur(10px);  
    padding: 10px;
    border-radius: 5px;
-   border: 1px solid #bebdbd;
+   border: 3px solid #B12723;
    box-shadow: 0 0 10px rgb(82, 82, 82);
 }
 
@@ -50,7 +50,20 @@ header {
    font-size: 17px;
 }
 
+ 
+ .glitch {
+   font-size: 3rem;
+   font-weight: 700;
+   text-transform: uppercase;
+   position: relative;
+   font-family:Glitch;
+ 
+   text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+     -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+     0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+ }
 @media (max-width :800px) {
+
 
    .productos {
       grid-template-columns: repeat(3, 1fr);
@@ -65,3 +78,4 @@ header {
    }
 
 }
+

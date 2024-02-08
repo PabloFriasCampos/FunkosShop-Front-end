@@ -1,4 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+@import url('https://www.fontspace.com/cf-glitch-city-font-f29830');
 body {
-  background-color: rgb(171, 164, 164);
-  margin: 0px;
+  background-image: url('src/assets/fondo3.jpg');
+  background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+}
+@font-face {
+  font-family: 'Glitch';
+  src: url('./assets/CfGlitchCityRegular-L1vZ.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }

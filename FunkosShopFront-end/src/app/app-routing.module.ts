@@ -7,10 +7,11 @@ import { SobreNosotrosComponent } from './General/sobre-nosotros/sobre-nosotros.
 import { CarritoComponent } from './Compra/carrito/carrito.component';
 import { CatalogoComponent } from './Productos/catalogo/catalogo.component';
 import { DetalleProductoComponent } from './Productos/detalle-producto/detalle-producto.component';
+import { CombinacionComponent } from './Sesion/combinacion/combinacion.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
-  { path: 'login', component: InicioSesionComponent },
+  { path: 'login', component: CombinacionComponent },
   { path: 'signup', component: RegistrarseComponent },
   { path: 'aboutus', component: SobreNosotrosComponent },
   { path: 'cart', component: CarritoComponent },
