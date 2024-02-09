@@ -21,7 +21,7 @@ export class CatalogoComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.obtenerProductos();
-    
+
 
   }
 
@@ -29,7 +29,8 @@ export class CatalogoComponent implements OnInit {
     const request$ = await this.http.get("https://localhost:7281/api/Productos");
     const productos = await lastValueFrom(request$);
     this.productosCategoria = productos as CategoriaProductos[];
-    
+    this.funkoBuscador = this.productosCategoria;
+
   }
 
   buscarFunko() {
@@ -41,18 +42,17 @@ export class CatalogoComponent implements OnInit {
   aplicarBusqueda() {
     // Filtra por el nombre buscado
     const nombreBuscado = this.busquedaActual.toLowerCase();
-  
+
     // Si el buscador está vacio entonces muestra todos los productos
     if (nombreBuscado == '') {
-      this.obtenerProductos();
+      this.productosCategoria = this.funkoBuscador;
     }
-  
+
     // Filtra las categorías de productos
-    this.productosCategoria = this.productosCategoria.map(categoria => {
+    this.productosCategoria = this.funkoBuscador.map(categoria => {
       const productosFiltrados = categoria.productos.filter(producto =>
         producto.nombreProducto.toLowerCase().includes(nombreBuscado)
       );
-  
       // Devuelve el producto buscado
       return {
         categoria: categoria.categoria,
