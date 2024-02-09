@@ -27,6 +27,12 @@
 												<input type="password" class="form-style" placeholder="Contraseña" [(ngModel)]="usuarioLogIn.contrasena">
 												<i class="input-icon uil uil-lock-alt"></i>
 											</div>
+											<div class="checkbox-wrapper-24">
+												<input type="checkbox" id="check-24" name="check" value="" />
+												<label for="check-24">
+												  <span></span>Recuerdame
+												</label>
+											  </div>
                                             <!--Boton de iniciar sesion-->
 											<a class="btn mt-4" (click)="iniciarSesion()">Iniciar sesión</a>
 				      					</div>
@@ -46,11 +52,11 @@
 											</div>	
 											<div class="form-group mt-2">
                                                 <!--Campo de contraseña-->
-												<input type="text" class="form-style" placeholder="Contraseña" [(ngModel)]="usuarioSignUp.contrasena">
+												<input type="password" class="form-style" placeholder="Contraseña" [(ngModel)]="usuarioSignUp.contrasena">
 												<i class="input-icon uil uil-lock-alt"></i>
 											</div><div class="form-group mt-2">
                                                 <!--Campo de repetir la contraseña-->
-												<input type="text" class="form-style" placeholder="Repite la contraseña" [(ngModel)]="repetirContrasena">
+												<input type="password" class="form-style" placeholder="Repite la contraseña" [(ngModel)]="repetirContrasena">
 												<i class="input-icon uil uil-lock-alt"></i>
 											</div>	    
                                                 <div class="form-group mt-2">
