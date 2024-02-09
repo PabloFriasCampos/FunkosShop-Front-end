@@ -1,16 +1,16 @@
 
 <header>
     <button class="menu-icon">x</button>
-    <input type="text" placeholder="Buscador">
+    <input type="search" [(ngModel)]="buscadorFunko" (input)="buscarFunko()" placeholder="Buscardor">
     <div class="cart-login">
         
         <button [routerLink]="'/login'">Inicio sesión</button>
     </div>
 </header>
 
-<section class="seccion" *ngFor="let categoria of productosCategoria">
-    <h1 class="glitch">{{categoria.categoria}}</h1>   
-        <div class="productos">
+<section class="seccion" *ngFor="let categoria of productosCategoria" >
+    <h1 *ngIf="categoria.productos.length > 0">{{categoria.categoria}}</h1>   
+        <div class="productos" *ngIf="categoria.productos.length > 0">
             <div class="producto" *ngFor="let producto of categoria.productos" [routerLink]="'/product/' + producto.productoID">
                 <img [src]="'https://localhost:7281/images/' + producto.productoID + '.png'" class="producto-imagen">
                 <div class="detalles">
