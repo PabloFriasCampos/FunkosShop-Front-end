@@ -17,6 +17,8 @@ export class CatalogoComponent implements OnInit {
   buscadorFunko: String = ''
   busquedaActual: String = ''
 
+  opcionSeleccionada: String = 'sinFiltro'
+
   constructor(private http: HttpClient, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
@@ -59,5 +61,46 @@ export class CatalogoComponent implements OnInit {
         productos: productosFiltrados
       };
     });
+  }
+
+  cambiarFiltro() {
+    switch(this.opcionSeleccionada){
+      case "sinFiltro":
+        // Que no tenga ningun filtro puesto
+        this.productosCategoria = this.funkoBuscador;
+        break;
+
+      case "MenorPrecio":
+        // Ordenar los productos por el precio de menor a mayor
+        this.productosCategoria = this.productosCategoria.map(categoria => ({
+          categoria: categoria.categoria, 
+          productos: categoria.productos.slice().sort((a, b) => a.precioEUR - b.precioEUR)
+        }));
+        break;
+
+      case "MayorPrecio":
+        // Ordenar los productos por precio de mayor a menor
+        this.productosCategoria = this.productosCategoria.map(categoria => ({
+          categoria: categoria.categoria,
+          productos: categoria.productos.slice().sort((a, b) => b.precioEUR - a.precioEUR)
+        }));
+        break;
+
+      case "LetraA_Z":
+        // Ordenar los productos por el nombre de la A a la Z
+        this.productosCategoria = this.productosCategoria.map(categoria => ({
+          categoria: categoria.categoria,
+          productos: categoria.productos.slice().sort((a, b) => a.nombreProducto.localeCompare(b.nombreProducto))
+        }));
+        break;
+
+      case "LetraZ_A":
+        // Ordenar los productos por el nombre de la Z a la A
+        this.productosCategoria = this.productosCategoria.map(categoria => ({
+          categoria: categoria.categoria,
+          productos: categoria.productos.slice().sort((a, b) => b.nombreProducto.localeCompare(a.nombreProducto))
+        }));
+        break;
+      }
   }
 }

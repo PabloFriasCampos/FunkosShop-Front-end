@@ -6,6 +6,71 @@ header {
    border-bottom: 2px solid black;
 }
 
+.buscador {
+   background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 0px 5px;
+   background-size: 24px;
+   width: 500px;
+   border: transparent;
+   border-bottom: solid 1px #dedede;
+   padding: 10px 10px 10px 30px;
+   outline: none;
+ }
+
+.header {
+   position: sticky;
+   top: 0;
+   background-color: #333;
+   padding: 10px 0;
+   z-index: 1000;
+   box-shadow: #000000;
+ }
+ 
+ .logo {
+   font-size: 1.5rem;
+ }
+ 
+ .logo img {
+   height: 40px;
+   width: auto;
+ }
+ 
+ .nav-buttons {
+   margin-right: 20px;
+ }
+ 
+ .nav-buttons button {
+   margin-left: 10px;
+ }
+ 
+ .nav-buttons .btn {
+   border: none;
+   background-color: #333;
+   color: #fff;
+ }
+ 
+ .nav-buttons .btn:hover {
+   background-color: #fff;;
+   color: #000000;
+ }
+ 
+ .nav-buttons .btn i {
+   margin-right: 5px;
+ }
+ 
+ .cta-btn {
+   background-color: #333;
+   color: #fff;
+   padding: 15px 30px;
+   border-radius: 5px;
+   font-size: 1.2rem;
+   text-decoration: none;
+ }
+ 
+ .cta-btn:hover {
+   background-color: #E7B10A;
+   color: #fff;
+ }
+
 .menu-icon {
    background-color: transparent;
    border: none;
