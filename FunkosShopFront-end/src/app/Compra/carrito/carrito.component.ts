@@ -25,7 +25,6 @@ export class CarritoComponent implements OnInit {
       await this.cargarCarritoLocal();
 
     }
-
   }
 
   async cargarCarritoBBDD() {
@@ -56,9 +55,11 @@ export class CarritoComponent implements OnInit {
       await this.agregarBBDD(actualizador, productoCarrito);
 
     } else {
-      this.agregarLocal(productoCarrito);
+      await this.agregarLocal(productoCarrito);
 
     }
+
+    this.actualizarTotales(productoCarrito);
 
   }
 
@@ -79,14 +80,6 @@ export class CarritoComponent implements OnInit {
       this.carrito.listaProductosCarrito.splice(index, 1);
 
     } else {
-      for (let producto of this.carrito.listaProductosCarrito) {
-        if (producto.producto.productoID == productoCarrito.producto.productoID) {
-          producto.cantidadProducto = productoCarrito.cantidadProducto;
-          producto.totalProductoEUR = +(productoCarrito.producto.precioEUR * productoCarrito.cantidadProducto).toFixed(2);
-
-        }
-
-      }
 
     }
 
@@ -94,8 +87,32 @@ export class CarritoComponent implements OnInit {
 
   }
 
+  eliminarProducto(producto: ProductoCarrito) {
+    this.actualizarCantidad(-producto.cantidadProducto, producto)
+
+  }
+
   borrarCarrito() {
     sessionStorage.removeItem('carrito');
+
+  }
+
+  actualizarTotales(productoCarrito: ProductoCarrito) {
+
+    for (let producto of this.carrito.listaProductosCarrito) {
+      if (producto.producto.productoID == productoCarrito.producto.productoID) {
+        producto.cantidadProducto = productoCarrito.cantidadProducto;
+        producto.totalProductoEUR = +(productoCarrito.producto.precioEUR * productoCarrito.cantidadProducto).toFixed(2);
+
+      }
+
+    }
+
+    this.carrito.totalCarritoEUR = 0;
+    for (let producto of this.carrito.listaProductosCarrito) {
+      this.carrito.totalCarritoEUR += producto.totalProductoEUR;
+
+    }
 
   }
 
