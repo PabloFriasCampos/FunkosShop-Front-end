@@ -14,20 +14,20 @@
             </select>
         </div>
         <div class="nav-buttons">
-            <button class="btn btn-light">
-                <i [routerLink]="'/cart'" class="fas fa-shopping-cart"></i>
+            <button class="btn btn-light"  [routerLink]="'/cart'">
+                <i class="fas fa-shopping-cart"></i>
             </button>
             <button [routerLink]="'/sesion'" class="btn btn-light"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
         </div>
     </div>
   </header>
 
-<section class="seccion" *ngFor="let categoria of productosCategoria" >
+<section class="seccionCategoria" *ngFor="let categoria of productosCategoria" >
     <h1 *ngIf="categoria.productos.length > 0">{{categoria.categoria}}</h1>   
         <div class="productos" *ngIf="categoria.productos.length > 0">
             <div class="producto" *ngFor="let producto of categoria.productos" [routerLink]="'/product/' + producto.productoID">
                 <img [src]="'https://localhost:7281/images/' + producto.productoID + '.png'" class="producto-imagen">
-                <div class="detalles">
+                <div class="detalles seccionProductos">
                     <div class="producto-nombre">{{producto.nombreProducto}}</div>
                     <div class="euro">{{producto.precioEUR}}€</div>
                 </div>
