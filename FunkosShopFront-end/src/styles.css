@@ -13,3 +13,20 @@ background-size: cover;
   font-weight: normal;
   font-style: normal;
 }
+.arrow-down {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  color: #000 ;
+  font-size: 24px;
+}
+
+.arrow-down i {
+  transition: transform 0.3s ease;
+}
+
+.arrow-down:hover i {
+  transform: scale(1.2);
+}

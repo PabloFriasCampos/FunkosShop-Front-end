@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    
   <meta charset="utf-8">
   <title>FunkosShop</title>
   <base href="/">
@@ -17,5 +18,15 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<!--Esto de aqui abajo no funciona(preguntar al capi)-->
+
+<script>
+  document.querySelector('.arrow-down').addEventListener('click', function() {
+      window.scrollBy({
+          top: window.innerHeight - 100,
+          behavior: 'smooth'
+      });
+  });
+</script>
 </body>
 </html>

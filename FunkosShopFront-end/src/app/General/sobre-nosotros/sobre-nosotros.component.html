@@ -1,84 +1,113 @@
-<header class="header">
-    <img  [routerLink]="''" src="/assets/icon.jpeg" alt="FunkosShop Logo" class="logo">
-    <button class="button-49" [routerLink]="'/aboutus'" role="button">About us</button>
-    <button class="button-49" [routerLink]="'/catalog'" role="button">Catalogo</button>
-    <button class="carrito" [routerLink]="'/cart'"><img src="assets/carro.png"   class= "imagen_carrito" /></button>
-    <button class="button-49" role="button" [routerLink]="'/sesion'">INICIA</button>
-  </header>
 
-<div class="container">
-    <div class="section">
-        <div class="section-title">Como Funcionamos?</div>
-        <div class="section-content">Somos una empresa que nos encargamos de la exportación de funkos de una manera totalmente ilegal, usamos escalvos para facilitar la obtención de los mismos y 
-            nos costramos su mano de obra dandoles 2 naranjas y un melocoton a la semana
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <div class="header-section">
+        <div class="content">
+            <div class="container">
+                <div class="about-us">
+                    <h1 class="tituloAbout">Sobre Nosotros</h1>
+                    <p class="lead">Somos una empresa dedicada a proporcionarte la mejor experiencia de compra de Funko Pops.</p>
+                </div>
+                <div class="values">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <h2 class="tituloValores">Nuestros Valores</h2>
+                            <p>Nos enfocamos en la calidad, la satisfacción del cliente y la pasión por los Funko Pops.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Pedir a pablo k me ayude con la fechita de los cojones -->
+        <div class="arrow-down">
+            <i class="fas fa-chevron-down"></i>
         </div>
     </div>
-    <div class="miembros">
-        <div class="miembro">
-            <div class="miembro-name">Pablo</div>
-            <div class="miembro-info">Pablo es un especialista en comercio electrónico con experiencia en la gestión de tiendas en línea. Trabajó para una empresa de tecnología donde aprendió estrategias efectivas de marketing digital y logística. Su habilidad para optimizar procesos y su visión estratégica son fundamentales para la implementación de una plataforma de venta en línea eficiente para la empresa de Funko Pops.</div>
-        </div>
-        <div class="miembro">
-            <div class="miembro-name">Ionut</div>
-            <div class="miembro-info">Ionut tiene una sólida formación en finanzas y emprendimiento. Ha trabajado en el sector financiero, asesorando a empresas emergentes en la gestión eficiente de recursos. Ionut aporta sus habilidades financieras para la planificación presupuestaria, la gestión de inventario y la expansión estratégica de la empresa. Su enfoque pragmático asegura la viabilidad financiera a largo plazo del negocio.</div>
-        </div>
-        <div class="miembro">
-            <div class="miembro-name">David</div>
-            <div class="miembro-info">David es un entusiasta coleccionista de figuras de vinilo desde su adolescencia. Ha acumulado una impresionante colección de Funko Pops a lo largo de los años y ha desarrollado un profundo conocimiento sobre rarezas y ediciones limitadas.David trabajó en marketing digital, lo que le proporcionó habilidades valiosas para promocionar y vender productos en línea.</div>
-        </div>
-        <div class="miembro">
-            <div class="miembro-name">Ale</div>
-            <div class="miembro-info">Alejandro es diseñador gráfico y amante del arte pop. Su creatividad y habilidades en diseño gráfico han sido fundamentales para la creación de una marca atractiva y reconocible. Alejandro ha trabajado en agencias de publicidad, donde ha desarrollado campañas visuales impactantes. Su visión artística se refleja en la presentación visual de la empresa y en la creación de embalajes exclusivos.</div>
+<!--Poner nuestras fotos y nuestros enlaces -->
+    <div class="content">
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <h2 class="equipo">Nuestro Equipo</h2>
+                </div>
+            </div>
+            <div class="container2">
+                <div class="card">
+                    <div class="content">
+                        <div class="img"><img src="/assets/Modongo.jpeg"></div>
+                        <div class="cardContent">
+                            <h3>Alejandro Moreno<br><span>Diseñador Grafico</span></h3>
+                        </div>
+                    </div>
+                    <ul class="sci">
+                        <li style="--i:1">
+                            <a href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                        <li style="--i:2">
+                            <a href="https://github.com"><i class="fab fa-github"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <div class="img"><img src="/assets/Modongo.jpeg"></div>
+                        <div class="cardContent">
+                            <h3>Ionut Pop<br><span>Financiero Emprendedor</span></h3>
+                        </div>
+                    </div>
+                    <ul class="sci">
+                        <li style="--i:1">
+                            <a href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                        <li style="--i:2">
+                            <a href="https://github.com"><i class="fab fa-github"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <div class="img"><img src="/assets/Modongo.jpeg"></div>
+                        <div class="cardContent">
+                            <h3>David Ortiz<br><span>Coleccionista Apasionado</span></h3>
+                        </div>
+                    </div>
+                    <ul class="sci">
+                        <li style="--i:1">
+                            <a href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                        <li style="--i:2">
+                            <a href="https://github.com"><i class="fab fa-github"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <div class="img"><img src="/assets/Modongo.jpeg"></div>
+                        <div class="cardContent">
+                            <h3>Pablo Frias<br><span>Experto en Comercio Electrónico</span></h3>
+                        </div>
+                    </div>
+                    <ul class="sci">
+                        <li style="--i:1">
+                            <a href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                        <li style="--i:2">
+                            <a href="https://github.com"><i class="fab fa-github"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="section">
-        <div class="section-title">Misión</div>
-        <div class="section-content">En FunkosShop, nuestra misión es compartir nuestra pasión por los funko pop con todos nuestros clientes, ofreciéndoles productos de calidad, originales y divertidos. Queremos que cada funko pop que vendemos sea un regalo especial, que sorprenda y emocione a quien lo recibe, y que refleje su personalidad y sus gustos.
-
-            Para ello, trabajamos con las mejores marcas y licencias del mercado, seleccionando cuidadosamente los modelos más demandados y exclusivos. También nos esforzamos por brindar un servicio de atención al cliente excelente, resolviendo todas sus dudas y sugerencias, y garantizando una entrega rápida y segura. Además, nos involucramos con la comunidad de coleccionistas de funko pop, participando en eventos, sorteos y promociones, y creando contenido de valor en nuestras redes sociales y nuestro blog.
-            
-            En FunkosShop, creemos que los funko pop son más que simples figuras, son una forma de arte y de expresión. Por eso, nuestra misión es hacer felices a nuestros clientes con nuestros productos, y contribuir al crecimiento y la difusión de esta cultura pop que tanto nos apasiona. 🤩 </div>
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 FunkosShop. Todos los derechos reservados.</p>
+            <p>Jose apruebanos que nos lo hemos currao</p>
         </div>
-            <div class="section">
-        <div class="section-title">Visión</div>
-        <div class="section-content">En FunkosShop, somos apasionados por los funko pop, esas figuras coleccionables con cabeza cuadrada y cuerpo pequeño que representan a tus personajes favoritos de la cultura pop. Desde 1998, Funko ha creado más de 20.000 modelos diferentes de funko pop, abarcando desde películas, series, videojuegos, cómics, música, deportes y mucho más1.
-
-            Nuestra visión de futuro es convertirnos en el referente de venta de funko pop en España, ofreciendo a nuestros clientes una amplia variedad de productos, precios competitivos, envíos rápidos y seguros, y una atención personalizada. Queremos que cada funko pop que compres sea una experiencia única y satisfactoria, y que puedas disfrutar de tu colección con orgullo y alegría.
-            
-            Para lograrlo, estamos en constante innovación y actualización, siguiendo las tendencias y novedades del mercado de funko pop. También buscamos alianzas estratégicas con otras empresas y licenciatarios, para ofrecerte productos exclusivos y de edición limitada2. Además, creamos comunidad entre nuestros clientes, a través de nuestras redes sociales, nuestro blog y nuestros eventos, donde puedes compartir tu pasión por los funko pop con otros coleccionistas.
-            
-            En FunkosShop, creemos que los funko pop son más que simples juguetes, son una forma de expresar tu personalidad, tus gustos y tus emociones. Por eso, te invitamos a que nos acompañes en este viaje hacia el futuro, donde seguiremos creciendo y mejorando para brindarte el mejor servicio posible. ¡Gracias por confiar en nosotros! 🙌</div>
-   </div>
-
-
-   
-    <div class="section">
-        <div class="section-title">Valores</div>
-        <div class="section-content">Muy bien, aquí tienes otro posible texto para el apartado de Valores en tu página de venta de funko pop:
-
-            En FunkosShop, nuestros valores se basan en la pasión, la calidad, la innovación y la satisfacción de nuestros clientes. Estos son los principios que guían nuestro trabajo y nuestra relación con nuestros proveedores, colaboradores y coleccionistas.
-            <p>
-                <strong>Pasión:</strong> Somos fans de los funko pop, y por eso nos dedicamos a este negocio. Nos encanta lo que hacemos, y queremos transmitir esa pasión a nuestros clientes, ofreciéndoles productos que les hagan felices y que reflejen su personalidad y sus gustos.
-        </p>
-        <p>
-            <strong>Calidad:</strong> Buscamos la excelencia en todos nuestros procesos, desde la selección de los productos, hasta el embalaje y el envío. Nos aseguramos de que nuestros funko pop estén en perfectas condiciones, y de que cumplan con los estándares de calidad y seguridad. También cuidamos el servicio de atención al cliente, resolviendo cualquier incidencia o reclamación de forma rápida y eficaz.
-        </p>
-        <p>
-            <strong>Innovación:</strong>  Estamos en constante actualización, siguiendo las tendencias y novedades del mercado de funko pop. Nos adaptamos a las demandas y preferencias de nuestros clientes, ofreciéndoles productos exclusivos y de edición limitada. También utilizamos las nuevas tecnologías para mejorar nuestra web, nuestras redes sociales y nuestro blog, donde creamos contenido de valor para nuestra comunidad.
-        </p>
-        <p>
-            <strong>Satisfacción:</strong>  Nuestro objetivo es que nuestros clientes queden satisfechos con su compra, y que repitan su experiencia con nosotros. Para ello, les ofrecemos precios competitivos, envíos rápidos y seguros, y una atención personalizada. También les escuchamos y valoramos sus opiniones y sugerencias, para mejorar nuestro servicio y adaptarnos a sus necesidades.
-        </p>
-        <p>
-            En FunkosShop, nuestros valores son nuestra seña de identidad, y nos diferencian de nuestra competencia. Queremos ser tu tienda de referencia de funko pop, y para ello, trabajamos con ilusión, compromiso y profesionalidad. 🙌</div>
-     
-        </div>
-
-    
-</div>
-<div class="contacto">
-    <div class="contacto-item">tlf: 123456789</div>
-    <div class="contacto-item">fax: 987654321</div>
-    <div class="contacto-item">email: contacto@aenor.com</div>
-</div>
-
+    </footer>
+</body>
