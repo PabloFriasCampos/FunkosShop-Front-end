@@ -7,7 +7,7 @@
                         <!--Titulos de las 2 ventanas-->
 						<h6 class="mb-0 pb-3 modo" ><span id="iniciar">Iniciar sesión</span><span id="registrar">Registrarse</span></h6>
                         <!--checkboxes que los haremos invisibles para k este fachero -->
-			          	<input class="checkbox" type="checkbox" id="reg-log" name="reg-log" [(ngModel)]="toggle"/>
+			          	<input class="checkbox" type="checkbox" id="reg-log" name="reg-log" [(ngModel)]="toggle" (change)="colorVentanas()"/>
 			          	<label for="reg-log"></label>
 						<div class="card-3d-wrap mx-auto">
 							<div class="card-3d-wrapper">

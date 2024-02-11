@@ -48,7 +48,9 @@ export class DetalleProductoComponent implements OnInit {
 
   async agregarBBDD() {
     const headers = { 'Content-Type': 'application/json' };
-    let idCarrito = localStorage.getItem('usuarioID');
+    let idCarrito;
+    if (sessionStorage.getItem('usuarioID')) idCarrito = sessionStorage.getItem('usuarioID');
+    if (localStorage.getItem('usuarioID')) idCarrito = localStorage.getItem('usuarioID');
     const request$ = await this.http.post("https://localhost:7281/api/ProductosCarrito/" + this.producto.productoID + "/" + idCarrito + "/" + this.cantidad, { headers });
     const resultado = await lastValueFrom(request$);
 
