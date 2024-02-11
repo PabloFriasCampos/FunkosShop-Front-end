@@ -1,153 +1,153 @@
 header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 10px;
-   border-bottom: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 2px solid black;
 }
 
 .buscador {
-   background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 0px 5px;
-   background-size: 24px;
-   width: 500px;
-   border: transparent;
-   border-bottom: solid 1px #dedede;
-   padding: 10px 10px 10px 30px;
-   outline: none;
-   color: white;
- }
+  background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 0px 5px;
+  background-size: 24px;
+  width: 500px;
+  border: transparent;
+  border-bottom: solid 1px #dedede;
+  padding: 10px 10px 10px 30px;
+  outline: none;
+  color: white;
+}
 
 .header {
-   position: sticky;
-   top: 0;
-   background-color: #333;
-   padding: 10px 0;
-   z-index: 1000;
-   box-shadow: #000000;
- }
- 
- .logo {
-   font-size: 1.5rem;
- }
- 
- .logo img {
-   height: 40px;
-   width: auto;
- }
- 
- .nav-buttons {
-   margin-right: 20px;
- }
- 
- .nav-buttons button {
-   margin-left: 10px;
- }
- 
- .nav-buttons .btn {
-   border: none;
-   background-color: #333;
-   color: #fff;
- }
- 
- .nav-buttons .btn:hover {
-   background-color: #fff;;
-   color: #000000;
- }
- 
- .nav-buttons .btn i {
-   margin-right: 5px;
- }
- 
- .cta-btn {
-   background-color: #333;
-   color: #fff;
-   padding: 15px 30px;
-   border-radius: 5px;
-   font-size: 1.2rem;
-   text-decoration: none;
- }
- 
- .cta-btn:hover {
-   background-color: #E7B10A;
-   color: #fff;
- }
+  position: sticky;
+  background-color: #535151;
+  padding: 10px 0;
+  z-index: 1000;
+  box-shadow: #000000;
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+.nav-buttons {
+  margin-right: 20px;
+}
+
+.nav-buttons button {
+  margin-left: 10px;
+}
+
+.nav-buttons .btn {
+  border: none;
+  background-color: #333;
+  color: #fff;
+}
+
+.nav-buttons .btn:hover {
+  background-color: #fff;
+  ;
+  color: #000000;
+}
+
+.nav-buttons .btn i {
+  margin-right: 5px;
+}
+
+.cta-btn {
+  background-color: #333;
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.cta-btn:hover {
+  background-color: #E7B10A;
+  color: #fff;
+}
 
 .menu-icon {
-   background-color: transparent;
-   border: none;
+  background-color: transparent;
+  border: none;
 }
 
 .seccionCategoria {
-   padding: 10px;
-   color: #393939;
+  padding: 10px;
+  color: #393939;
 }
 
 .seccionProductos {
-   padding: 10px;
-   color: #e6e6e6;
+  padding: 10px;
+  color: #e6e6e6;
 }
 
 .productos {
-   background-color: #2b2e38;
-   display: grid;
-   grid-template-columns: repeat(4, 1fr);
-   place-items: center;
-   gap: 2em;
-   padding: 2em;
-   border-radius: 10px;
-   cursor: pointer;
+  background-color: #2b2e38;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: center;
+  gap: 2em;
+  padding: 2em;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .producto {
-   background: transparent;
-   backdrop-filter:blur(10px);  
-   padding: 10px;
-   border-radius: 5px;
-   border: 3px solid #B12723;
-   box-shadow: 0 0 10px rgb(82, 82, 82);
+  background: transparent;
+  backdrop-filter: blur(10px);
+  padding: 10px;
+  border-radius: 5px;
+  border: 3px solid #B12723;
+  box-shadow: 0 0 10px rgb(82, 82, 82);
 }
 
 .detalles {
-   display: flex;
-   justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .producto-imagen {
-   font-size: 18px;
-   font-weight: bold;
-   width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
 }
 
 .producto-nombre {
-   font-size: 17px;
+  font-size: 17px;
 }
 
- 
- .glitch {
-   font-size: 3rem;
-   font-weight: 700;
-   text-transform: uppercase;
-   position: relative;
-   font-family:Glitch;
- 
-   text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
-     -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
-     0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
- }
+
+.glitch {
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+  font-family: Glitch;
+
+  text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+    -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+    0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+}
+
 @media (max-width :800px) {
 
 
-   .productos {
-      grid-template-columns: repeat(3, 1fr);
-   }
+  .productos {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
 }
 
 @media (max-width :500px) {
 
-   .productos {
-      grid-template-columns: repeat(2, 1fr);
-   }
+  .productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
 }
-

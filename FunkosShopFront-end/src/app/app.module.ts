@@ -11,6 +11,7 @@ import { CarritoComponent } from './Compra/carrito/carrito.component';
 import { DetalleProductoComponent } from './Productos/detalle-producto/detalle-producto.component';
 import { ConfirmacionCompraComponent } from './Compra/confirmacion-compra/confirmacion-compra.component';
 import { CombinacionComponent } from './Sesion/combinacion/combinacion.component';
+import { HeaderComponent } from './General/header/header.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CombinacionComponent } from './Sesion/combinacion/combinacion.component
     CarritoComponent,
     DetalleProductoComponent,
     ConfirmacionCompraComponent,
-    CombinacionComponent
+    CombinacionComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
