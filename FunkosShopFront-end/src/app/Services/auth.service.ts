@@ -3,11 +3,9 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class LoggedService {
+export class AuthService {
 
-  constructor() { }
-
-  logged(): boolean {
+  isLogged(): boolean {
 
     let local = localStorage.getItem('JsonWebToken') != null;
     let sesion = sessionStorage.getItem('JsonWebToken') != null;

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
+import { AuthService } from 'src/app/Services/auth.service';
 import { CategoriaProductos } from 'src/app/model/categoria-productos';
 
 @Component({
@@ -11,13 +12,13 @@ import { CategoriaProductos } from 'src/app/model/categoria-productos';
 })
 export class CatalogoComponent implements OnInit {
 
-  productosCategoria: CategoriaProductos[] = []
+  funkosFiltrados: CategoriaProductos[] = []
 
-  funkoBuscador: CategoriaProductos[] = []
+  todosFunkos: CategoriaProductos[] = []
   buscadorFunko: String = ''
   busquedaActual: String = ''
 
-  opcionSeleccionada: String = 'sinFiltro'
+  opcionSeleccionada: String = 'MenorPrecio'
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -30,8 +31,8 @@ export class CatalogoComponent implements OnInit {
   async obtenerProductos() {
     const request$ = await this.http.get("https://localhost:7281/api/Productos");
     const productos = await lastValueFrom(request$);
-    this.productosCategoria = productos as CategoriaProductos[];
-    this.funkoBuscador = this.productosCategoria;
+    this.todosFunkos = productos as CategoriaProductos[];
+    this.funkosFiltrados = this.todosFunkos;
 
   }
 
@@ -41,17 +42,18 @@ export class CatalogoComponent implements OnInit {
     this.aplicarBusqueda();
   }
 
+  aplicarFiltros() {
+    this.cambiarFiltro();
+    this.buscarFunko();
+
+  }
+
   aplicarBusqueda() {
     // Filtra por el nombre buscado
     const nombreBuscado = this.busquedaActual.toLowerCase();
 
-    // Si el buscador está vacio entonces muestra todos los productos
-    if (nombreBuscado == '') {
-      this.productosCategoria = this.funkoBuscador;
-    }
-
     // Filtra las categorías de productos
-    this.productosCategoria = this.funkoBuscador.map(categoria => {
+    this.funkosFiltrados = this.todosFunkos.map(categoria => {
       const productosFiltrados = categoria.productos.filter(producto =>
         producto.nombreProducto.toLowerCase().includes(nombreBuscado)
       );
@@ -64,43 +66,38 @@ export class CatalogoComponent implements OnInit {
   }
 
   cambiarFiltro() {
-    switch(this.opcionSeleccionada){
-      case "sinFiltro":
-        // Que no tenga ningun filtro puesto
-        this.productosCategoria = this.funkoBuscador;
-        break;
-
+    switch (this.opcionSeleccionada) {
       case "MenorPrecio":
         // Ordenar los productos por el precio de menor a mayor
-        this.productosCategoria = this.productosCategoria.map(categoria => ({
-          categoria: categoria.categoria, 
-          productos: categoria.productos.slice().sort((a, b) => a.precioEUR - b.precioEUR)
+        this.funkosFiltrados = this.todosFunkos.map(categoria => ({
+          categoria: categoria.categoria,
+          productos: categoria.productos.sort((a, b) => a.precioEUR - b.precioEUR)
         }));
         break;
 
       case "MayorPrecio":
         // Ordenar los productos por precio de mayor a menor
-        this.productosCategoria = this.productosCategoria.map(categoria => ({
+        this.funkosFiltrados = this.todosFunkos.map(categoria => ({
           categoria: categoria.categoria,
-          productos: categoria.productos.slice().sort((a, b) => b.precioEUR - a.precioEUR)
+          productos: categoria.productos.sort((a, b) => b.precioEUR - a.precioEUR)
         }));
         break;
 
       case "LetraA_Z":
         // Ordenar los productos por el nombre de la A a la Z
-        this.productosCategoria = this.productosCategoria.map(categoria => ({
+        this.funkosFiltrados = this.todosFunkos.map(categoria => ({
           categoria: categoria.categoria,
-          productos: categoria.productos.slice().sort((a, b) => a.nombreProducto.localeCompare(b.nombreProducto))
+          productos: categoria.productos.sort((a, b) => a.nombreProducto.localeCompare(b.nombreProducto))
         }));
         break;
 
       case "LetraZ_A":
         // Ordenar los productos por el nombre de la Z a la A
-        this.productosCategoria = this.productosCategoria.map(categoria => ({
+        this.funkosFiltrados = this.todosFunkos.map(categoria => ({
           categoria: categoria.categoria,
-          productos: categoria.productos.slice().sort((a, b) => b.nombreProducto.localeCompare(a.nombreProducto))
+          productos: categoria.productos.sort((a, b) => b.nombreProducto.localeCompare(a.nombreProducto))
         }));
         break;
-      }
+    }
   }
 }

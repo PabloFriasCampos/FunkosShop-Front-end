@@ -2,7 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
+import { AuthService } from 'src/app/Services/auth.service';
+import { Carrito } from 'src/app/model/carrito';
 import { Producto } from 'src/app/model/producto';
+import { ProductoCarrito } from 'src/app/model/producto-carrito';
 
 @Component({
   selector: 'app-detalle-producto',
@@ -15,7 +18,7 @@ export class DetalleProductoComponent implements OnInit {
   imageUrl: string = '';
   cantidad: number = 1;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private http: HttpClient) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private http: HttpClient, private authService: AuthService) { }
 
   async ngOnInit(): Promise<void> {
     const id = await this.activatedRoute.snapshot.paramMap.get('productoID');
@@ -33,10 +36,65 @@ export class DetalleProductoComponent implements OnInit {
   }
 
   async agregar() {
+    if (this.authService.isLogged()) {
+      this.agregarBBDD()
+
+    } else {
+      this.agregarLocal()
+
+    }
+
+  }
+
+  async agregarBBDD() {
     const headers = { 'Content-Type': 'application/json' };
     let idCarrito = localStorage.getItem('usuarioID');
     const request$ = await this.http.post("https://localhost:7281/api/ProductosCarrito/" + this.producto.productoID + "/" + idCarrito + "/" + this.cantidad, { headers });
     const resultado = await lastValueFrom(request$);
+
+  }
+
+  agregarLocal() {
+    if (sessionStorage.getItem('carrito')) {
+      let carrito: Carrito = JSON.parse(sessionStorage.getItem('carrito')!) as Carrito;
+      let yaEsta = false;
+      for (let productoCarrito of carrito.listaProductosCarrito) {
+        if (productoCarrito.producto.productoID == this.producto.productoID) {
+          yaEsta = true;
+          productoCarrito.cantidadProducto += this.cantidad;
+          productoCarrito.totalProductoEUR = +(productoCarrito.producto.precioEUR * productoCarrito.cantidadProducto).toFixed(2);
+
+        }
+
+      }
+
+      if (!yaEsta) {
+        let productoCarrito = new ProductoCarrito;
+
+        productoCarrito.cantidadProducto = this.cantidad;
+        productoCarrito.producto = this.producto;
+        productoCarrito.totalProductoEUR = +(productoCarrito.producto.precioEUR * productoCarrito.cantidadProducto).toFixed(2);
+
+        carrito.listaProductosCarrito.push(productoCarrito);
+
+      }
+
+      sessionStorage.setItem('carrito', JSON.stringify(carrito));
+
+
+    } else {
+      let carrito = new Carrito;
+      let productoCarrito = new ProductoCarrito;
+
+      productoCarrito.cantidadProducto = this.cantidad;
+      productoCarrito.producto = this.producto;
+      productoCarrito.totalProductoEUR = +(productoCarrito.producto.precioEUR * productoCarrito.cantidadProducto).toFixed(2);
+
+      carrito.listaProductosCarrito.push(productoCarrito);
+
+      sessionStorage.setItem('carrito', JSON.stringify(carrito));
+
+    }
 
   }
 

@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
+import { AuthService } from 'src/app/Services/auth.service';
 import { Usuario } from 'src/app/model/usuario';
 
 @Component({
@@ -10,6 +11,8 @@ import { Usuario } from 'src/app/model/usuario';
   styleUrls: ['./combinacion.component.css']
 })
 export class CombinacionComponent {
+  readonly PARAM_KEY: string = 'redirectTo';
+  private redirectTo: string | null = null;
 
   usuarioLogIn: Usuario = new Usuario;
   usuarioSignUp: Usuario = new Usuario;
@@ -17,7 +20,13 @@ export class CombinacionComponent {
   toggle: boolean = false;
   recuerdame: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private authService: AuthService, private activatedRoute: ActivatedRoute,) {
+    const queryParams = this.activatedRoute.snapshot.queryParamMap;
+
+    if (queryParams.has(this.PARAM_KEY)) {
+      this.redirectTo = queryParams.get(this.PARAM_KEY);
+    }
+  }
 
   async registrarUsuario() {
     const headers = { 'Content-Type': 'application/json' };
@@ -56,7 +65,13 @@ export class CombinacionComponent {
         sessionStorage.setItem('usuarioID', id);
 
       }
-      this.router.navigate(['/'])
+
+      if (this.redirectTo != null) {
+        this.router.navigateByUrl(this.redirectTo);
+      } else {
+        this.router.navigateByUrl('');
+
+      }
 
     }
 

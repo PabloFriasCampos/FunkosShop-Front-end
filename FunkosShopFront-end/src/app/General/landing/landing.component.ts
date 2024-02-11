@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoggedService } from 'src/app/Services/logged.service';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-landing',
@@ -8,10 +8,10 @@ import { LoggedService } from 'src/app/Services/logged.service';
 })
 export class LandingComponent {
 
-  constructor(private loggedService: LoggedService) { }
+  constructor(private auth: AuthService) { }
 
   logged(): boolean {
-    return this.loggedService.logged()
+    return this.auth.isLogged()
 
   }
 

@@ -4,9 +4,8 @@
             <img [routerLink]="''" src="/assets/icon.jpeg" alt="Logo">
         </div>
         <div class="nav-buttons">
-            <input class="buscador" type="search" [(ngModel)]="buscadorFunko" (input)="buscarFunko()" placeholder="Buscardor">
-            <select [(ngModel)]="opcionSeleccionada" (change)="cambiarFiltro()">
-                <option value="sinFiltro" selected > Destacados </option>
+            <input class="buscador" type="search" [(ngModel)]="buscadorFunko" (input)="aplicarFiltros()" placeholder="Buscardor">
+            <select [(ngModel)]="opcionSeleccionada" (change)="aplicarFiltros()">
                 <option value="MenorPrecio"> Precio: De menor a mayor </option>
                 <option value="MayorPrecio"> Precio: De mayor a menor </option>
                 <option value="LetraA_Z"> Ordenar: De la "A" a la "Z" </option>
@@ -22,7 +21,7 @@
     </div>
   </header>
 
-<section class="seccion" *ngFor="let categoria of productosCategoria" >
+<section class="seccion" *ngFor="let categoria of funkosFiltrados" >
     <h1 *ngIf="categoria.productos.length > 0">{{categoria.categoria}}</h1>   
         <div class="productos" *ngIf="categoria.productos.length > 0">
             <div class="producto" *ngFor="let producto of categoria.productos" [routerLink]="'/product/' + producto.productoID">
