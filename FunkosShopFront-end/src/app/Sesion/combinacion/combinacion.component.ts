@@ -15,6 +15,7 @@ export class CombinacionComponent {
   usuarioSignUp: Usuario = new Usuario;
   repetirContrasena: string = '';
   toggle: boolean = false;
+  recuerdame: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -46,8 +47,15 @@ export class CombinacionComponent {
     if (JWTID != null) {
       let id = JWTID.toString().split(';')[1];
       let jsonWebToken = JWTID.toString().split(';')[0];
-      localStorage.setItem('JsonWebToken', jsonWebToken);
-      localStorage.setItem('usuarioID', id);
+      if (this.recuerdame) {
+        localStorage.setItem('JsonWebToken', jsonWebToken);
+        localStorage.setItem('usuarioID', id);
+
+      } else {
+        sessionStorage.setItem('JsonWebToken', jsonWebToken);
+        sessionStorage.setItem('usuarioID', id);
+
+      }
       this.router.navigate(['/'])
 
     }
