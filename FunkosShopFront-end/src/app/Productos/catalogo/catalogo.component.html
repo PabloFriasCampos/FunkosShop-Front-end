@@ -4,7 +4,7 @@
             <img [routerLink]="''" src="/assets/icon.jpeg" alt="Logo">
         </div>
         <div class="nav-buttons">
-            <input class="buscador" type="search" [(ngModel)]="buscadorFunko" (input)="aplicarFiltros()" placeholder="Buscardor">
+            <input class="buscador" type="search" [(ngModel)]="buscadorFunko" (input)="aplicarFiltros()" placeholder="Buscador">
             <select [(ngModel)]="opcionSeleccionada" (change)="aplicarFiltros()">
                 <option value="sinFiltro" selected> Añadir/Eliminar filtro </option>
                 <option value="MenorPrecio"> Precio: De menor a mayor </option>
