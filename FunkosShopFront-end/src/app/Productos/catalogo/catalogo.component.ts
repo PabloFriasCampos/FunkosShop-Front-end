@@ -19,6 +19,7 @@ export class CatalogoComponent implements OnInit {
   busquedaActual: String = ''
 
   opcionSeleccionada: String = 'sinFiltro' // Filtro por defecto
+  sinFiltro = true
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -68,7 +69,10 @@ export class CatalogoComponent implements OnInit {
   cambiarFiltro() {
     switch (this.opcionSeleccionada) {
       case "sinFiltro":
-      this.obtenerProductos();
+      if(this.sinFiltro == false){
+        this.obtenerProductos();
+        this.sinFiltro = true;
+      }
         break;
 
       case "MenorPrecio":
@@ -77,6 +81,7 @@ export class CatalogoComponent implements OnInit {
           categoria: categoria.categoria,
           productos: categoria.productos.sort((a, b) => a.precioEUR - b.precioEUR)
         }));
+        this.sinFiltro = false;
         break;
 
       case "MayorPrecio":
@@ -85,6 +90,7 @@ export class CatalogoComponent implements OnInit {
           categoria: categoria.categoria,
           productos: categoria.productos.sort((a, b) => b.precioEUR - a.precioEUR)
         }));
+        this.sinFiltro = false;
         break;
 
       case "LetraA_Z":
@@ -93,6 +99,7 @@ export class CatalogoComponent implements OnInit {
           categoria: categoria.categoria,
           productos: categoria.productos.sort((a, b) => a.nombreProducto.localeCompare(b.nombreProducto))
         }));
+        this.sinFiltro = false;
         break;
 
       case "LetraZ_A":
@@ -101,6 +108,7 @@ export class CatalogoComponent implements OnInit {
           categoria: categoria.categoria,
           productos: categoria.productos.sort((a, b) => b.nombreProducto.localeCompare(a.nombreProducto))
         }));
+        this.sinFiltro = false;
         break;
     }
   }
