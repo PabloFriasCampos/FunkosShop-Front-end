@@ -79,7 +79,7 @@ export class CombinacionComponent {
 
   colorVentanas() {
 
-    if (this.toggle) {
+    if (!this.toggle) {
       let iniciar = document.getElementById('iniciar')!
       let registrar = document.getElementById('registrar')!
 

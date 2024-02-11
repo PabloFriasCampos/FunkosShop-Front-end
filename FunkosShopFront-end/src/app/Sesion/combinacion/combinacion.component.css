@@ -10,19 +10,20 @@
 .modo{
   color: #ffffff;
 }
+
 #iniciar{
-  background-color: #333;
+  background-color: #ffffff;
+  color:#333;
   width: 2rem;
   padding: 0.5rem;
   border-radius: 10px;
 
 }
 #registrar{
-  background-color: #e7e7e7;
+  background-color: #333;
   width: 2rem;
   margin: 1rem;
   padding: 0.5rem;
-  color: #333;
   border-radius: 10px;
 }
 .titulo {
@@ -129,7 +130,6 @@ la familia de fuentes, el contenido, el índice z, la parte superior, la izquier
   width: 100%;
   height: 100%;
   background-color: #2b2e38;
-
   position: absolute;
   border-radius: 6px;
   /*Esto se encarga de k cada carta tenga sus elementos en*/
