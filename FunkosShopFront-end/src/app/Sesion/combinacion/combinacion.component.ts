@@ -77,4 +77,28 @@ export class CombinacionComponent {
 
   }
 
+  colorVentanas() {
+
+    if (this.toggle) {
+      let iniciar = document.getElementById('iniciar')!
+      let registrar = document.getElementById('registrar')!
+
+      iniciar.style.background = '#e7e7e7'
+      iniciar.style.color = '#333'
+      registrar.style.color = '#e7e7e7'
+      registrar.style.backgroundColor = '#333'
+
+    } else {
+      let iniciar = document.getElementById('iniciar')!
+      let registrar = document.getElementById('registrar')!
+
+      registrar.style.background = '#e7e7e7'
+      registrar.style.color = '#333'
+      iniciar.style.color = '#e7e7e7'
+      iniciar.style.backgroundColor = '#333'
+
+    }
+
+  }
+
 }

@@ -29,7 +29,10 @@ export class CarritoComponent implements OnInit {
   }
 
   async cargarCarritoBBDD() {
-    const request$ = await this.http.get("https://localhost:7281/api/Carritos/" + localStorage.getItem('usuarioID'));
+    let usuarioID;
+    if (sessionStorage.getItem('usuarioID')) usuarioID = sessionStorage.getItem('usuarioID');
+    if (localStorage.getItem('usuarioID')) usuarioID = localStorage.getItem('usuarioID');
+    const request$ = await this.http.get("https://localhost:7281/api/Carritos/" + usuarioID);
     const resultado = await lastValueFrom(request$);
     this.carrito = resultado as Carrito;
   }
@@ -61,7 +64,9 @@ export class CarritoComponent implements OnInit {
 
   async agregarBBDD(cantidad: number, productoCarrito: ProductoCarrito) {
     const headers = { 'Content-Type': 'application/json' };
-    let idCarrito = localStorage.getItem('usuarioID');
+    let idCarrito;
+    if (sessionStorage.getItem('usuarioID')) idCarrito = sessionStorage.getItem('usuarioID');
+    if (localStorage.getItem('usuarioID')) idCarrito = localStorage.getItem('usuarioID');
     const request$ = await this.http.post("https://localhost:7281/api/ProductosCarrito/" + productoCarrito.producto.productoID + "/" + idCarrito + "/" + cantidad, { headers });
     await lastValueFrom(request$);
 
