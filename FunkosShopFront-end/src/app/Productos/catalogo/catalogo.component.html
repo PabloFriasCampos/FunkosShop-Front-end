@@ -1,6 +1,6 @@
 <header class="header fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-center">
-            <input class="buscador" type="search" [(ngModel)]="buscadorFunko" (input)="aplicarFiltros()" placeholder="Buscardor">
+            <input class="buscador" type="search" [(ngModel)]="buscadorFunko" (input)="aplicarFiltros()" placeholder="Buscador">
             <select [(ngModel)]="opcionSeleccionada" (change)="aplicarFiltros()">
                 <option value="sinFiltro" selected> Añadir/Eliminar filtro </option>
                 <option value="MenorPrecio"> Precio: De menor a mayor </option>
