@@ -8,6 +8,7 @@ import { DetalleProductoComponent } from './Productos/detalle-producto/detalle-p
 import { ConfirmacionCompraComponent } from './Compra/confirmacion-compra/confirmacion-compra.component';
 import { CombinacionComponent } from './Sesion/combinacion/combinacion.component';
 import { authGuard } from './auth.guard';
+import { PanelUsuarioComponent } from './Usuario/panel-usuario/panel-usuario.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'catalog', component: CatalogoComponent },
   { path: 'product/:productoID', component: DetalleProductoComponent },
   { path: 'confirm', component: ConfirmacionCompraComponent, canActivate: [authGuard] },
+  { path: 'user', component: PanelUsuarioComponent, canActivate: [authGuard] },
 ];
 
 @NgModule({

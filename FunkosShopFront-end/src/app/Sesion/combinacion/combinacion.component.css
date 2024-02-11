@@ -7,25 +7,28 @@
   color: #ffffff;
 
 }
-.modo{
+
+.modo {
   color: #ffffff;
 }
 
-#iniciar{
+#iniciar {
   background-color: #ffffff;
-  color:#333;
+  color: #333;
   width: 2rem;
   padding: 0.5rem;
   border-radius: 10px;
 
 }
-#registrar{
+
+#registrar {
   background-color: #333;
   width: 2rem;
   margin: 1rem;
   padding: 0.5rem;
   border-radius: 10px;
 }
+
 .titulo {
   font-family: Glitch;
 }
@@ -109,7 +112,7 @@ la familia de fuentes, el contenido, el índice z, la parte superior, la izquier
   position: relative;
   width: 440px;
   max-width: 100%;
-  height: 400px;
+  height: 500px;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   perspective: 800px;
@@ -201,7 +204,7 @@ la familia de fuentes, el contenido, el índice z, la parte superior, la izquier
 }
 
 .btn {
-  
+
   border-radius: 4px;
   height: 44px;
   font-size: 13px;
@@ -224,6 +227,7 @@ la familia de fuentes, el contenido, el índice z, la parte superior, la izquier
   color: #ffeba7;
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, .2);
 }
+
 .checkbox-wrapper-24 .checkbox {
 
   display: table-cell;
@@ -236,10 +240,11 @@ la familia de fuentes, el contenido, el índice z, la parte superior, la izquier
 .checkbox-wrapper-24 label {
   margin-top: 1rem;
   display: inline-block;
-  color:  #ffeba7;
+  color: #ffeba7;
   cursor: pointer;
   position: relative;
 }
+
 .checkbox-wrapper-24 label span {
   display: inline-block;
   position: relative;
@@ -253,12 +258,13 @@ la familia de fuentes, el contenido, el índice z, la parte superior, la izquier
   margin-right: 10px;
   transition: background-color 150ms 200ms, transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89);
 }
+
 .checkbox-wrapper-24 label span:before {
   content: "";
   width: 0px;
   height: 2px;
   border-radius: 2px;
-  background:  #ffeba7;
+  background: #ffeba7;
   position: absolute;
   transform: rotate(45deg);
   top: 13px;
@@ -266,6 +272,7 @@ la familia de fuentes, el contenido, el índice z, la parte superior, la izquier
   transition: width 50ms ease 50ms;
   transform-origin: 0% 0%;
 }
+
 .checkbox-wrapper-24 label span:after {
   content: "";
   width: 0;
@@ -279,10 +286,12 @@ la familia de fuentes, el contenido, el índice z, la parte superior, la izquier
   transition: width 50ms ease;
   transform-origin: 0% 0%;
 }
+
 .checkbox-wrapper-24 label:hover span:before {
   width: 5px;
   transition: width 100ms ease;
 }
+
 .checkbox-wrapper-24 label:hover span:after {
   width: 10px;
   transition: width 150ms ease 100ms;
@@ -291,30 +300,36 @@ la familia de fuentes, el contenido, el índice z, la parte superior, la izquier
 .checkbox-wrapper-24 input[type=checkbox] {
   display: none;
 }
-.checkbox-wrapper-24 input[type=checkbox]:checked + label span {
-  background-color:  #333;
+
+.checkbox-wrapper-24 input[type=checkbox]:checked+label span {
+  background-color: #333;
   transform: scale(1.25);
 }
-.checkbox-wrapper-24 input[type=checkbox]:checked + label span:after {
+
+.checkbox-wrapper-24 input[type=checkbox]:checked+label span:after {
   width: 10px;
   background: #fff;
   transition: width 150ms ease 100ms;
 }
-.checkbox-wrapper-24 input[type=checkbox]:checked + label span:before {
+
+.checkbox-wrapper-24 input[type=checkbox]:checked+label span:before {
   width: 5px;
   background: #fff;
   transition: width 150ms ease 100ms;
 }
-.checkbox-wrapper-24 input[type=checkbox]:checked + label:hover span {
+
+.checkbox-wrapper-24 input[type=checkbox]:checked+label:hover span {
   background-color: #333;
   transform: scale(1.25);
 }
-.checkbox-wrapper-24 input[type=checkbox]:checked + label:hover span:after {
+
+.checkbox-wrapper-24 input[type=checkbox]:checked+label:hover span:after {
   width: 10px;
   background: #fff;
   transition: width 150ms ease 100ms;
 }
-.checkbox-wrapper-24 input[type=checkbox]:checked + label:hover span:before {
+
+.checkbox-wrapper-24 input[type=checkbox]:checked+label:hover span:before {
   width: 5px;
   background: #fff;
   transition: width 150ms ease 100ms;

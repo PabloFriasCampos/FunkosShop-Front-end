@@ -17,12 +17,13 @@
         nosotros</button>
     </div>
     <div class="nav-buttons">
-      <button class="btn btn-light" [routerLink]="'/cart'">
+      <button [routerLink]="'/cart'" class="btn btn-light">
         <i class="fas fa-shopping-cart"></i>
+        <span class="badge badge-danger" *ngIf="cantidadCarrito > 0">{{cantidadCarrito}}</span>
       </button>
       <button [routerLink]="'/sesion'" class="btn btn-light" *ngIf="!logged()"><i class="fas fa-sign-in-alt"></i>
         Iniciar Sesión</button>
-      <button [routerLink]="'/sesion'" class="btn btn-light" *ngIf="logged()"><i class="fas fa-sign-in-alt"></i>
+      <button [routerLink]="'/user'" class="btn btn-light" *ngIf="logged()"><i class="fas fa-user"></i>
         Perfil</button>
     </div>
   </div>
