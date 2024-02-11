@@ -18,7 +18,7 @@ export class CatalogoComponent implements OnInit {
   buscadorFunko: String = ''
   busquedaActual: String = ''
 
-  opcionSeleccionada: String = 'MenorPrecio'
+  opcionSeleccionada: String = 'sinFiltro' // Filtro por defecto
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -67,6 +67,10 @@ export class CatalogoComponent implements OnInit {
 
   cambiarFiltro() {
     switch (this.opcionSeleccionada) {
+      case "sinFiltro":
+      this.obtenerProductos();
+        break;
+
       case "MenorPrecio":
         // Ordenar los productos por el precio de menor a mayor
         this.funkosFiltrados = this.todosFunkos.map(categoria => ({
