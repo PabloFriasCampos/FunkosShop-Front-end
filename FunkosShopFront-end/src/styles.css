@@ -2,10 +2,13 @@
 @import url('https://www.fontspace.com/cf-glitch-city-font-f29830');
 
 body {
-
+background-image: url('/assets/fondoLogin.jpg');
   background-repeat: no-repeat;
 background-attachment: fixed;
 background-size: cover;
+position: relative;
+
+
 }
 @font-face {
   font-family: 'Glitch';

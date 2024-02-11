@@ -1,9 +1,4 @@
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #E7B10A;
-}
-
 .header {
   position: sticky;
   top: 0;
@@ -11,10 +6,27 @@ body {
   padding: 10px 0;
   z-index: 1000;
   box-shadow: #000000;
+
+}
+.reason-section {
+
+  padding: 20px; 
+  border-radius: 10px; 
+  margin-bottom: 2rem; 
+  color: #fff; 
 }
 
+#catalogo{
+  margin-left: 15rem;
+  width: 10rem;
+}
+#sobreNosotros{
+  margin-left: 6rem;
+  width: 10rem;
+}
 .logo {
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .logo img {
@@ -66,7 +78,7 @@ body {
 
 .feature-heading {
   font-size: 1.5rem;
-  color: #333;
+  color: #ffffff;
 }
 
 .feature-description {
@@ -85,7 +97,7 @@ body {
 }
 
 .footer {
-  background-color: #898121;
+  background-color: #333;
   padding: 50px 0;
   color: #fff;
 }
@@ -118,7 +130,7 @@ body {
   background-image: url('/assets/icon.jpeg');
   background-size: cover;
   background-attachment: fixed;
-margin-left: -1px;
+  margin-left: -1px;
   text-align: center;
   display: flex;
   justify-content: center;

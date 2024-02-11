@@ -4,10 +4,27 @@
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   line-height: 1.7;
-  color: #ffeba7;
+  color: #ffffff;
 
 }
+.modo{
+  color: #ffffff;
+}
+#iniciar{
+  background-color: #333;
+  width: 2rem;
+  padding: 0.5rem;
+  border-radius: 10px;
 
+}
+#registrar{
+  background-color: #e7e7e7;
+  width: 2rem;
+  margin: 1rem;
+  padding: 0.5rem;
+  color: #333;
+  border-radius: 10px;
+}
 .titulo {
   font-family: Glitch;
 }
@@ -56,7 +73,7 @@ el relleno, el margen, el cursor y el color de fondo para las etiquetas que sigu
   padding: 0;
   margin: 10px auto;
   cursor: pointer;
-  background-color: #ffeba7;
+  background-color: #333;
 }
 
 /* Establece la posición, la visualización, el ancho, la altura, el radio del borde, el color, el color de fondo, 
