@@ -9,7 +9,7 @@
 
 .about-us {
   background: transparent;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(100px);
   padding: 50px 0;
   margin: 1rem;
   width: auto;
@@ -19,7 +19,7 @@
 
 .values {
   background: transparent;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(100px);
   padding: 50px 0;
   margin: 1rem;
   border-radius: 20px;
@@ -200,7 +200,6 @@ body .container2 .card .content .img {
   margin-bottom: -1rem;
   padding: 1rem;
   border-radius: 10px;
-  text-decoration: underline;
 
 }
 /*subrayado
