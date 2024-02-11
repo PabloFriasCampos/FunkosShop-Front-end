@@ -5,7 +5,7 @@
 				<div class="col-12 text-center align-self-center py-5">
 					<div class="section pb-5 pt-5 pt-sm-2 text-center">
                         <!--Titulos de las 2 ventanas-->
-						<h6 class="mb-0 pb-3"><span>Iniciar sesión</span><span>Registrarse</span></h6>
+						<h6 class="mb-0 pb-3 modo" ><span id="iniciar">Iniciar sesión</span><span id="registrar">Registrarse</span></h6>
                         <!--checkboxes que los haremos invisibles para k este fachero -->
 			          	<input class="checkbox" type="checkbox" id="reg-log" name="reg-log" [(ngModel)]="toggle"/>
 			          	<label for="reg-log"></label>
@@ -30,7 +30,7 @@
 											<div class="checkbox-wrapper-24">
 												<input type="checkbox" id="check-24" name="check" value="" [(ngModel)]="recuerdame"/>
 												<label for="check-24">
-												  <span></span>Recuerdame
+												  <span>	</span>Recuerdame
 												</label>
 											  </div>
                                             <!--Boton de iniciar sesion-->

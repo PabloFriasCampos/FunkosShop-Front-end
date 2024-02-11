@@ -1,20 +1,15 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #E7B10A;
-  color: #333;
-}
+
 
 .content {
   padding: 50px 0;
   text-align: center;
-  color: #333;
   z-index: 999;
   margin-top: -3rem;
 }
 
 .about-us {
   background: transparent;
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(50px);
   padding: 50px 0;
   margin: 1rem;
   width: auto;
@@ -24,7 +19,7 @@ body {
 
 .values {
   background: transparent;
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(50px);
   padding: 50px 0;
   margin: 1rem;
   border-radius: 20px;
@@ -66,7 +61,7 @@ body {
 }
 
 .footer {
-  background-color: #898121;
+  background-color: #333;
   padding: 50px 0;
   color: #fff;
   text-align: center;
@@ -208,21 +203,23 @@ body .container2 .card .content .img {
   text-decoration: underline;
 
 }
+/*subrayado
 .tituloAbout{
   text-decoration: underline;
 }
 .tituloValores{
   text-decoration: underline;
 }
-
+*/
 .header-section {
   position: relative;
-  background-image: url('/assets/intento.jpeg');
+  background-image: url('/assets/icon.jpeg');
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   padding: 100px 0;
   text-align: center;
-  color: #fff;
+
   height: 100vh;
 z-index: 1;  
 }
