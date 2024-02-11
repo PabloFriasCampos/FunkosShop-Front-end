@@ -18,7 +18,7 @@ export class CarritoComponent implements OnInit {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   async ngOnInit(): Promise<void> {
-    if (this.authService.isLogged()) {
+    if (this.authService.isLogged() && !(sessionStorage.getItem('carrito') != null)) {
       await this.cargarCarritoBBDD();
 
     } else {
@@ -91,6 +91,11 @@ export class CarritoComponent implements OnInit {
     }
 
     sessionStorage.setItem('carrito', JSON.stringify(this.carrito));
+
+  }
+
+  borrarCarrito() {
+    sessionStorage.removeItem('carrito');
 
   }
 
