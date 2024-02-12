@@ -43,38 +43,49 @@ export class CombinacionComponent {
   }
 
   async iniciarSesion() {
+    var emailInputL = (<HTMLInputElement>document.getElementById('emailInput')!).value
+    var passwordInputL = (<HTMLInputElement>document.getElementById('passwordInput')!).value
 
-    const options: any = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      }),
-      responseType: 'text'
-    };
+    if (emailInputL.length == 0 || passwordInputL.length == 0) {
+      alert("introduce correo y contraseña");
+    } else {
+      const options: any = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        }),
+        responseType: 'text'
+      };
 
-    const request$ = await this.http.post<string>("https://localhost:7281/api/Usuarios/login", JSON.stringify(this.usuarioLogIn), options);
-    let JWTID = await lastValueFrom(request$);
-    if (JWTID != null) {
-      let id = JWTID.toString().split(';')[1];
-      let jsonWebToken = JWTID.toString().split(';')[0];
-      if (this.recuerdame) {
-        localStorage.setItem('JsonWebToken', jsonWebToken);
-        localStorage.setItem('usuarioID', id);
+      const request$ = await this.http.post<string>("https://localhost:7281/api/Usuarios/login", JSON.stringify(this.usuarioLogIn), options);
+      let JWTID = await lastValueFrom(request$);
 
-      } else {
-        sessionStorage.setItem('JsonWebToken', jsonWebToken);
-        sessionStorage.setItem('usuarioID', id);
 
+      if (JWTID != null) {
+        console.log("el jwt" + JWTID);
+        if (JWTID.toString() != "El usuario o contraseña incorrecta") {
+          let id = JWTID.toString().split(';')[1];
+          let jsonWebToken = JWTID.toString().split(';')[0];
+          if (this.recuerdame) {
+            localStorage.setItem('JsonWebToken', jsonWebToken);
+            localStorage.setItem('usuarioID', id);
+
+          } else {
+            sessionStorage.setItem('JsonWebToken', jsonWebToken);
+            sessionStorage.setItem('usuarioID', id);
+
+          }
+
+          if (this.redirectTo != null) {
+            this.router.navigateByUrl(this.redirectTo);
+          } else {
+            this.router.navigateByUrl('');
+
+          }
+        } else {
+          console.log("usuario incorrecto")
+        }
       }
-
-      if (this.redirectTo != null) {
-        this.router.navigateByUrl(this.redirectTo);
-      } else {
-        this.router.navigateByUrl('');
-
-      }
-
     }
-
   }
 
   colorVentanas() {
