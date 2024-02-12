@@ -36,7 +36,7 @@ export class DetalleProductoComponent implements OnInit {
   }
 
   async agregar() {
-    if (this.authService.isLogged()) {
+    if (this.authService.isLogged() && sessionStorage.getItem('carrito') == null) {
       this.agregarBBDD()
 
     } else {

@@ -51,7 +51,7 @@ export class CarritoComponent implements OnInit {
       actualizador = 0;
 
     }
-    if (this.authService.isLogged()) {
+    if (this.authService.isLogged() && sessionStorage.getItem('carrito') == null) {
       await this.agregarBBDD(actualizador, productoCarrito);
 
     } else {
@@ -78,12 +78,19 @@ export class CarritoComponent implements OnInit {
     if (productoCarrito.cantidadProducto == 0) {
       let index = this.carrito.listaProductosCarrito.indexOf(productoCarrito);
       this.carrito.listaProductosCarrito.splice(index, 1);
-
-    } else {
+      console.log(this.carrito.listaProductosCarrito.length)
 
     }
 
-    sessionStorage.setItem('carrito', JSON.stringify(this.carrito));
+    if (this.carrito.listaProductosCarrito.length == 0) {
+      console.log('filete')
+      this.borrarCarrito();
+
+    } else {
+      sessionStorage.setItem('carrito', JSON.stringify(this.carrito));
+
+    }
+
 
   }
 
