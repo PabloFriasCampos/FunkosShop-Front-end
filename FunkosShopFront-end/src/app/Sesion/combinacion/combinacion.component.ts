@@ -60,14 +60,12 @@ export class CombinacionComponent {
       };
 
       let JWTID;
-      let errorUserPass = "El usuario o contraseña incorrecta";
-      let httpStatus;
       try {
         const request$ = await this.http
           .post<string>("https://localhost:7281/api/Usuarios/login", JSON.stringify(this.usuarioLogIn), options)
 
         JWTID = await lastValueFrom(request$)
-        
+
         if (JWTID != null) {
 
           let id = JWTID.toString().split(';')[1];
