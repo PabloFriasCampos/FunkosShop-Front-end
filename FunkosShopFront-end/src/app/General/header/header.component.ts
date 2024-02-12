@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -8,7 +8,10 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class HeaderComponent {
 
+  cantidadCarrito = 0;
+
   constructor(private auth: AuthService) { }
+
 
   logged(): boolean {
     return this.auth.isLogged()

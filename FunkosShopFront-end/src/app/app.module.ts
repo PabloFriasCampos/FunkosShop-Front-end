@@ -12,6 +12,7 @@ import { DetalleProductoComponent } from './Productos/detalle-producto/detalle-p
 import { ConfirmacionCompraComponent } from './Compra/confirmacion-compra/confirmacion-compra.component';
 import { CombinacionComponent } from './Sesion/combinacion/combinacion.component';
 import { HeaderComponent } from './General/header/header.component';
+import { PanelUsuarioComponent } from './Usuario/panel-usuario/panel-usuario.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HeaderComponent } from './General/header/header.component';
     DetalleProductoComponent,
     ConfirmacionCompraComponent,
     CombinacionComponent,
-    HeaderComponent
+    HeaderComponent,
+    PanelUsuarioComponent
   ],
   imports: [
     BrowserModule,
