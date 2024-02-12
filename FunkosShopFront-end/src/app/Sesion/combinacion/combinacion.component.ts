@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse, HttpSentEvent } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { lastValueFrom } from 'rxjs';
+import { Observable, catchError, firstValueFrom, lastValueFrom } from 'rxjs';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Usuario } from 'src/app/model/usuario';
 
@@ -29,11 +29,13 @@ export class CombinacionComponent {
   }
 
   async registrarUsuario() {
+    let httpStatus;
     const headers = { 'Content-Type': 'application/json' };
 
     if (this.repetirContrasena == this.usuarioSignUp.contrasena) {
       let request$ = await this.http.post("https://localhost:7281/api/Usuarios/signup", JSON.stringify(this.usuarioSignUp), { headers });
-      await lastValueFrom(request$);
+      await lastValueFrom(request$).catch(err => httpStatus = err.status)
+      alert(httpStatus)
       this.toggle = false;
 
     } else {
@@ -43,12 +45,13 @@ export class CombinacionComponent {
   }
 
   async iniciarSesion() {
-    var emailInputL = (<HTMLInputElement>document.getElementById('emailInput')!).value
-    var passwordInputL = (<HTMLInputElement>document.getElementById('passwordInput')!).value
 
-    if (emailInputL.length == 0 || passwordInputL.length == 0) {
-      alert("introduce correo y contraseña");
+    if (this.usuarioLogIn.correo.length == 0 || this.usuarioLogIn.contrasena.length == 0) {
+
+      alert("Introduce correo y contraseña");
+
     } else {
+
       const options: any = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json'
@@ -56,13 +59,17 @@ export class CombinacionComponent {
         responseType: 'text'
       };
 
-      const request$ = await this.http.post<string>("https://localhost:7281/api/Usuarios/login", JSON.stringify(this.usuarioLogIn), options);
-      let JWTID = await lastValueFrom(request$);
+      let JWTID;
+      let errorUserPass = "El usuario o contraseña incorrecta";
+      let httpStatus;
+      try {
+        const request$ = await this.http
+          .post<string>("https://localhost:7281/api/Usuarios/login", JSON.stringify(this.usuarioLogIn), options)
 
+        JWTID = await lastValueFrom(request$)
+        
+        if (JWTID != null) {
 
-      if (JWTID != null) {
-        console.log("el jwt" + JWTID);
-        if (JWTID.toString() != "El usuario o contraseña incorrecta") {
           let id = JWTID.toString().split(';')[1];
           let jsonWebToken = JWTID.toString().split(';')[0];
           if (this.recuerdame) {
@@ -79,17 +86,18 @@ export class CombinacionComponent {
             this.router.navigateByUrl(this.redirectTo);
           } else {
             this.router.navigateByUrl('');
-
           }
-        } else {
-          console.log("usuario incorrecto")
         }
+      } catch (error) {
+        alert("Error del catch: Usuario o contraseña incorrecto")
       }
     }
   }
 
+
   colorVentanas() {
 
+    this.usuarioLogIn.nombreUsuario
     if (!this.toggle) {
       let iniciar = document.getElementById('iniciar')!
       let registrar = document.getElementById('registrar')!
