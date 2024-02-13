@@ -133,7 +133,7 @@
   transition: 0.5s;
 }
 
-body .container2 .card .content .img {
+.body .container2 .card .content .img {
   position: relative;
   width: 150px;
   height: 150px;

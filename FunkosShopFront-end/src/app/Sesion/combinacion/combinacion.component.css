@@ -57,15 +57,12 @@ h6 span {
   min-height: 100vh;
 }
 
-/*Oculta los checkboxes*/
 [type="checkbox"]:checked,
 [type="checkbox"]:not(:checked) {
   display: none;
 }
 
-/* Establece la posición, la visualización, la alineación del texto, el ancho, la altura, el radio del borde, 
-el relleno, el margen, el cursor y el color de fondo para las etiquetas que siguen a un checkbox marcado o no marcado
-*/
+
 .checkbox:checked+label,
 .checkbox:not(:checked)+label {
   position: relative;
@@ -80,9 +77,6 @@ el relleno, el margen, el cursor y el color de fondo para las etiquetas que sigu
   background-color: #333;
 }
 
-/* Establece la posición, la visualización, el ancho, la altura, el radio del borde, el color, el color de fondo, 
-la familia de fuentes, el contenido, el índice z, la parte superior, la izquierda, el interlineado, la alineación del texto, el tamaño de la fuente y
- la transición para los elementos antes de las etiquetas que siguen a un checkbox marcado o no marcado*/
 .checkbox:checked+label:before,
 .checkbox:not(:checked)+label:before {
   position: absolute;
@@ -103,7 +97,6 @@ la familia de fuentes, el contenido, el índice z, la parte superior, la izquier
   transition: all 0.5s ease;
 }
 
-/*Aplica una transformación a los elementos antes de las etiquetas que siguen a un checkbox marcado*/
 .checkbox:checked+label:before {
   transform: translateX(44px) rotate(-270deg);
 }
@@ -135,7 +128,7 @@ la familia de fuentes, el contenido, el índice z, la parte superior, la izquier
   background-color: #2b2e38;
   position: absolute;
   border-radius: 6px;
-  /*Esto se encarga de k cada carta tenga sus elementos en*/
+
   -webkit-transform-style: preserve-3d;
 }
 
