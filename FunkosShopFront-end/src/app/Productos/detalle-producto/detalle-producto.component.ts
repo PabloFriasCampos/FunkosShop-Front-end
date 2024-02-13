@@ -38,10 +38,10 @@ export class DetalleProductoComponent implements OnInit {
 
   async agregar() {
     if (this.authService.isLogged() && sessionStorage.getItem('carrito') == null) {
-      this.agregarBBDD()
+      await this.agregarBBDD()
 
     } else {
-      this.agregarLocal()
+      await this.agregarLocal()
 
     }
     this.totalCarrito.cambiarTotal();
@@ -54,7 +54,7 @@ export class DetalleProductoComponent implements OnInit {
     if (sessionStorage.getItem('usuarioID')) idCarrito = sessionStorage.getItem('usuarioID');
     if (localStorage.getItem('usuarioID')) idCarrito = localStorage.getItem('usuarioID');
     const request$ = await this.http.post("https://localhost:7281/api/ProductosCarrito/" + this.producto.productoID + "/" + idCarrito + "/" + this.cantidad, { headers });
-    const resultado = await lastValueFrom(request$);
+    await lastValueFrom(request$);
 
   }
 
