@@ -1,5 +1,3 @@
-
-
 .content {
   padding: 50px 0;
   text-align: center;
@@ -14,7 +12,14 @@
   margin: 1rem;
   width: auto;
   border-radius: 20px;
+}
 
+.scroll-hint {
+  width: 4vw;
+  position: absolute;
+  bottom: 10vh;
+  margin: 0 auto;
+  cursor: pointer;
 }
 
 .values {
@@ -69,11 +74,11 @@
 
 @keyframes colorful {
   0% {
-      filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg);
   }
 
   100% {
-      filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
   }
 }
 
@@ -193,7 +198,8 @@ body .container2 .card .content .img {
   transform: translateY(0px);
   opacity: 1;
 }
-.equipo{
+
+.equipo {
   background-color: #333;
   margin: 2rem;
   width: auto;
@@ -202,6 +208,7 @@ body .container2 .card .content .img {
   border-radius: 10px;
 
 }
+
 /*subrayado
 .tituloAbout{
   text-decoration: underline;
@@ -220,7 +227,7 @@ body .container2 .card .content .img {
   text-align: center;
 
   height: 100vh;
-z-index: 1;  
+  z-index: 1;
 }
 
 

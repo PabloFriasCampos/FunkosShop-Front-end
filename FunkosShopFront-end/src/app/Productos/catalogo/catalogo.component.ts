@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
-import { AuthService } from 'src/app/Services/auth.service';
 import { CategoriaProductos } from 'src/app/model/categoria-productos';
 
 @Component({
@@ -21,7 +19,7 @@ export class CatalogoComponent implements OnInit {
   opcionSeleccionada: String = 'sinFiltro' // Filtro por defecto
   sinFiltro = true
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   async ngOnInit(): Promise<void> {
     await this.obtenerProductos();
@@ -69,10 +67,10 @@ export class CatalogoComponent implements OnInit {
   cambiarFiltro() {
     switch (this.opcionSeleccionada) {
       case "sinFiltro":
-      if(this.sinFiltro == false){
-        this.obtenerProductos();
-        this.sinFiltro = true;
-      }
+        if (this.sinFiltro == false) {
+          this.obtenerProductos();
+          this.sinFiltro = true;
+        }
         break;
 
       case "MenorPrecio":

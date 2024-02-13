@@ -1,8 +1,7 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse, HttpSentEvent } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, catchError, firstValueFrom, lastValueFrom } from 'rxjs';
-import { AuthService } from 'src/app/Services/auth.service';
+import { lastValueFrom } from 'rxjs';
 import { Usuario } from 'src/app/model/usuario';
 
 @Component({
@@ -20,7 +19,7 @@ export class CombinacionComponent {
   toggle: boolean = false;
   recuerdame: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router, private authService: AuthService, private activatedRoute: ActivatedRoute,) {
+  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute,) {
     const queryParams = this.activatedRoute.snapshot.queryParamMap;
 
     if (queryParams.has(this.PARAM_KEY)) {
@@ -37,6 +36,7 @@ export class CombinacionComponent {
       await lastValueFrom(request$).catch(err => httpStatus = err.status)
       alert(httpStatus)
       this.toggle = false;
+      this.colorVentanas();
 
     } else {
       alert("Las contraseñas deben ser iguales");
@@ -95,7 +95,6 @@ export class CombinacionComponent {
 
   colorVentanas() {
 
-    this.usuarioLogIn.nombreUsuario
     if (!this.toggle) {
       let iniciar = document.getElementById('iniciar')!
       let registrar = document.getElementById('registrar')!

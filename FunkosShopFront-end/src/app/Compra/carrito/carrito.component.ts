@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Carrito } from 'src/app/model/carrito';

@@ -7,4 +7,25 @@ import { Component } from '@angular/core';
 })
 export class SobreNosotrosComponent {
 
+  constructor() {
+    window.scrollTo({ top: 0 });
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        const flecha = document.getElementById('scroll-hint');
+        if (flecha) {
+          flecha.style.display = 'none'
+        }
+      }
+    })
+  }
+
+  scrollDown() {
+    window.scrollTo({ top: 300, behavior: 'smooth' });
+
+    const flecha = document.getElementById('scroll-hint');
+    if (flecha) {
+      flecha.style.display = 'none'
+    }
+  }
+
 }

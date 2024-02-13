@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Carrito } from 'src/app/model/carrito';
@@ -18,7 +18,7 @@ export class DetalleProductoComponent implements OnInit {
   imageUrl: string = '';
   cantidad: number = 1;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private http: HttpClient, private authService: AuthService) { }
+  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private authService: AuthService) { }
 
   async ngOnInit(): Promise<void> {
     const id = await this.activatedRoute.snapshot.paramMap.get('productoID');
