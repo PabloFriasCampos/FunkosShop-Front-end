@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
+import { TotalCarritoService } from 'src/app/Services/total-carrito.service';
 import { Usuario } from 'src/app/model/usuario';
 
 @Component({
@@ -19,7 +20,7 @@ export class CombinacionComponent {
   toggle: boolean = false;
   recuerdame: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute,) {
+  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute, private totalCarrito: TotalCarritoService) {
     const queryParams = this.activatedRoute.snapshot.queryParamMap;
 
     if (queryParams.has(this.PARAM_KEY)) {
@@ -90,6 +91,8 @@ export class CombinacionComponent {
         alert("Error del catch: Usuario o contraseña incorrecto")
       }
     }
+    this.totalCarrito.cambiarTotal();
+
   }
 
 

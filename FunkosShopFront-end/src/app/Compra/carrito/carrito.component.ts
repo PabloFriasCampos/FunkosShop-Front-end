@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { AuthService } from 'src/app/Services/auth.service';
+import { TotalCarritoService } from 'src/app/Services/total-carrito.service';
 import { Carrito } from 'src/app/model/carrito';
 import { ProductoCarrito } from 'src/app/model/producto-carrito';
 
@@ -14,7 +15,7 @@ export class CarritoComponent implements OnInit {
 
   carrito: Carrito = new Carrito;
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService, private totalCarriot: TotalCarritoService) { }
 
   async ngOnInit(): Promise<void> {
     if (this.authService.isLogged() && !(sessionStorage.getItem('carrito') != null)) {
@@ -59,6 +60,7 @@ export class CarritoComponent implements OnInit {
     }
 
     this.actualizarTotales(productoCarrito);
+    this.totalCarriot.cambiarTotal();
 
   }
 

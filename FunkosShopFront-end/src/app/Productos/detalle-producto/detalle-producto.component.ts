@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { AuthService } from 'src/app/Services/auth.service';
+import { TotalCarritoService } from 'src/app/Services/total-carrito.service';
 import { Carrito } from 'src/app/model/carrito';
 import { Producto } from 'src/app/model/producto';
 import { ProductoCarrito } from 'src/app/model/producto-carrito';
@@ -18,7 +19,7 @@ export class DetalleProductoComponent implements OnInit {
   imageUrl: string = '';
   cantidad: number = 1;
 
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private authService: AuthService) { }
+  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private authService: AuthService, private totalCarrito: TotalCarritoService) { }
 
   async ngOnInit(): Promise<void> {
     const id = await this.activatedRoute.snapshot.paramMap.get('productoID');
@@ -43,6 +44,7 @@ export class DetalleProductoComponent implements OnInit {
       this.agregarLocal()
 
     }
+    this.totalCarrito.cambiarTotal();
 
   }
 
