@@ -79,13 +79,12 @@ export class CarritoComponent implements OnInit {
     if (productoCarrito.cantidadProducto == 0) {
       let index = this.carrito.listaProductosCarrito.indexOf(productoCarrito);
       this.carrito.listaProductosCarrito.splice(index, 1);
-      console.log(this.carrito.listaProductosCarrito.length)
 
     }
 
     if (this.carrito.listaProductosCarrito.length == 0) {
-      console.log('filete')
       this.borrarCarrito();
+      window.location.reload();
 
     } else {
       sessionStorage.setItem('carrito', JSON.stringify(this.carrito));
