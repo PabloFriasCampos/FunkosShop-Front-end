@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { last, lastValueFrom } from 'rxjs';
 import { Carrito } from '../model/carrito';
 import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
@@ -15,6 +15,12 @@ export class APIService {
   rutaAPI: string = 'https://localhost:7281/api/';
 
   constructor(private http: HttpClient, private authService: AuthService) { }
+
+  async obtenerETH(): Promise<number> {
+    const request$ = await this.http.get(`${this.rutaAPI}PedidoCripto/ETH`);
+    return await lastValueFrom(request$) as number;
+
+  }
 
   async obtenerUsuario(): Promise<Usuario> {
     let usuarioID;
@@ -47,7 +53,13 @@ export class APIService {
   }
 
   async cargarCarritoLocal(): Promise<Carrito> {
-    return JSON.parse(sessionStorage.getItem('carrito')!) as Carrito;
+    let carrito: Carrito = JSON.parse(sessionStorage.getItem('carrito')!) as Carrito;
+    for (let producto of carrito.listaProductosCarrito) {
+      carrito.totalCarritoEUR += producto.totalProductoEUR;
+
+    }
+
+    return carrito;
 
   }
 
@@ -70,9 +82,14 @@ export class APIService {
     let usuarioID;
     if (sessionStorage.getItem('usuarioID')) usuarioID = sessionStorage.getItem('usuarioID');
     if (localStorage.getItem('usuarioID')) usuarioID = localStorage.getItem('usuarioID');
+    let carritoLocal = false;
+    if (sessionStorage.getItem('carrito')) {
+      carritoLocal = true;
+    }
     const body = {
       txHash: txHash,
-      id: usuarioID
+      id: usuarioID,
+      carritoLocal: carritoLocal
     };
     const headers = { 'Content-Type': 'application/json' };
     const request$ = await this.http.post(`${this.rutaAPI}PedidoCripto/check/${idTransaccion}`, JSON.stringify(body), { headers });

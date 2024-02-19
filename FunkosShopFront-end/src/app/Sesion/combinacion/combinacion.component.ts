@@ -95,6 +95,10 @@ export class CombinacionComponent {
 
   }
 
+  botonToggle() {
+    this.toggle = !this.toggle;
+    this.colorVentanas();
+  }
 
   colorVentanas() {
 

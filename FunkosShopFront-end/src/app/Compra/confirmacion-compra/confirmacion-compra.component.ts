@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { APIService } from 'src/app/Services/api.service';
+import { TotalCarritoService } from 'src/app/Services/total-carrito.service';
 import { Carrito } from 'src/app/model/carrito';
 import { ProductoCarrito } from 'src/app/model/producto-carrito';
 import { Transaccion } from 'src/app/model/transaccion';
@@ -17,18 +18,20 @@ export class ConfirmacionCompraComponent implements OnInit {
 
   carrito: Carrito = new Carrito;
   usuario: Usuario = new Usuario;
+  eth: number = 0;
 
-  constructor(private api: APIService, private router: Router) { }
+  constructor(private api: APIService, private router: Router, private carritoService: TotalCarritoService) { }
 
   async ngOnInit(): Promise<void> {
 
-    this.carrito = await this.api.cargarCarritoBBDD();
-    this.usuario = await this.api.obtenerUsuario();
+    this.carrito = await this.api.cargarCarrito();
     if (this.carrito.listaProductosCarrito.length == 0) {
       alert('No hay productos en el carrito');
       this.router.navigateByUrl('cart');
 
     }
+    this.usuario = await this.api.obtenerUsuario();
+    this.eth = await this.api.obtenerETH();
 
   }
 
@@ -86,6 +89,12 @@ export class ConfirmacionCompraComponent implements OnInit {
       : 'Transacción fallida :(';
 
     alert(transactionMessage)
+
+    if (transaccionExitosa) {
+      this.router.navigateByUrl('');
+      sessionStorage.removeItem('carrito');
+      this.carritoService.cambiarTotal();
+    }
   }
 
 }

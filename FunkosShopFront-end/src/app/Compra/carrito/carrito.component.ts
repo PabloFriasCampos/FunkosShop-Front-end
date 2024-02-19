@@ -25,6 +25,11 @@ export class CarritoComponent implements OnInit {
       await this.cargarCarritoLocal();
 
     }
+    this.carrito.totalCarritoEUR = 0;
+    for (let producto of this.carrito.listaProductosCarrito) {
+      this.carrito.totalCarritoEUR += producto.totalProductoEUR;
+
+    }
   }
 
   async cargarCarritoBBDD() {
