@@ -52,19 +52,30 @@ export class APIService {
   }
 
   async comprarProductos(productos: ProductoCarrito[], cuentaMetaMask: string): Promise<Transaccion> {
+    let usuarioID;
+    if (sessionStorage.getItem('usuarioID')) usuarioID = sessionStorage.getItem('usuarioID');
+    if (localStorage.getItem('usuarioID')) usuarioID = localStorage.getItem('usuarioID');
     const headers = { 'Content-Type': 'application/json' };
     const body = {
       productos: productos,
-      cuentaMetaMask: cuentaMetaMask
+      cuentaMetaMask: cuentaMetaMask,
+      id: usuarioID
     };
     const request$ = await this.http.post(`${this.rutaAPI}PedidoCripto/buy`, JSON.stringify(body), { headers });
     return await lastValueFrom(request$) as Transaccion;
 
   }
 
-  async checkCompra(id: number, txHash: string): Promise<boolean> {
+  async checkCompra(idTransaccion: number, txHash: string): Promise<boolean> {
+    let usuarioID;
+    if (sessionStorage.getItem('usuarioID')) usuarioID = sessionStorage.getItem('usuarioID');
+    if (localStorage.getItem('usuarioID')) usuarioID = localStorage.getItem('usuarioID');
+    const body = {
+      txHash: txHash,
+      id: usuarioID
+    };
     const headers = { 'Content-Type': 'application/json' };
-    const request$ = await this.http.post(`${this.rutaAPI}PedidoCripto/check/${id}`, JSON.stringify(txHash), { headers });
+    const request$ = await this.http.post(`${this.rutaAPI}PedidoCripto/check/${idTransaccion}`, JSON.stringify(body), { headers });
     return await lastValueFrom(request$) as boolean;
 
   }

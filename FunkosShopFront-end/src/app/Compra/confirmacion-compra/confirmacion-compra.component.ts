@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { APIService } from 'src/app/Services/api.service';
 import { Carrito } from 'src/app/model/carrito';
 import { ProductoCarrito } from 'src/app/model/producto-carrito';
@@ -21,7 +21,6 @@ export class ConfirmacionCompraComponent implements OnInit {
   constructor(private api: APIService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
-    this.dialog = document.querySelector('dialog');
 
     this.carrito = await this.api.cargarCarritoBBDD();
     this.usuario = await this.api.obtenerUsuario();
@@ -86,8 +85,7 @@ export class ConfirmacionCompraComponent implements OnInit {
       ? 'Transacción realizada con éxito :D'
       : 'Transacción fallida :(';
 
-    this.dialog!.querySelector('p')!.innerText = transactionMessage;
-    this.dialog!.showModal();
+    alert(transactionMessage)
   }
 
 }
