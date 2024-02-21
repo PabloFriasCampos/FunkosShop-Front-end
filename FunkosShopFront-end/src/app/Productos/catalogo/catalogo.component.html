@@ -1,3 +1,4 @@
+<!--
 <header class="header fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-center">
             <input class="buscador" type="search" [(ngModel)]="buscadorFunko" (input)="aplicarFiltros()" placeholder="Buscador">
@@ -11,16 +12,155 @@
     </div>
   </header>
 
-<section class="seccion" *ngFor="let categoria of funkosFiltrados" >
-    <h1 *ngIf="categoria.productos.length > 0">{{categoria.categoria}}</h1>   
-        <div class="productos" *ngIf="categoria.productos.length > 0">
-            <div class="producto" *ngFor="let producto of categoria.productos" [routerLink]="'/product/' + producto.productoID">
-                <img [src]="'https://localhost:7281/images/' + producto.productoID + '.png'" class="producto-imagen">
-                <div class="detalles seccionProductos">
-                    <div class="producto-nombre">{{producto.nombreProducto}}</div>
-                    <div class="euro">{{producto.precioEUR}}€</div>
-                </div>
-            </div>
-        </div>   
-</section>
 
+
+-->
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        .buscador {
+            background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 0px 5px;
+            background-size: 24px;
+            width: 500px auto;
+            height: 2rem;
+            border: transparent;
+            border-bottom: solid 1px #dedede;
+            padding: 10px 10px 10px 30px;
+            outline: none;
+            color: white;
+            margin-left: 0 auto;
+        }
+
+        .header {
+            position: sticky;
+            background-color: #535151;
+            padding: 10px 0;
+            z-index: 999;
+            box-shadow: #000000;
+        }
+
+
+        .product-card {
+            background-color: #333;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 18rem;
+            padding: 10px;
+            color: rgb(228, 228, 228);
+            margin-bottom: 20px;
+            margin-left: -10;
+            text-align: center;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            background-color: #8b8a8a;
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform 0.5s ease;
+        }
+
+        .product-name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .product-price {
+            color: #ccc;
+            margin-top: 5px;
+        }
+
+        .columna {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            place-items: center;
+            gap: 1em;
+
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .product-title {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .categoria {
+            color: #ffffff;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: black;
+        }
+
+        @media (max-width :950px) {
+
+
+            .columna {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Cambio a una sola columna */
+    place-items: center;
+    gap: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.buscador {
+
+            margin-left: 0 auto;
+        }
+.product-title {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+        }
+.filtro{
+    width: 10rem;
+}
+        
+    </style>
+</head>
+<header class="header fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-center">
+        <input class="buscador" type="search" [(ngModel)]="buscadorFunko" (input)="aplicarFiltros()"
+            placeholder="Buscador">
+        <select class="filtro" [(ngModel)]="opcionSeleccionada" (change)="aplicarFiltros()">
+            <option value="sinFiltro" selected> Añadir/Eliminar filtro </option>
+            <option value="MenorPrecio"> Precio: De menor a mayor </option>
+            <option value="MayorPrecio"> Precio: De mayor a menor </option>
+            <option value="LetraA_Z"> Ordenar: De la "A" a la "Z" </option>
+            <option value="LetraZ_A"> Ordenar: De la "Z" a la "A" </option>
+        </select>
+    </div>
+</header>
+<div class="container" *ngFor="let categoria of funkosFiltrados">
+    <h1 class="categoria" *ngIf="categoria.productos.length > 0">{{categoria.categoria}}</h1>
+    <div class="columna">
+        <div class="columna" *ngIf="categoria.productos.length>0">
+            <div class="product-card" *ngFor="let producto of categoria.productos"
+                [routerLink]="'/product/' + producto.productoID">
+                <img [src]="'https://localhost:7281/images/' + producto.productoID + '.png'" class="producto-imagen"
+                    alt="Producto 1" class="product-img">
+                <h3 class="product-name">{{producto.nombreProducto}}</h3>
+                <p class="product-price">{{producto.precioEUR}}€</p>
+            </div>
+        </div>
+    </div>
+</div>
