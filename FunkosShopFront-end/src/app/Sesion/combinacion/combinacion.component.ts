@@ -35,7 +35,6 @@ export class CombinacionComponent {
     if (this.repetirContrasena == this.usuarioSignUp.contrasena) {
       let request$ = await this.http.post("https://localhost:7281/api/Usuarios/signup", JSON.stringify(this.usuarioSignUp), { headers });
       await lastValueFrom(request$).catch(err => httpStatus = err.status)
-      alert(httpStatus)
       this.toggle = false;
       this.colorVentanas();
 
