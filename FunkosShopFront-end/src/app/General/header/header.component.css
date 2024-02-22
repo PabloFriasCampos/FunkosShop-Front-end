@@ -36,18 +36,12 @@
   width: auto;
 }
 
-.nav-buttons {
-  margin-right: 20px;
-}
-
-.nav-buttons button {
-  margin-left: 10px;
-}
 
 .nav-buttons .btn {
   border: none;
   background-color: #333;
   color: #fff;
+
 }
 
 .nav-buttons .btn:hover {
@@ -58,6 +52,7 @@
 
 .nav-buttons .btn i {
   margin-right: 5px;
+
 }
 
 .cta-btn {
@@ -67,6 +62,7 @@
   border-radius: 5px;
   font-size: 1.2rem;
   text-decoration: none;
+
 }
 
 .cta-btn:hover {
@@ -74,84 +70,15 @@
   color: #fff;
 }
 
-/* Estilos personalizados */
-@media screen and (max-width: 767px) {
-  .nav-buttons {
-    margin-right: 10px;
-  }
-
-  .logo img {
-    height: 30px;
-  }
-
-  .cta-btn {
-    padding: 10px 20px;
-    font-size: 1rem;
-  }
-
-  .feature-icon {
-    font-size: 3rem;
-  }
-
-  .glass {
-    width: 80%;
-    /* Ajusta el ancho del contenedor */
-    padding: 1rem;
-    /* Modifica el padding */
-    font-size: 0.9rem;
-    /* Ajusta el tamaño del texto */
-    line-height: 1.4;
-    /* Ajusta el espaciado entre líneas */
-  }
-
-  .glass h1.display-4 {
-    font-size: 2rem;
-    /* Ajusta el tamaño del h1 */
-    line-height: 1.3;
-    /* Ajusta el espaciado entre líneas */
-  }
-}
-
-@media (max-width: 575.98px) {
-  #carouselExampleIndicators {
+@media (max-width: 768px) {
+  /* Estilos para pantallas más pequeñas */
+  #catalogo {
+    margin-left: 0;
     width: 100%;
-    /* Establecer el ancho al 100% */
-  }
-}
-
-@media screen and (max-width: 575px) {
-  .nav-buttons {
-    margin-right: 0;
   }
 
-  .logo img {
-    height: 25px;
-  }
-
-  .cta-btn {
-    padding: 8px 15px;
-    font-size: 0.9rem;
-  }
-
-  .feature-icon {
-    font-size: 2.5rem;
-  }
-
-  .glass {
-    width: 90%;
-    /* Ajusta el ancho del contenedor */
-    padding: 0.5rem;
-    /* Modifica el padding */
-    font-size: 0.8rem;
-    /* Ajusta el tamaño del texto */
-    line-height: 1.3;
-    /* Ajusta el espaciado entre líneas */
-  }
-
-  .glass h1.display-4 {
-    font-size: 1.5rem;
-    /* Ajusta el tamaño del h1 */
-    line-height: 1.2;
-    /* Ajusta el espaciado entre líneas */
+  #sobreNosotros {
+    margin-left: 0;
+    width: 100%;
   }
 }

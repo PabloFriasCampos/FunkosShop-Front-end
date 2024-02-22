@@ -103,7 +103,6 @@
   background-image: url('/assets/icon.jpeg');
   background-size: cover;
   background-attachment: fixed;
-  margin-left: -1px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -125,12 +124,12 @@
   margin-left: 5rem;
 
 }
-
+#explora{
+  margin-left: -1rem;
+}
 /* Estilos personalizados */
 @media screen and (max-width: 767px) {
-  .nav-buttons {
-    margin-right: 10px;
-  }
+
 
   .logo img {
     height: 30px;
@@ -147,20 +146,14 @@
 
   .glass {
     width: 80%;
-    /* Ajusta el ancho del contenedor */
     padding: 1rem;
-    /* Modifica el padding */
     font-size: 0.9rem;
-    /* Ajusta el tamaño del texto */
     line-height: 1.4;
-    /* Ajusta el espaciado entre líneas */
   }
 
   .glass h1.display-4 {
     font-size: 2rem;
-    /* Ajusta el tamaño del h1 */
     line-height: 1.3;
-    /* Ajusta el espaciado entre líneas */
   }
 }
 
@@ -172,9 +165,7 @@
 }
 
 @media screen and (max-width: 575px) {
-  .nav-buttons {
-    margin-right: 0;
-  }
+
 
   .logo img {
     height: 25px;
@@ -188,7 +179,9 @@
   .feature-icon {
     font-size: 2.5rem;
   }
-
+  .jumbotron{
+    margin-left: -5rem;
+  }
   .glass {
     width: 90%;
     /* Ajusta el ancho del contenedor */
