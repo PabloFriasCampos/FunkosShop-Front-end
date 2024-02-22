@@ -1,0 +1,38 @@
+.main-div {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    margin: 1rem;
+  }
+
+  .text-left {
+    color: #007bff;
+    font-weight: bold;
+  }
+
+  .text-center {
+    color: #28a745;
+    font-weight: bold;
+  }
+
+  .text-right {
+    color: #dc3545;
+    font-weight: bold;
+  }
+
+  .side-div {
+      background-color: #ccc;
+    padding: 10px;
+    margin-left: -6rem;
+  }
+
+  .side-div button {
+    width: 100%;
+  }
+
+  .titulo {
+          color: #ffffff;
+          -webkit-text-stroke-width: 1px;
+          -webkit-text-stroke-color: black;
+
+      }

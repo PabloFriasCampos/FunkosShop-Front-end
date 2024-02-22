@@ -9,9 +9,12 @@ import { ConfirmacionCompraComponent } from './Compra/confirmacion-compra/confir
 import { CombinacionComponent } from './Sesion/combinacion/combinacion.component';
 import { authGuard } from './auth.guard';
 import { PanelUsuarioComponent } from './Usuario/panel-usuario/panel-usuario.component';
+import { DatosUsuarioComponent } from './Usuario/datos-usuario/datos-usuario.component';
+import { ListaPedidosUsuarioComponent } from './Usuario/lista-pedidos-usuario/lista-pedidos-usuario.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
+  { path: 'sesion', component: CombinacionComponent },
   { path: 'sesion', component: CombinacionComponent },
   { path: 'aboutus', component: SobreNosotrosComponent },
   { path: 'cart', component: CarritoComponent },
@@ -19,6 +22,8 @@ const routes: Routes = [
   { path: 'product/:productoID', component: DetalleProductoComponent },
   { path: 'confirm', component: ConfirmacionCompraComponent, canActivate: [authGuard] },
   { path: 'user', component: PanelUsuarioComponent, canActivate: [authGuard] },
+  { path: 'userPedidos', component: ListaPedidosUsuarioComponent, canActivate: [authGuard] },
+  { path: 'userDatos', component: DatosUsuarioComponent, canActivate: [authGuard] },
 ];
 
 @NgModule({

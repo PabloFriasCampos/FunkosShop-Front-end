@@ -9,8 +9,8 @@ import { Usuario } from 'src/app/model/usuario';
   templateUrl: './panel-usuario.component.html',
   styleUrls: ['./panel-usuario.component.css']
 })
-export class PanelUsuarioComponent implements OnInit {
-
+export class PanelUsuarioComponent /*implements OnInit*/ {
+/*
   cuentaUser: Usuario = new Usuario();
   modificarNameUser: string = "";
   modificarEmailUser: string = "";
@@ -93,5 +93,5 @@ export class PanelUsuarioComponent implements OnInit {
       alert("Estas poniendo la misma dirección o el campo está vacío");
     }
   }
-
+*/
 }
