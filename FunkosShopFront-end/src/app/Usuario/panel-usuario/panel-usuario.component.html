@@ -1,1 +1,36 @@
 <button (click)="logOut()" [routerLink]="'/'">CERRAR SESIÓN</button>
+
+<!-- Modificar nombre usuario -->
+<div>
+  <input class="input-field" type="text" placeholder="Modificar nombre usuario" [(ngModel)]="modificarNameUser">
+</div>
+<div>
+  <button class="button" (click)="modificarNombre()">Modificar nombre</button>
+</div>
+
+<!-- Modificar email usuario -->
+<br>
+<div>
+  <input class="input-field" type="text" placeholder="Modificar email usuario" [(ngModel)]="modificarEmailUser">
+</div>
+<div>
+  <button class="button" (click)="modificarEmail()">Modificar email</button>
+</div>
+
+<!-- Modificar contraseña usuario -->
+<br>
+<div>
+  <input class="input-field" type="text" placeholder="Modificar contraseña usuario" [(ngModel)]="modificarContrasenaUser">
+</div>
+<div>
+  <button class="button" (click)="modificarContrasena()">Modificar contraseña</button>
+</div>
+
+<!-- Modificar dirección usuario -->
+<br>
+<div>
+  <input class="input-field" type="text" placeholder="Modificar dirección usuario" [(ngModel)]="modificarDireccionUser">
+</div>
+<div>
+  <button class="button" (click)="modificarDireccion()">Modificar dirección</button>
+</div>
