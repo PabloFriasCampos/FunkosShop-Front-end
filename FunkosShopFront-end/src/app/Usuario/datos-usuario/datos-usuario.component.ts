@@ -50,7 +50,7 @@ export class DatosUsuarioComponent implements OnInit{
 
   async modificarEmail() { // Sin terminar porque da error
     if (this.cuentaUser.correo != this.modificarEmailUser && this.modificarEmailUser != "") { // Comprueba que el correo que se ha metido no sea el mismo que el que tiene
-        // Realizar una consulta al servidor para verificar si el nuevo correo ya está registrado
+        // Comprobar que el correo no está ya registrado
         const headers = {'Content-Type':'application/json'};
         const verificarEmail$ = await this.http.get("https://localhost:7281/api/Usuarios/verificarEmail/" + this.modificarEmailUser, {headers});
         const existeEmail = await lastValueFrom(verificarEmail$);
@@ -68,7 +68,7 @@ export class DatosUsuarioComponent implements OnInit{
 }
 
   async modificarContrasena() { // Sin terminar porque da error
-    if (this.cuentaUser.contrasena != this.modificarContrasenaUser && this.modificarEmailUser != "") {
+    if (this.cuentaUser.contrasena != this.modificarContrasenaUser && this.modificarContrasenaUser != "") {
       const headers = {'Content-Type':'application/json'};
   
       const request$ = await this.http.put("https://localhost:7281/api/Usuarios/modificarContrasena/" + this.usuarioID,  JSON.stringify(this.modificarContrasenaUser) , {headers});
@@ -81,7 +81,7 @@ export class DatosUsuarioComponent implements OnInit{
   }
 
   async modificarDireccion() {
-    if (this.cuentaUser.direccion != this.modificarDireccionUser && this.modificarEmailUser != "") {
+    if (this.cuentaUser.direccion != this.modificarDireccionUser && this.modificarDireccionUser != "") {
       const headers = {'Content-Type':'application/json'};
   
       const request$ = await this.http.put("https://localhost:7281/api/Usuarios/modificarDireccion/" + this.usuarioID,  JSON.stringify(this.modificarDireccionUser) , {headers});
