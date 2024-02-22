@@ -13,6 +13,8 @@ import { ConfirmacionCompraComponent } from './Compra/confirmacion-compra/confir
 import { CombinacionComponent } from './Sesion/combinacion/combinacion.component';
 import { HeaderComponent } from './General/header/header.component';
 import { PanelUsuarioComponent } from './Usuario/panel-usuario/panel-usuario.component';
+import { DatosUsuarioComponent } from './Usuario/datos-usuario/datos-usuario.component';
+import { ListaPedidosUsuarioComponent } from './Usuario/lista-pedidos-usuario/lista-pedidos-usuario.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { PanelUsuarioComponent } from './Usuario/panel-usuario/panel-usuario.com
     ConfirmacionCompraComponent,
     CombinacionComponent,
     HeaderComponent,
-    PanelUsuarioComponent
+    PanelUsuarioComponent,
+    DatosUsuarioComponent,
+    ListaPedidosUsuarioComponent
   ],
   imports: [
     BrowserModule,
