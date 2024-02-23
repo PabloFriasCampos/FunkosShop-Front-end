@@ -1,5 +1,3 @@
-
-
 <div class="body">
 <div class="container">
   <div>
@@ -14,22 +12,23 @@
         <tbody>
             <tr>
                 <td>Nombre de Usuario</td>
-                <td><input type="text" class="form-control" placeholder="Modifica tu Usuario" [(ngModel)]="modificarNameUser"></td>
+                <td colspan="2"><input type="text" class="form-control" placeholder="Modifica tu Usuario" [(ngModel)]="modificarNameUser"></td>
                 <td class="d-flex justify-content-end"><button type="button" class="btn btn-primary" (click)="modificarNombre()">Guardar cambios</button></td>
             </tr>
             <tr>
                 <td>Correo Electronico</td>
-                <td><input type="email" class="form-control" placeholder="Modifica tu correo electronico" [(ngModel)]="modificarEmailUser"></td>
+                <td colspan="2"><input type="email" class="form-control" placeholder="Modifica tu correo electronico" [(ngModel)]="modificarEmailUser"></td>
                 <td class="d-flex justify-content-end"><button type="button" class="btn btn-primary" (click)="modificarEmail()">Guardar cambios</button></td>
             </tr>
             <tr>
                 <td>Contraseña</td>
                 <td><input type="password" class="form-control" placeholder="Modifica tu contraseña" [(ngModel)]="modificarContrasenaUser"></td>
+                <td><input type="password" class="form-control" placeholder="Confirmar tu contraseña" [(ngModel)]="confirmarContrasena"></td>
                 <td class="d-flex justify-content-end"><button type="button"class="btn btn-primary" (click)="modificarContrasena()">Guardar cambios</button></td>
             </tr>
             <tr>
                 <td>Direccion de Envio</td>
-                <td><input type="text" class="form-control" placeholder="Modifica tu Direccion de Envio"[(ngModel)]="modificarDireccionUser"></td>
+                <td colspan="2"><input type="text" class="form-control" placeholder="Modifica tu Direccion de Envio"[(ngModel)]="modificarDireccionUser"></td>
                 <td class="d-flex justify-content-end"><button type="button" class="btn btn-primary"  (click)="modificarDireccion()">Guardar cambios</button></td>
             </tr>
         </tbody>
