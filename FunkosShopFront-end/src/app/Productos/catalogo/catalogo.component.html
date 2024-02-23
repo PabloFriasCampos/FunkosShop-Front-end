@@ -135,7 +135,7 @@
         <div class="columna" *ngIf="categoria.productos.length>0">
             <div class="product-card" *ngFor="let producto of categoria.productos"
                 [routerLink]="'/product/' + producto.productoID">
-                <img [src]="'https://localhost:7281/images/' + producto.productoID + '.png'" class="producto-imagen"
+                <img [src]="this.urlImage(producto.productoID)" class="producto-imagen"
                     alt="Producto 1" class="product-img">
                 <h3 class="product-name">{{producto.nombreProducto}}</h3>
                 <p class="product-price">{{producto.precioEUR}}€</p>

@@ -15,7 +15,7 @@ export class CarritoComponent implements OnInit {
 
   carrito: Carrito = new Carrito;
 
-  constructor(private http: HttpClient, private authService: AuthService, private totalCarriot: TotalCarritoService) { }
+  constructor(private http: HttpClient, private authService: AuthService, private totalCarrito: TotalCarritoService) { }
 
   async ngOnInit(): Promise<void> {
     if (this.authService.isLogged() && !(sessionStorage.getItem('carrito') != null)) {
@@ -65,7 +65,7 @@ export class CarritoComponent implements OnInit {
     }
 
     this.actualizarTotales(productoCarrito);
-    this.totalCarriot.cambiarTotal();
+    this.totalCarrito.cambiarTotal();
 
   }
 
@@ -87,7 +87,7 @@ export class CarritoComponent implements OnInit {
 
     }
 
-    if (this.carrito.listaProductosCarrito.length == 0) {
+    if (this.carrito.listaProductosCarrito.length == 0 && this.authService.isLogged()) {
       this.borrarCarrito();
       window.location.reload();
 
@@ -123,8 +123,9 @@ export class CarritoComponent implements OnInit {
     this.carrito.totalCarritoEUR = 0;
     for (let producto of this.carrito.listaProductosCarrito) {
       this.carrito.totalCarritoEUR += producto.totalProductoEUR;
-
     }
+
+    sessionStorage.setItem('carrito', JSON.stringify(this.carrito));
 
   }
 

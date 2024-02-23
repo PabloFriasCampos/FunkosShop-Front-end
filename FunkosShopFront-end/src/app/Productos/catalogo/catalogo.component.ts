@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { APIService } from 'src/app/Services/api.service';
 import { CategoriaProductos } from 'src/app/model/categoria-productos';
 
 @Component({
@@ -19,19 +18,26 @@ export class CatalogoComponent implements OnInit {
   opcionSeleccionada: String = 'sinFiltro' // Filtro por defecto
   sinFiltro = true
 
-  constructor(private http: HttpClient) { }
+  constructor(private api: APIService) { }
 
   async ngOnInit(): Promise<void> {
     await this.obtenerProductos();
 
-
   }
 
   async obtenerProductos() {
-    const request$ = await this.http.get("https://localhost:7281/api/Productos");
-    const productos = await lastValueFrom(request$);
-    this.todosFunkos = productos as CategoriaProductos[];
+    this.todosFunkos = await this.api.obtenerProductos();
     this.funkosFiltrados = this.todosFunkos;
+
+  }
+
+  urlImage(id: number): string {
+    return this.api.urlFoto(id);
+  }
+
+  aplicarFiltros() {
+    this.cambiarFiltro();
+    this.buscarFunko();
 
   }
 
@@ -39,12 +45,6 @@ export class CatalogoComponent implements OnInit {
     const nombreBuscado = this.buscadorFunko.toLowerCase();
     this.busquedaActual = nombreBuscado; // Almacena la busqueda
     this.aplicarBusqueda();
-  }
-
-  aplicarFiltros() {
-    this.cambiarFiltro();
-    this.buscarFunko();
-
   }
 
   aplicarBusqueda() {

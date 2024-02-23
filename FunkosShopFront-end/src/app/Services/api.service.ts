@@ -6,6 +6,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../model/usuario';
 import { ProductoCarrito } from '../model/producto-carrito';
 import { Transaccion } from '../model/transaccion';
+import { CategoriaProductos } from '../model/categoria-productos';
+import { Producto } from '../model/producto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +15,14 @@ import { Transaccion } from '../model/transaccion';
 export class APIService {
 
   rutaAPI: string = 'https://localhost:7281/api/';
+  rutaImages: string = 'https://localhost:7281/images/';
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   // ------------------------------ Peticiones Usuario ------------------------------
 
   async obtenerUsuario(): Promise<Usuario> {
-    let usuarioID = this.getUsuarioID;
+    let usuarioID = this.getUsuarioID();
     const request$ = await this.http.get(`${this.rutaAPI}Usuarios/` + usuarioID);
     const resultado = await lastValueFrom(request$);
     return resultado as Usuario;
@@ -57,10 +60,29 @@ export class APIService {
     return loggeado;
   }
 
+  // ------------------------------ Peticiones Prodcutos ------------------------------
+
+  async obtenerProductos(): Promise<CategoriaProductos[]> {
+    const request$ = await this.http.get(`${this.rutaAPI}Productos`);
+    return await lastValueFrom(request$) as CategoriaProductos[];
+
+  }
+
+  urlFoto(id: number): string {
+    return `${this.rutaImages}${id}.png`;
+
+  }
+
+  async cargarProducto(id: number): Promise<Producto> {
+    const request$ = await this.http.get(`${this.rutaAPI}Productos/` + id);
+    return await lastValueFrom(request$) as Producto;
+
+  }
+
   // ------------------------------ Peticiones Carrito ------------------------------
 
   async cargarCarrito(): Promise<Carrito> {
-    if (this.authService.isLogged() && (sessionStorage.getItem('carrito') == null)) {
+    if (this.authService.isLogged() && !this.existeCarrito()) {
       return this.cargarCarritoBBDD();
 
     } else {
@@ -79,12 +101,75 @@ export class APIService {
 
   async cargarCarritoLocal(): Promise<Carrito> {
     let carrito: Carrito = JSON.parse(sessionStorage.getItem('carrito')!) as Carrito;
-    for (let producto of carrito.listaProductosCarrito) {
-      carrito.totalCarritoEUR += producto.totalProductoEUR;
+
+    return carrito;
+
+  }
+
+  async agregar(producto: Producto, cantidad: number) {
+    if (this.authService.isLogged() && sessionStorage.getItem('carrito') == null) {
+      await this.agregarBBDD(producto, cantidad)
+
+    } else {
+      await this.agregarLocal(producto, cantidad)
 
     }
 
-    return carrito;
+  }
+
+  async agregarBBDD(producto: Producto, cantidad: number) {
+    const headers = this.getRequestHeaders();
+    let idCarrito = this.getUsuarioID();
+    const request$ = await this.http.post("https://localhost:7281/api/ProductosCarrito/" + producto.productoID + "/" + idCarrito + "/" + cantidad, { headers });
+    await lastValueFrom(request$);
+
+  }
+
+  agregarLocal(producto: Producto, cantidad: number) {
+    if (sessionStorage.getItem('carrito')) {
+      let carrito: Carrito = JSON.parse(sessionStorage.getItem('carrito')!) as Carrito;
+      let yaEsta = false;
+      for (let productoCarrito of carrito.listaProductosCarrito) {
+        if (productoCarrito.producto.productoID == producto.productoID) {
+          yaEsta = true;
+          productoCarrito.cantidadProducto += cantidad;
+          productoCarrito.totalProductoEUR = +(productoCarrito.producto.precioEUR * productoCarrito.cantidadProducto).toFixed(2);
+
+        }
+
+      }
+
+      if (!yaEsta) {
+        let productoCarrito = new ProductoCarrito;
+
+        productoCarrito.cantidadProducto = cantidad;
+        productoCarrito.producto = producto;
+        productoCarrito.totalProductoEUR = +(productoCarrito.producto.precioEUR * productoCarrito.cantidadProducto).toFixed(2);
+
+        carrito.listaProductosCarrito.push(productoCarrito);
+
+      }
+
+      carrito.totalCarritoEUR = this.totalCarrito(carrito);
+
+      sessionStorage.setItem('carrito', JSON.stringify(carrito));
+
+
+    } else {
+      let carrito = new Carrito;
+      let productoCarrito = new ProductoCarrito;
+
+      productoCarrito.cantidadProducto = cantidad;
+      productoCarrito.producto = producto;
+      productoCarrito.totalProductoEUR = +(productoCarrito.producto.precioEUR * productoCarrito.cantidadProducto).toFixed(2);
+
+      carrito.listaProductosCarrito.push(productoCarrito);
+
+      carrito.totalCarritoEUR = this.totalCarrito(carrito);
+
+      sessionStorage.setItem('carrito', JSON.stringify(carrito));
+
+    }
 
   }
 
@@ -143,6 +228,18 @@ export class APIService {
       }),
       responseType: 'text'
     };
+  }
+
+  private existeCarrito(): boolean {
+    return sessionStorage.getItem('carrito') != null
+  }
+
+  private totalCarrito(c: Carrito): number {
+    let total = 0;
+    for (let producto of c.listaProductosCarrito) {
+      total += producto.totalProductoEUR;
+    }
+    return total;
   }
 
 }
