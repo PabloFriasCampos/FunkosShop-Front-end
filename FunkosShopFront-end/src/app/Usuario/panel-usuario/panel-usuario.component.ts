@@ -1,8 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
-import { TotalCarritoService } from 'src/app/Services/total-carrito.service';
-import { Usuario } from 'src/app/model/usuario';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-panel-usuario',
