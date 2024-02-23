@@ -1,7 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { lastValueFrom } from 'rxjs';
+import { APIService } from 'src/app/Services/api.service';
 import { TotalCarritoService } from 'src/app/Services/total-carrito.service';
 import { Usuario } from 'src/app/model/usuario';
 
@@ -20,7 +19,7 @@ export class CombinacionComponent {
   toggle: boolean = false;
   recuerdame: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute, private totalCarrito: TotalCarritoService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private totalCarrito: TotalCarritoService, private api: APIService) {
     const queryParams = this.activatedRoute.snapshot.queryParamMap;
 
     if (queryParams.has(this.PARAM_KEY)) {
@@ -29,17 +28,20 @@ export class CombinacionComponent {
   }
 
   async registrarUsuario() {
-    let httpStatus;
-    const headers = { 'Content-Type': 'application/json' };
 
-    if (this.repetirContrasena == this.usuarioSignUp.contrasena) {
-      let request$ = await this.http.post("https://localhost:7281/api/Usuarios/signup", JSON.stringify(this.usuarioSignUp), { headers });
-      await lastValueFrom(request$).catch(err => httpStatus = err.status)
+    if (this.repetirContrasena == this.usuarioSignUp.contrasena
+      && !(this.usuarioSignUp.contrasena.length == 0 ||
+        this.usuarioSignUp.correo.length == 0 ||
+        this.usuarioSignUp.direccion.length == 0 ||
+        this.usuarioSignUp.nombreUsuario.length == 0)) {
+
+      await this.api.registrarUsuario(this.usuarioSignUp);
+
       this.toggle = false;
       this.colorVentanas();
 
     } else {
-      alert("Las contraseñas deben ser iguales");
+      alert("Las contraseñas deben ser iguales y debes completar todos los campos");
 
     }
   }
@@ -52,39 +54,16 @@ export class CombinacionComponent {
 
     } else {
 
-      const options: any = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        }),
-        responseType: 'text'
-      };
-
-      let JWTID;
       try {
-        const request$ = await this.http
-          .post<string>("https://localhost:7281/api/Usuarios/login", JSON.stringify(this.usuarioLogIn), options)
+        let logged: boolean = await this.api.iniciarSesion(this.usuarioLogIn, this.recuerdame);
 
-        JWTID = await lastValueFrom(request$)
-
-        if (JWTID != null) {
-
-          let id = JWTID.toString().split(';')[1];
-          let jsonWebToken = JWTID.toString().split(';')[0];
-          if (this.recuerdame) {
-            localStorage.setItem('JsonWebToken', jsonWebToken);
-            localStorage.setItem('usuarioID', id);
-
-          } else {
-            sessionStorage.setItem('JsonWebToken', jsonWebToken);
-            sessionStorage.setItem('usuarioID', id);
-
-          }
-
+        if (logged) {
           if (this.redirectTo != null) {
             this.router.navigateByUrl(this.redirectTo);
           } else {
             this.router.navigateByUrl('');
           }
+
         }
       } catch (error) {
         alert("Error del catch: Usuario o contraseña incorrecto")

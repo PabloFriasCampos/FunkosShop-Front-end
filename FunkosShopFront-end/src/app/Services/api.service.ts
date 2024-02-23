@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { last, lastValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { Carrito } from '../model/carrito';
 import { AuthService } from './auth.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../model/usuario';
 import { ProductoCarrito } from '../model/producto-carrito';
 import { Transaccion } from '../model/transaccion';
@@ -16,21 +16,48 @@ export class APIService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  async obtenerETH(): Promise<number> {
-    const request$ = await this.http.get(`${this.rutaAPI}PedidoCripto/ETH`);
-    return await lastValueFrom(request$) as number;
-
-  }
+  // ------------------------------ Peticiones Usuario ------------------------------
 
   async obtenerUsuario(): Promise<Usuario> {
-    let usuarioID;
-    if (sessionStorage.getItem('usuarioID')) usuarioID = sessionStorage.getItem('usuarioID');
-    if (localStorage.getItem('usuarioID')) usuarioID = localStorage.getItem('usuarioID');
+    let usuarioID = this.getUsuarioID;
     const request$ = await this.http.get(`${this.rutaAPI}Usuarios/` + usuarioID);
     const resultado = await lastValueFrom(request$);
     return resultado as Usuario;
 
   }
+
+  async registrarUsuario(usuarioSignUp: Usuario) {
+    const options = this.getRequestOptions();
+    let request$ = await this.http.post(`${this.rutaAPI}Usuarios/signup`, JSON.stringify(usuarioSignUp), options);
+    await lastValueFrom(request$);
+  }
+
+  async iniciarSesion(usuarioLogIn: Usuario, recuerdame: boolean): Promise<boolean> {
+    const options = this.getRequestOptions();
+    let JWTID;
+    let loggeado: boolean = false;
+
+    const request$ = await this.http.post<string>(`${this.rutaAPI}Usuarios/login`, JSON.stringify(usuarioLogIn), options);
+    JWTID = await lastValueFrom(request$)
+
+    if (JWTID != null) {
+      let id = JWTID.toString().split(';')[1];
+      let jsonWebToken = JWTID.toString().split(';')[0];
+      if (recuerdame) {
+        localStorage.setItem('JsonWebToken', jsonWebToken);
+        localStorage.setItem('usuarioID', id);
+
+      } else {
+        sessionStorage.setItem('JsonWebToken', jsonWebToken);
+        sessionStorage.setItem('usuarioID', id);
+      }
+      loggeado = true;
+    }
+
+    return loggeado;
+  }
+
+  // ------------------------------ Peticiones Carrito ------------------------------
 
   async cargarCarrito(): Promise<Carrito> {
     if (this.authService.isLogged() && (sessionStorage.getItem('carrito') == null)) {
@@ -44,9 +71,7 @@ export class APIService {
   }
 
   async cargarCarritoBBDD(): Promise<Carrito> {
-    let usuarioID;
-    if (sessionStorage.getItem('usuarioID')) usuarioID = sessionStorage.getItem('usuarioID');
-    if (localStorage.getItem('usuarioID')) usuarioID = localStorage.getItem('usuarioID');
+    let usuarioID = this.getUsuarioID();
     const request$ = await this.http.get(`${this.rutaAPI}Carritos/` + usuarioID);
     const resultado = await lastValueFrom(request$);
     return resultado as Carrito;
@@ -63,11 +88,17 @@ export class APIService {
 
   }
 
+  // ------------------------------ Peticiones Compra ------------------------------
+
+  async obtenerETH(): Promise<number> {
+    const request$ = await this.http.get(`${this.rutaAPI}PedidoCripto/ETH`);
+    return await lastValueFrom(request$) as number;
+
+  }
+
   async comprarProductos(productos: ProductoCarrito[], cuentaMetaMask: string): Promise<Transaccion> {
-    let usuarioID;
-    if (sessionStorage.getItem('usuarioID')) usuarioID = sessionStorage.getItem('usuarioID');
-    if (localStorage.getItem('usuarioID')) usuarioID = localStorage.getItem('usuarioID');
-    const headers = { 'Content-Type': 'application/json' };
+    let usuarioID = this.getUsuarioID();
+    const headers = this.getRequestHeaders();
     const body = {
       productos: productos,
       cuentaMetaMask: cuentaMetaMask,
@@ -79,9 +110,7 @@ export class APIService {
   }
 
   async checkCompra(idTransaccion: number, txHash: string): Promise<boolean> {
-    let usuarioID;
-    if (sessionStorage.getItem('usuarioID')) usuarioID = sessionStorage.getItem('usuarioID');
-    if (localStorage.getItem('usuarioID')) usuarioID = localStorage.getItem('usuarioID');
+    let usuarioID = this.getUsuarioID();
     let carritoLocal = false;
     if (sessionStorage.getItem('carrito')) {
       carritoLocal = true;
@@ -91,10 +120,29 @@ export class APIService {
       id: usuarioID,
       carritoLocal: carritoLocal
     };
-    const headers = { 'Content-Type': 'application/json' };
+    const headers = this.getRequestHeaders();
     const request$ = await this.http.post(`${this.rutaAPI}PedidoCripto/check/${idTransaccion}`, JSON.stringify(body), { headers });
     return await lastValueFrom(request$) as boolean;
 
+  }
+
+  // ------------------------------ Funciones internas ------------------------------
+
+  private getUsuarioID(): string {
+    return sessionStorage.getItem('usuarioID') || localStorage.getItem('usuarioID') || '';
+  }
+
+  private getRequestHeaders(): HttpHeaders {
+    return new HttpHeaders({ 'Content-Type': 'application/json' });
+  }
+
+  private getRequestOptions(): any {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      responseType: 'text'
+    };
   }
 
 }
