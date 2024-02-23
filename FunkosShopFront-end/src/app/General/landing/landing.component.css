@@ -7,7 +7,11 @@
   box-shadow: #000000;
 
 }
-
+.my-5{
+  background-color: #ffffffb7;
+  border-radius: 1rem;
+  padding: 1rem;
+}
 .scroll-hint {
   width: 4vw;
   position: absolute;
