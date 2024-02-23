@@ -1,0 +1,35 @@
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.titulo{
+  color: #ffffff;
+-webkit-text-stroke-width: 1px;
+-webkit-text-stroke-color: black;
+}
+
+table {
+    background-color: white;
+    border-radius: 15px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th:not(:last-child),
+td:not(:last-child) {
+    border-right: none;
+}
+
+
+@media screen and (max-width: 600px) {
+    th, td {
+        display: block;
+        width: 100%;
+    }
+}

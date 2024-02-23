@@ -1,36 +1,39 @@
-<button (click)="logOut()" [routerLink]="'/'">CERRAR SESIÓN</button>
 
-<!-- Modificar nombre usuario -->
-<div>
-  <input class="input-field" type="text" placeholder="Modificar nombre usuario" [(ngModel)]="modificarNameUser">
-</div>
-<div>
-  <button class="button" (click)="modificarNombre()">Modificar nombre</button>
+
+<div class="body">
+<div class="container">
+  <div>
+    <h1 class="titulo">Datos de Usuario</h1> 
+   </div>
+    <table class="table">
+        <thead>
+            <tr>
+<div  class="d-flex justify-content-center">Datos Personales </div>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Nombre de Usuario</td>
+                <td><input type="text" class="form-control" placeholder="Modifica tu Usuario" [(ngModel)]="modificarNameUser"></td>
+                <td class="d-flex justify-content-end"><button type="button" class="btn btn-primary" (click)="modificarNombre()">Guardar cambios</button></td>
+            </tr>
+            <tr>
+                <td>Correo Electronico</td>
+                <td><input type="email" class="form-control" placeholder="Modifica tu correo electronico" [(ngModel)]="modificarEmailUser"></td>
+                <td class="d-flex justify-content-end"><button type="button" class="btn btn-primary" (click)="modificarEmail()">Guardar cambios</button></td>
+            </tr>
+            <tr>
+                <td>Contraseña</td>
+                <td><input type="password" class="form-control" placeholder="Modifica tu contraseña" [(ngModel)]="modificarContrasenaUser"></td>
+                <td class="d-flex justify-content-end"><button type="button"class="btn btn-primary" (click)="modificarContrasena()">Guardar cambios</button></td>
+            </tr>
+            <tr>
+                <td>Direccion de Envio</td>
+                <td><input type="text" class="form-control" placeholder="Modifica tu Direccion de Envio"[(ngModel)]="modificarDireccionUser"></td>
+                <td class="d-flex justify-content-end"><button type="button" class="btn btn-primary"  (click)="modificarDireccion()">Guardar cambios</button></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
-<!-- Modificar email usuario -->
-<br>
-<div>
-  <input class="input-field" type="text" placeholder="Modificar email usuario" [(ngModel)]="modificarEmailUser">
-</div>
-<div>
-  <button class="button" (click)="modificarEmail()">Modificar email</button>
-</div>
-
-<!-- Modificar contraseña usuario -->
-<br>
-<div>
-  <input class="input-field" type="text" placeholder="Modificar contraseña usuario" [(ngModel)]="modificarContrasenaUser">
-</div>
-<div>
-  <button class="button" (click)="modificarContrasena()">Modificar contraseña</button>
-</div>
-
-<!-- Modificar dirección usuario -->
-<br>
-<div>
-  <input class="input-field" type="text" placeholder="Modificar dirección usuario" [(ngModel)]="modificarDireccionUser">
-</div>
-<div>
-  <button class="button" (click)="modificarDireccion()">Modificar dirección</button>
 </div>
