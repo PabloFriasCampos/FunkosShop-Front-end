@@ -1,4 +1,4 @@
-* {
+/** {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -70,4 +70,4 @@
         grid-template-columns: repeat(1, 1fr);
     }
 
-}
+}*/
