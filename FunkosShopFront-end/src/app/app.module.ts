@@ -15,6 +15,10 @@ import { HeaderComponent } from './General/header/header.component';
 import { PanelUsuarioComponent } from './Usuario/panel-usuario/panel-usuario.component';
 import { DatosUsuarioComponent } from './Usuario/datos-usuario/datos-usuario.component';
 import { ListaPedidosUsuarioComponent } from './Usuario/lista-pedidos-usuario/lista-pedidos-usuario.component';
+import { ListaUsuariosComponent } from './Admin/lista-usuarios/lista-usuarios.component';
+import { ListaProductosComponent } from './Admin/lista-productos/lista-productos.component';
+import { AdminProductoComponent } from './Admin/admin-producto/admin-producto.component';
+import { AdminUsuarioComponent } from './Admin/admin-usuario/admin-usuario.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { ListaPedidosUsuarioComponent } from './Usuario/lista-pedidos-usuario/li
     HeaderComponent,
     PanelUsuarioComponent,
     DatosUsuarioComponent,
-    ListaPedidosUsuarioComponent
+    ListaPedidosUsuarioComponent,
+    ListaUsuariosComponent,
+    ListaProductosComponent,
+    AdminProductoComponent,
+    AdminUsuarioComponent
   ],
   imports: [
     BrowserModule,
