@@ -1,1 +1,49 @@
-<p>admin-usuario works!</p>
+
+
+  <div class="container">
+    <h1>Usuario</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="admin-card">
+          <img src="" alt="Imagen de usuario" class="user-image mb-3">
+          <h5 class="rol">Rol:</h5>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="admin-card table-container"> 
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Campo</th>
+                <th>Contenido</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Nombre de Usuario</td><!--En caso de que no esté creado el usuario que ponga null y si esta creado que aqui ponga sus datos-->
+                <td><input type="text" class="form-control" placeholder="Nombre de Usuario " ></td>
+              </tr>
+              <tr>
+                <td>Contraseña</td><!--En caso de que no esté creado el usuario que ponga null y si esta creado que aqui ponga sus datos-->
+                <td><input type="text" class="form-control" placeholder="Contraseña" ></td>
+              </tr>
+              <tr>
+                <td>Direccion de envio</td><!--En caso de que no esté creado el usuario que ponga null y si esta creado que aqui ponga sus datos-->
+                <td><input type="text" class="form-control" placeholder="Direccion de envio" ></td>
+              </tr>
+              <tr>
+                <td>Correo electronico</td><!--En caso de que no esté creado el usuario que ponga null y si esta creado que aqui ponga sus datos-->
+                <td><input type="text" class="form-control" placeholder="Correo electronico" ></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary save-button">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
