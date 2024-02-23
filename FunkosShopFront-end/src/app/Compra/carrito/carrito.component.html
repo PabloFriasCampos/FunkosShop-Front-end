@@ -5,112 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* Aquí va tu estilo CSS personalizado */
-    
-        .shipping-address {
-            background-color: #f8f9fa;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-    
-        .purchase-details {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 5px;
-        }
-    
-        .order-item {
-            display: flex;
-            justify-content: space-between;
-            margin: 0 auto;
-            align-items: center;
-        }
-    
-        .right-align {
-            margin-left: auto;
-            margin-right: 0;
-        }
-    
-        .summary {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 5px;
-        }
-    
-        .product-image img {
-            width: 150px;
-            height: auto;
-        }
-    .cantidad-producto{
-    margin: 2rem;
-    }
-    .container{
-        margin-top: 2rem;
-    }
-        /* Media queries para pantallas de baja resolución */
-        @media (max-width: 500px) {
-            .purchase-details {
-                padding: 10px;
-            }
-            .product-image img {
-                width: 100px;
-            }
-            .order-item button {
-                font-size: 14px;
-                margin: 0.5rem;
-            }
-            .order-item p {
-                font-size: 14px;
-            }
-            .purchase-details .order-item {
-                flex-direction: column;
-            }
-            .quantity-controls {
-                display: flex;
-                align-items: center;
-                flex-direction: row; /* Mostrar los elementos en una fila */
-            }
-            .quantity-controls button {
-                padding: 5px;
-            }
 
-        }
-    </style>
-    
 </head>
-<!--<div class="container">
-
-    <div class="productos" *ngFor="let producto of carrito.listaProductosCarrito">
-            
-        <div>
-            <img [src]="'https://localhost:7281/images/' + producto.producto.productoID + '.png'" class="image">
-            <div class="nombre-producto">{{producto.producto.nombreProducto}}</div>
-        </div>
-
-        <div class="cantidad">
-            <button class="boton-cantidad" (click)="actualizarCantidad(-1, producto)">-</button>
-            <div class="cantidad-producto">{{producto.cantidadProducto}}</div>
-            <button class="boton-cantidad" (click)="actualizarCantidad(1, producto)">+</button>
-        </div>
-
-        <div class="totales">
-            <button class="boton-cantidad" (click)="eliminarProducto(producto)">X</button>
-            <div class="euros">{{(producto.producto.precioEUR * producto.cantidadProducto).toFixed(2)}}€</div>
-        </div>
-
-    </div>
-
-    <div class="tramitar">
-        <button class="boton-op"[routerLink]="'/confirm'">Tramitar</button>
-        <button class="boton-op" [routerLink]="'/catalog'">Catálogo</button>
-        <div class="euros">{{(carrito.totalCarritoEUR).toFixed(2)}}€</div>
-    </div>
-    
-</div>-->
-
-<body>
 
 
     <div class="container">
@@ -140,4 +36,4 @@
             </div>
         </div>
     </div>
-</body>
+

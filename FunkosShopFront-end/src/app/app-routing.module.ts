@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'user', component: PanelUsuarioComponent, canActivate: [authGuard] },
   { path: 'userPedidos', component: ListaPedidosUsuarioComponent, canActivate: [authGuard] },
   { path: 'userDatos', component: DatosUsuarioComponent, canActivate: [authGuard] },
+  
 ];
 
 @NgModule({
