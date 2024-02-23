@@ -1,8 +1,6 @@
-<button (click)="logOut()" [routerLink]="'/'">CERRAR SESIÓN</button>
-
 <!-- Modificar nombre usuario -->
 <div>
-  <input class="input-field" type="text" placeholder="Modificar nombre usuario" [(ngModel)]="modificarNameUser">
+  <input class="input-field" type="text" placeholder="Modificar nombre" [(ngModel)]="modificarNameUser">
 </div>
 <div>
   <button class="button" (click)="modificarNombre()">Modificar nombre</button>
@@ -11,7 +9,7 @@
 <!-- Modificar email usuario -->
 <br>
 <div>
-  <input class="input-field" type="text" placeholder="Modificar email usuario" [(ngModel)]="modificarEmailUser">
+  <input class="input-field" type="text" placeholder="Modificar email" [(ngModel)]="modificarEmailUser">
 </div>
 <div>
   <button class="button" (click)="modificarEmail()">Modificar email</button>
@@ -20,17 +18,23 @@
 <!-- Modificar contraseña usuario -->
 <br>
 <div>
-  <input class="input-field" type="text" placeholder="Modificar contraseña usuario" [(ngModel)]="modificarContrasenaUser">
+  <input class="input-field" type="text" placeholder="Modificar contraseña" [(ngModel)]="modificarContrasenaUser">
 </div>
 <div>
+  <div>
+    <input class="input-field" type="text" placeholder="Confirmar contraseña" [(ngModel)]="confirmarContrasena">
+  </div>
+  <div>
   <button class="button" (click)="modificarContrasena()">Modificar contraseña</button>
 </div>
 
 <!-- Modificar dirección usuario -->
 <br>
 <div>
-  <input class="input-field" type="text" placeholder="Modificar dirección usuario" [(ngModel)]="modificarDireccionUser">
+  <input class="input-field" type="text" placeholder="Modificar dirección" [(ngModel)]="modificarDireccionUser">
 </div>
 <div>
   <button class="button" (click)="modificarDireccion()">Modificar dirección</button>
 </div>
+
+<button (click)="logOut()" [routerLink]="'/'">CERRAR SESIÓN</button>
