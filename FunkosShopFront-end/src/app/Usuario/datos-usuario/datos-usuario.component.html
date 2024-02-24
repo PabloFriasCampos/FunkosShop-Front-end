@@ -12,26 +12,24 @@
         <tbody>
             <tr>
                 <td>Nombre de Usuario</td>
-                <td colspan="2"><input type="text" class="form-control" placeholder="Modifica tu Usuario" [(ngModel)]="modificarNameUser"></td>
-                <td class="d-flex justify-content-end"><button type="button" class="btn btn-primary" (click)="modificarNombre()">Guardar cambios</button></td>
+                <td colspan="2"><input type="text" class="form-control" placeholder="Modifica tu Usuario" [(ngModel)]="nameUserToModify"></td>
             </tr>
             <tr>
                 <td>Correo Electronico</td>
-                <td colspan="2"><input type="email" class="form-control" placeholder="Modifica tu correo electronico" [(ngModel)]="modificarEmailUser"></td>
-                <td class="d-flex justify-content-end"><button type="button" class="btn btn-primary" (click)="modificarEmail()">Guardar cambios</button></td>
+                <td colspan="2"><input type="email" class="form-control" placeholder="Modifica tu correo electronico" [(ngModel)]="correoUserToModify"></td>
             </tr>
             <tr>
                 <td>Contraseña</td>
-                <td><input type="password" class="form-control" placeholder="Modifica tu contraseña" [(ngModel)]="modificarContrasenaUser"></td>
-                <td><input type="password" class="form-control" placeholder="Confirmar tu contraseña" [(ngModel)]="confirmarContrasena"></td>
-                <td class="d-flex justify-content-end"><button type="button"class="btn btn-primary" (click)="modificarContrasena()">Guardar cambios</button></td>
+                <td><input type="password" class="form-control" placeholder="Modifica tu contraseña" [(ngModel)]="passwordUserToModify"></td>
+                <td><input type="password" class="form-control" placeholder="Confirmar tu contraseña" [(ngModel)]="confirmPasswordToModify"></td>
             </tr>
             <tr>
                 <td>Direccion de Envio</td>
-                <td colspan="2"><input type="text" class="form-control" placeholder="Modifica tu Direccion de Envio"[(ngModel)]="modificarDireccionUser"></td>
-                <td class="d-flex justify-content-end"><button type="button" class="btn btn-primary"  (click)="modificarDireccion()">Guardar cambios</button></td>
+                <td colspan="2"><input type="text" class="form-control" placeholder="Modifica tu Direccion de Envio"[(ngModel)]="addressToModify"></td>
             </tr>
         </tbody>
+        <td class="d-flex justify-content-end"><button type="button" class="btn btn-primary"  (click)="modificaDatos()">Guardar cambios</button></td>
+            
     </table>
 </div>
 
