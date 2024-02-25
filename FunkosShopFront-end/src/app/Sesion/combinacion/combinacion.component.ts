@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { isEmpty } from 'rxjs';
 import { APIService } from 'src/app/Services/api.service';
 import { TotalCarritoService } from 'src/app/Services/total-carrito.service';
 import { Usuario } from 'src/app/model/usuario';
@@ -10,6 +11,7 @@ import { Usuario } from 'src/app/model/usuario';
   styleUrls: ['./combinacion.component.css']
 })
 export class CombinacionComponent {
+
   readonly PARAM_KEY: string = 'redirectTo';
   private redirectTo: string | null = null;
 
@@ -18,6 +20,7 @@ export class CombinacionComponent {
   repetirContrasena: string = '';
   toggle: boolean = false;
   recuerdame: boolean = false;
+
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private totalCarrito: TotalCarritoService, private api: APIService) {
     const queryParams = this.activatedRoute.snapshot.queryParamMap;
@@ -29,20 +32,32 @@ export class CombinacionComponent {
 
   async registrarUsuario() {
 
-    if (this.repetirContrasena == this.usuarioSignUp.contrasena
-      && !(this.usuarioSignUp.contrasena.length == 0 ||
-        this.usuarioSignUp.correo.length == 0 ||
-        this.usuarioSignUp.direccion.length == 0 ||
-        this.usuarioSignUp.nombreUsuario.length == 0)) {
-
-      await this.api.registrarUsuario(this.usuarioSignUp);
-
-      this.toggle = false;
-      this.colorVentanas();
-
+    const headers = { 'Content-Type': 'application/json' };
+    
+    if (this.usuarioSignUp.nombreUsuario.trim().length>0) {
+      if (this.usuarioSignUp.correo.trim().length>0) {
+        if (this.usuarioSignUp.contrasena.trim().length>0) {
+          if (this.usuarioSignUp.contrasena == this.repetirContrasena) {
+            if (this.usuarioSignUp.direccion.trim().length>0) {
+              this.usuarioSignUp.correo = this.usuarioSignUp.correo.replaceAll(" ", "")
+              await this.api.registrarUsuario(this.usuarioSignUp)
+                //alert("Registro compleado")
+                
+              }
+             else{
+              alert("La dirección no puede estar vacía")
+            }
+          } else {
+            alert("Las contraseñas deben ser iguales")
+          }
+        } else {
+          alert("La contraseña no puede estar vacía")
+        }
+      } else {
+        alert("El correo no puede estar vacío")
+      }
     } else {
-      alert("Las contraseñas deben ser iguales y debes completar todos los campos");
-
+      alert("El nombre no puede estar vacío");
     }
   }
 
