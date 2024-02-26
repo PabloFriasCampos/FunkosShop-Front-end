@@ -1,44 +1,46 @@
-
 .shipping-address {
-    background-color: #f8f9fa;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 5px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
-.nombre{
-margin-left: -13rem;
+
+.nombre {
+  margin-left: -13rem;
 }
+
 .purchase-details {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 5px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
 }
 
 .order-item {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    align-items: center;
-
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  align-items: center;
+  cursor: pointer;
 }
 
 .right-align {
-    margin-left: auto;
-    margin-right: 0;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .summary {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 5px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
 }
 
 .product-image img {
-    width: 150px;
-    height: auto;
+  width: 150px;
+  height: auto;
 }
-.container{
-    margin-top: 2rem;
+
+.container {
+  margin-top: 2rem;
 }
 
 .titulo {
@@ -47,31 +49,37 @@ margin-left: -13rem;
   -webkit-text-stroke-color: black;
 
 }
+
 /* Media queries para pantallas de baja resolución */
 @media (max-width: 500px) {
-    .purchase-details {
-        padding: 10px;
-    }
-    .product-image img {
-        width: 100px;
-    }
-    .order-item button {
-        align-items: center;
-        font-size: 14px;
-        margin: 0.5rem;
-        
-    }
-    .order-item p {
-        align-items: center;
-        font-size: 14px;
-        
-    }
-    .purchase-details .order-item {
-        flex-direction: column;
+  .purchase-details {
+    padding: 10px;
+  }
 
-        
-    }
-    .quantity-controls button {
-        padding: 5px;
-    }
+  .product-image img {
+    width: 100px;
+  }
+
+  .order-item button {
+    align-items: center;
+    font-size: 14px;
+    margin: 0.5rem;
+
+  }
+
+  .order-item p {
+    align-items: center;
+    font-size: 14px;
+
+  }
+
+  .purchase-details .order-item {
+    flex-direction: column;
+
+
+  }
+
+  .quantity-controls button {
+    padding: 5px;
+  }
 }

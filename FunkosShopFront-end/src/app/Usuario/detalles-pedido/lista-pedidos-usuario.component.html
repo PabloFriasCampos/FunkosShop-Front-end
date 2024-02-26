@@ -16,7 +16,7 @@
             <div>Fecha: {{pedido.fechaPedido.split('T')[0]}}</div>
             <br>
             <div>
-                <div class="order-item" *ngFor="let producto of pedido.listaProductosPedido">
+                <div class="order-item" *ngFor="let producto of pedido.listaProductosPedido" [routerLink]="'/product/' + producto.producto.productoID">
                     <div class="product-image">
                         <img [src]="urlImage(producto.producto.productoID)" alt="Imagen del Producto" class="rounded-image">
                     </div>

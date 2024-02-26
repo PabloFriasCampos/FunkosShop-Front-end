@@ -11,6 +11,10 @@ import { authGuard } from './auth.guard';
 import { PanelUsuarioComponent } from './Usuario/panel-usuario/panel-usuario.component';
 import { DatosUsuarioComponent } from './Usuario/datos-usuario/datos-usuario.component';
 import { ListaPedidosUsuarioComponent } from './Usuario/detalles-pedido/lista-pedidos-usuario.component';
+import { ListaProductosComponent } from './Admin/lista-productos/lista-productos.component';
+import { ListaUsuariosComponent } from './Admin/lista-usuarios/lista-usuarios.component';
+import { AdminProductoComponent } from './Admin/admin-producto/admin-producto.component';
+import { AdminUsuarioComponent } from './Admin/admin-usuario/admin-usuario.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -24,6 +28,10 @@ const routes: Routes = [
   { path: 'user', component: PanelUsuarioComponent, canActivate: [authGuard] },
   { path: 'userPedido/:pedidoID', component: ListaPedidosUsuarioComponent, canActivate: [authGuard] },
   { path: 'userDatos', component: DatosUsuarioComponent, canActivate: [authGuard] },
+  { path: 'adminProductos', component: ListaProductosComponent, canActivate: [authGuard] },
+  { path: 'adminUsuarios', component: ListaUsuariosComponent, canActivate: [authGuard] },
+  { path: 'adminProducto/:productoID', component: AdminProductoComponent, canActivate: [authGuard] },
+  { path: 'adminUsuario/:usuarioID', component: AdminUsuarioComponent, canActivate: [authGuard] },
 
 ];
 

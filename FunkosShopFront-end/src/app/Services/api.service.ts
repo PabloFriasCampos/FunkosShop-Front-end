@@ -22,6 +22,12 @@ export class APIService {
 
   // ------------------------------ Peticiones Usuario ------------------------------
 
+  async obtenerTodosUsuarios(): Promise<Usuario[]> {
+    const request$ = await this.http.get(`${this.rutaAPI}Usuarios`);
+    return await lastValueFrom(request$) as Usuario[];
+
+  }
+
   async obtenerUsuario(): Promise<Usuario> {
     let usuarioID = this.getUsuarioID();
     const request$ = await this.http.get(`${this.rutaAPI}Usuarios/` + usuarioID);
@@ -74,6 +80,12 @@ export class APIService {
   }
 
   // ------------------------------ Peticiones Prodcutos ------------------------------
+
+  async obtenerTodosProductos(): Promise<Producto[]> {
+    const request$ = await this.http.get(`${this.rutaAPI}Productos/ListaCompleta`);
+    return await lastValueFrom(request$) as Producto[];
+
+  }
 
   async obtenerProductos(): Promise<CategoriaProductos[]> {
     const request$ = await this.http.get(`${this.rutaAPI}Productos`);

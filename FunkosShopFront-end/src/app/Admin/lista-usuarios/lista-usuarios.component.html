@@ -4,10 +4,10 @@
 
 <header>
   <div class="container">
-    <h1>List de usuario</h1>
+    <h1>Lista de usuarios</h1>
     <div class="button-container">
-      <button class="admin-button">ADMIN USUARIO</button>
-      <button class="admin-button">ADMIN PRODUCTO</button>
+      <button class="admin-button" [routerLink]="'/adminUsuarios'">ADMIN USUARIOS</button>
+      <button class="admin-button" [routerLink]="'/adminProductos'">ADMIN PRODUCTOS</button>
     </div>
   </div>
 </header>
@@ -17,11 +17,9 @@
         <!-- Detalles de la compra -->
         <div class="purchase-details right-align">
             <div>
-                <div class="order-item">
-                    <div class="product-image">
-                        <img src="descarga.jpg" alt="Imagen del Usuario" class="rounded-image">
-                    </div>
-                    <div>Nombre 1</div>
+                <div class="order-item" role="button" *ngFor="let usuario of usuarios" [routerLink]="'/adminProducto/' + usuario.usuarioID">
+                    <div>{{usuario.nombreUsuario}}</div>
+                    <div>{{usuario.rol}}</div>
                     <div>
                         <button>Eliminar</button>
                         <button>Editar</button>
