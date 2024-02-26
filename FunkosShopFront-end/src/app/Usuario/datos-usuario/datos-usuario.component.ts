@@ -17,7 +17,6 @@ export class DatosUsuarioComponent implements OnInit {
   confirmPasswordToModify: string = "";
   addressToModify: string = "";
   usuarioID: string = "";
-  withoutPassword: any = null
 
   constructor(private http: HttpClient, private totalCarrito: TotalCarritoService) { }
 
