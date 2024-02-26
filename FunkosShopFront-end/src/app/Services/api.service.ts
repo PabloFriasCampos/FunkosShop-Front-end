@@ -8,6 +8,7 @@ import { ProductoCarrito } from '../model/producto-carrito';
 import { Transaccion } from '../model/transaccion';
 import { CategoriaProductos } from '../model/categoria-productos';
 import { Producto } from '../model/producto';
+import { Pedido } from '../model/pedido';
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +59,18 @@ export class APIService {
     }
 
     return loggeado;
+  }
+
+  async obtenerPedidosUsuario(): Promise<Pedido[]> {
+    let usuarioID = this.getUsuarioID();
+
+    const request$ = await this.http.get(`${this.rutaAPI}PedidoCripto/Usuario/${usuarioID}`);
+    return await lastValueFrom(request$) as Pedido[];
+  }
+
+  async obtenerPedido(id: number): Promise<Pedido> {
+    const request$ = await this.http.get(`${this.rutaAPI}PedidoCripto/${id}`);
+    return await lastValueFrom(request$) as Pedido;
   }
 
   // ------------------------------ Peticiones Prodcutos ------------------------------

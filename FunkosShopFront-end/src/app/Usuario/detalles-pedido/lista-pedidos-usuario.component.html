@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+
+    <div class="container">
+<div class="titulo"><h1>Informacion de pedido</h1> </div>
+        <div class="purchase-details right-align">
+            <div>ID del pedido: {{pedido.pedidoID}}</div>
+            <div>Fecha: {{pedido.fechaPedido.split('T')[0]}}</div>
+            <br>
+            <div>
+                <div class="order-item" *ngFor="let producto of pedido.listaProductosPedido">
+                    <div class="product-image">
+                        <img [src]="urlImage(producto.producto.productoID)" alt="Imagen del Producto" class="rounded-image">
+                    </div>
+                    <div class="nombre">{{producto.producto.nombreProducto}}</div>
+                    <div class="quantity-controls">
+                        <span class="cantidad">{{producto.cantidadProducto}}</span>
+                    </div>
+                    <div>{{producto.totalProductoEUR}} €</div>
+                </div>
+                <hr>
+            </div>   
+            
+            <div class="order-item">
+                <strong>Total:</strong>
+                <strong>{{pedido.totalPedidoETH}} ETH</strong>
+                <strong>{{pedido.totalPedidoEUR}} €</strong>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

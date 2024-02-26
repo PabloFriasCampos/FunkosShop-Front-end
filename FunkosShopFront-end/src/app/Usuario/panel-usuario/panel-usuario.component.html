@@ -11,10 +11,10 @@
         <div class="text-right">Precio</div>
       </div>
      <!-- AÑADIR LOGICA de aki para abajo -->
-      <div [routerLink]="'/userPedidos'" class="main-div d-flex justify-content-between align-items-center border p-3">
-        <div class="text-left">Pedido</div>
-        <div class="text-center">Información</div>
-        <div class="text-right">Precio</div>
+      <div [routerLink]="'/userPedido/' + pedido.pedidoID" class="main-div d-flex justify-content-between align-items-center border p-3" *ngFor="let pedido of pedidos">
+        <div class="text-left">{{pedido.pedidoID}}</div>
+        <div class="text-center">{{pedido.fechaPedido.split	('T')[0]}}</div>
+        <div class="text-right">{{pedido.totalPedidoEUR}} €</div>
       </div>
 
     </div>
