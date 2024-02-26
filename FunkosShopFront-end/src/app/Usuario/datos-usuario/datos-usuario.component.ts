@@ -17,6 +17,7 @@ export class DatosUsuarioComponent implements OnInit {
   confirmPasswordToModify: string = "";
   addressToModify: string = "";
   usuarioID: string = "";
+  withoutPassword: any = null
 
   constructor(private http: HttpClient, private totalCarrito: TotalCarritoService) { }
 
@@ -33,26 +34,33 @@ export class DatosUsuarioComponent implements OnInit {
   async modificaDatos() {
 
     const headers = { 'Content-Type': 'application/json' };
-    if (this.nameUserToModify != "" || this.nameUserToModify.trim.length > 0) {
-      if (this.correoUserToModify != "" || this.correoUserToModify.trim.length > 0) {
-        if (this.passwordUserToModify != "" || this.passwordUserToModify.trim.length > 0) {
-          if (this.passwordUserToModify == this.confirmPasswordToModify) {
-            if (this.addressToModify != "" || this.addressToModify.trim.length > 0) {
-              this.cuentaUser.nombreUsuario = this.nameUserToModify,
-              this.cuentaUser.direccion = this.addressToModify,
-              this.cuentaUser.correo = this.correoUserToModify,
+    let request$
+    if (this.nameUserToModify.trim().length > 0) {
+      if (this.correoUserToModify.trim().length > 0) {
+        if (this.addressToModify.trim().length > 0) {
+          if (this.passwordUserToModify.length > 0 || this.confirmPasswordToModify.length > 0) {
+            if (this.passwordUserToModify == this.confirmPasswordToModify) {
+              this.cuentaUser.nombreUsuario = this.nameUserToModify
+              this.cuentaUser.direccion = this.addressToModify
+              this.cuentaUser.correo = this.correoUserToModify
               this.cuentaUser.contrasena = this.passwordUserToModify
-              const request$ = await this.http.put("https://localhost:7281/api/Usuarios/modifyUser/"
-               + this.usuarioID, JSON.stringify(this.cuentaUser), { headers });
+              request$ = await this.http.put("https://localhost:7281/api/Usuarios/modifyUser/"
+                + this.usuarioID, JSON.stringify(this.cuentaUser), { headers });
               await lastValueFrom(request$)
-            } else{
-              alert("La dirección no puede estar vacía")
+            } else {
+              alert("Las contraseñas deben ser iguales.")
             }
           } else {
-            alert("Las contraseñas deben ser iguales")
+            this.cuentaUser.nombreUsuario = this.nameUserToModify
+            this.cuentaUser.direccion = this.addressToModify
+            this.cuentaUser.correo = this.correoUserToModify
+            this.cuentaUser.contrasena = ""
+            request$ = await this.http.put("https://localhost:7281/api/Usuarios/modifyUser/"
+              + this.usuarioID, JSON.stringify(this.cuentaUser), { headers });
+            await lastValueFrom(request$)
           }
         } else {
-          alert("La contraseña no puede estar vacía")
+          alert("La dirección no puede estar vacía")
         }
       } else {
         alert("Correo incorrecto")
@@ -60,7 +68,7 @@ export class DatosUsuarioComponent implements OnInit {
     } else {
       alert("El nombre está vacío");
     }
-    
+
 
   }
   logOut() {
