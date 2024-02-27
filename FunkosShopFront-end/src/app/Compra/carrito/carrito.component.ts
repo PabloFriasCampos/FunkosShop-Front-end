@@ -44,7 +44,6 @@ export class CarritoComponent implements OnInit {
     for (let producto of this.carrito.listaProductosCarrito) {
       this.carrito.totalCarritoEUR += producto.totalProductoEUR;
     }
-    console.log(this.carrito.totalCarritoEUR)
 
   }
 

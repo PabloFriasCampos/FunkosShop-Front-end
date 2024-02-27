@@ -17,12 +17,13 @@
         <!-- Detalles de la compra -->
         <div class="purchase-details right-align">
             <div>
-                <div class="order-item" role="button" *ngFor="let usuario of usuarios" [routerLink]="'/adminProducto/' + usuario.usuarioID">
+                <div class="order-item" *ngFor="let usuario of usuarios">
                     <div>{{usuario.nombreUsuario}}</div>
+                    <div>{{usuario.correo}}</div>
                     <div>{{usuario.rol}}</div>
                     <div>
                         <button class="btn btn-primary botones">Eliminar</button>
-                        <button class="btn btn-primary botones">Editar</button>
+                        <button class="btn btn-primary botones" [routerLink]="'/adminUsuario/' + usuario.usuarioID">Editar</button>
                     </div>
                 </div>
                 <hr>

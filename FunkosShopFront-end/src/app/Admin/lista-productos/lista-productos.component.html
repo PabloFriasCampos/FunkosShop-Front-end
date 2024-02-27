@@ -11,16 +11,18 @@
     <div class="container">
         <div class="purchase-details right-align">
             <div>
-                <div class="order-item"  role="button" *ngFor="let producto of productos" [routerLink]="'/adminProducto/' + producto.productoID">
+                <div class="order-item" *ngFor="let producto of productos">
                   <div class="quantity-controls">{{producto.productoID}}</div>
                     <div class="product-image">
                         <img [src]="urlImage(producto.productoID)" alt="Imagen del Producto" class="rounded-image">
                     </div>
                     <div>{{producto.nombreProducto}}</div>
                     <div>{{producto.precioEUR}} €</div>
+                    <div>{{producto.precioEUR}} €</div>
+                    <div>{{producto.stock}} Unidades</div>
                     <div>
                         <button>Eliminar</button>
-                        <button>Editar</button>
+                        <button [routerLink]="'/adminProducto/' + producto.productoID">Editar</button>
                     </div>
                 </div>
                 <hr>

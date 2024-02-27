@@ -81,12 +81,6 @@ export class APIService {
 
   // ------------------------------ Peticiones Prodcutos ------------------------------
 
-  async obtenerTodosProductos(): Promise<Producto[]> {
-    const request$ = await this.http.get(`${this.rutaAPI}Productos/ListaCompleta`);
-    return await lastValueFrom(request$) as Producto[];
-
-  }
-
   async obtenerProductos(): Promise<CategoriaProductos[]> {
     const request$ = await this.http.get(`${this.rutaAPI}Productos`);
     return await lastValueFrom(request$) as CategoriaProductos[];
@@ -191,8 +185,6 @@ export class APIService {
   }
 
 
-
-
   // ------------------------------ Peticiones Compra ------------------------------
 
   async obtenerETH(): Promise<number> {
@@ -228,6 +220,21 @@ export class APIService {
     const headers = this.getRequestHeaders();
     const request$ = await this.http.post(`${this.rutaAPI}PedidoCripto/check/${idTransaccion}`, JSON.stringify(body), { headers });
     return await lastValueFrom(request$) as boolean;
+
+  }
+
+  // ------------------------------ Peticiones Admin ------------------------------
+
+  async obtenerTodosProductos(): Promise<Producto[]> {
+    const request$ = await this.http.get(`${this.rutaAPI}Admin/listProducts`);
+    return await lastValueFrom(request$) as Producto[];
+
+  }
+
+  async obtenerUsuarioAdmin(id: number): Promise<Usuario> {
+    const request$ = await this.http.get(`${this.rutaAPI}Usuarios/` + id)
+    const usuario = await lastValueFrom(request$);
+    return usuario as Usuario;
 
   }
 
