@@ -2,13 +2,13 @@
   <div class="container">
     <h1>Lista de productos</h1>
     <div class="button-container">
-      <button class="admin-button" [routerLink]="'/adminUsuarios'">ADMIN USUARIOS</button>
-      <button class="admin-button" [routerLink]="'/adminProductos'">ADMIN PRODUCTOS</button>
+      <button class="admin-button btn btn-primary" [routerLink]="'/adminUsuarios'">ADMIN USUARIOS</button>
+      <button class="admin-button btn btn-primary" [routerLink]="'/adminProductos'">ADMIN PRODUCTOS</button>
     </div>
   </div>
 </header>
 
-    <div class="container">
+    <div class="container" id="caja">
         <div class="purchase-details right-align">
             <div>
                 <div class="order-item"  role="button" *ngFor="let producto of productos" [routerLink]="'/adminProducto/' + producto.productoID">
@@ -19,13 +19,13 @@
                     <div>{{producto.nombreProducto}}</div>
                     <div>{{producto.precioEUR}} €</div>
                     <div>
-                        <button>Eliminar</button>
-                        <button>Editar</button>
+                        <button class="btn btn-primary botones">Eliminar</button>
+                        <button class="btn btn-primary botones">Editar</button>
                     </div>
                 </div>
                 <hr>
             </div>
-                <button class="btn btn-primary">Añadir Producto</button>
+                <button class="btn btn-primary" id="añadir">Añadir Producto</button>
         </div>
     </div>
 

@@ -17,7 +17,7 @@
         <!-- Detalles de la compra -->
         <div class="purchase-details right-align">
             <div>
-                <div class="order-item" role="button" *ngFor="let usuario of usuarios" [routerLink]="'/adminProducto/' + usuario.usuarioID">
+                <div class="order-item" role="button" *ngFor="let usuario of usuarios" [routerLink]="'/adminUsuario/' + usuario.usuarioID">
                     <div>{{usuario.nombreUsuario}}</div>
                     <div>{{usuario.rol}}</div>
                     <div>
