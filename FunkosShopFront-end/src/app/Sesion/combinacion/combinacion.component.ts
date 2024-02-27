@@ -33,18 +33,18 @@ export class CombinacionComponent {
   async registrarUsuario() {
 
     const headers = { 'Content-Type': 'application/json' };
-    
-    if (this.usuarioSignUp.nombreUsuario.trim().length>0) {
-      if (this.usuarioSignUp.correo.trim().length>0) {
-        if (this.usuarioSignUp.contrasena.trim().length>0) {
+
+    if (this.usuarioSignUp.nombreUsuario.trim().length > 0) {
+      if (this.usuarioSignUp.correo.trim().length > 0) {
+        if (this.usuarioSignUp.contrasena.trim().length > 0) {
           if (this.usuarioSignUp.contrasena == this.repetirContrasena) {
-            if (this.usuarioSignUp.direccion.trim().length>0) {
+            if (this.usuarioSignUp.direccion.trim().length > 0) {
               this.usuarioSignUp.correo = this.usuarioSignUp.correo.replaceAll(" ", "")
               await this.api.registrarUsuario(this.usuarioSignUp)
-                //alert("Registro compleado")
-                
-              }
-             else{
+              //alert("Registro compleado")
+
+            }
+            else {
               alert("La dirección no puede estar vacía")
             }
           } else {
@@ -70,7 +70,8 @@ export class CombinacionComponent {
     } else {
 
       try {
-        let logged: boolean = await this.api.iniciarSesion(this.usuarioLogIn, this.recuerdame);
+        let logged: Boolean = await this.api.iniciarSesion(this.usuarioLogIn, this.recuerdame);
+        
 
         if (logged) {
           if (this.redirectTo != null) {

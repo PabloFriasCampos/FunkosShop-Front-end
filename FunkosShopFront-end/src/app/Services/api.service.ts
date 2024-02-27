@@ -9,6 +9,7 @@ import { Transaccion } from '../model/transaccion';
 import { CategoriaProductos } from '../model/categoria-productos';
 import { Producto } from '../model/producto';
 import { Pedido } from '../model/pedido';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -17,20 +18,21 @@ export class APIService {
 
   rutaAPI: string = 'https://localhost:7281/api/';
   rutaImages: string = 'https://localhost:7281/images/';
-
+  helper = new JwtHelperService();
+  JWTID: string = '';
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   // ------------------------------ Peticiones Usuario ------------------------------
 
   async obtenerTodosUsuarios(): Promise<Usuario[]> {
-    const request$ = await this.http.get(`${this.rutaAPI}Usuarios`);
+    const request$ = this.http.get(`${this.rutaAPI}Usuarios`);
     return await lastValueFrom(request$) as Usuario[];
 
   }
 
   async obtenerUsuario(): Promise<Usuario> {
     let usuarioID = this.getUsuarioID();
-    const request$ = await this.http.get(`${this.rutaAPI}Usuarios/` + usuarioID);
+    const request$ = this.http.get(`${this.rutaAPI}Usuarios/` + usuarioID);
     const resultado = await lastValueFrom(request$);
     return resultado as Usuario;
 
@@ -38,28 +40,35 @@ export class APIService {
 
   async registrarUsuario(usuarioSignUp: Usuario) {
     const options = this.getRequestOptions();
-    let request$ = await this.http.post(`${this.rutaAPI}Usuarios/signup`, JSON.stringify(usuarioSignUp), options);
+    let request$ = this.http.post(`${this.rutaAPI}Usuarios/signup`, JSON.stringify(usuarioSignUp), options);
     await lastValueFrom(request$);
   }
 
-  async iniciarSesion(usuarioLogIn: Usuario, recuerdame: boolean): Promise<boolean> {
+  async iniciarSesion(usuarioLogIn: Usuario, recuerdame: boolean): Promise<Boolean> {
     const options = this.getRequestOptions();
-    let JWTID;
-    let loggeado: boolean = false;
 
-    const request$ = await this.http.post<string>(`${this.rutaAPI}Usuarios/login`, JSON.stringify(usuarioLogIn), options);
+    let JWTID;
+    let loggeado: boolean = true;
+
+    const request$ = this.http.post(`${this.rutaAPI}Usuarios/login`, JSON.stringify(usuarioLogIn), options);
     JWTID = await lastValueFrom(request$)
 
+
+    const decodedToken = this.helper.decodeToken(JWTID.toString());
+
+
+
     if (JWTID != null) {
-      let id = JWTID.toString().split(';')[1];
-      let jsonWebToken = JWTID.toString().split(';')[0];
+      let jsonWebToken = JWTID.toString()
+
       if (recuerdame) {
         localStorage.setItem('JsonWebToken', jsonWebToken);
-        localStorage.setItem('usuarioID', id);
+        localStorage.setItem('usuarioID', decodedToken.id);
 
       } else {
         sessionStorage.setItem('JsonWebToken', jsonWebToken);
-        sessionStorage.setItem('usuarioID', id);
+        sessionStorage.setItem('usuarioID', decodedToken.id);
+        sessionStorage.setItem('role', decodedToken.role);
       }
       loggeado = true;
     }
@@ -70,19 +79,20 @@ export class APIService {
   async obtenerPedidosUsuario(): Promise<Pedido[]> {
     let usuarioID = this.getUsuarioID();
 
-    const request$ = await this.http.get(`${this.rutaAPI}PedidoCripto/Usuario/${usuarioID}`);
+    const request$ = this.http.get(`${this.rutaAPI}PedidoCripto/Usuario/${usuarioID}`);
     return await lastValueFrom(request$) as Pedido[];
   }
 
   async obtenerPedido(id: number): Promise<Pedido> {
-    const request$ = await this.http.get(`${this.rutaAPI}PedidoCripto/${id}`);
+    const request$ = this.http.get(`${this.rutaAPI}PedidoCripto/${id}`);
     return await lastValueFrom(request$) as Pedido;
   }
 
   // ------------------------------ Peticiones Prodcutos ------------------------------
 
   async obtenerProductos(): Promise<CategoriaProductos[]> {
-    const request$ = await this.http.get(`${this.rutaAPI}Productos`);
+    const headers = this.getRequestHeaders(); // Obtener los encabezados con el JWT
+    const request$ = this.http.get(`${this.rutaAPI}Productos`, { headers }); // Pasar los encabezados en la solicitud
     return await lastValueFrom(request$) as CategoriaProductos[];
 
   }
@@ -93,7 +103,7 @@ export class APIService {
   }
 
   async cargarProducto(id: number): Promise<Producto> {
-    const request$ = await this.http.get(`${this.rutaAPI}Productos/` + id);
+    const request$ = this.http.get(`${this.rutaAPI}Productos/` + id,);
     return await lastValueFrom(request$) as Producto;
 
   }
@@ -111,7 +121,7 @@ export class APIService {
 
   async cargarCarritoBBDD(): Promise<Carrito> {
     let usuarioID = this.getUsuarioID();
-    const request$ = await this.http.get(`${this.rutaAPI}Carritos/` + usuarioID);
+    const request$ = this.http.get(`${this.rutaAPI}Carritos/` + usuarioID);
     const carrito = await lastValueFrom(request$) as Carrito;
     carrito.totalCarritoEUR = this.totalCarrito(carrito)
     return carrito;
@@ -137,7 +147,7 @@ export class APIService {
   async agregarBBDD(producto: Producto, cantidad: number) {
     const headers = this.getRequestHeaders();
     let idCarrito = this.getUsuarioID();
-    const request$ = await this.http.post("https://localhost:7281/api/ProductosCarrito/" + producto.productoID + "/" + idCarrito + "/" + cantidad, { headers });
+    const request$ = this.http.post("https://localhost:7281/api/ProductosCarrito/" + producto.productoID + "/" + idCarrito + "/" + cantidad, { headers });
     await lastValueFrom(request$);
   }
 
@@ -188,7 +198,7 @@ export class APIService {
   // ------------------------------ Peticiones Compra ------------------------------
 
   async obtenerETH(): Promise<number> {
-    const request$ = await this.http.get(`${this.rutaAPI}PedidoCripto/ETH`);
+    const request$ = this.http.get(`${this.rutaAPI}PedidoCripto/ETH`);
     return await lastValueFrom(request$) as number;
 
   }
@@ -201,7 +211,7 @@ export class APIService {
       cuentaMetaMask: cuentaMetaMask,
       id: usuarioID
     };
-    const request$ = await this.http.post(`${this.rutaAPI}PedidoCripto/buy`, JSON.stringify(body), { headers });
+    const request$ = this.http.post(`${this.rutaAPI}PedidoCripto/buy`, JSON.stringify(body), { headers });
     return await lastValueFrom(request$) as Transaccion;
 
   }
@@ -218,7 +228,7 @@ export class APIService {
       carritoLocal: carritoLocal
     };
     const headers = this.getRequestHeaders();
-    const request$ = await this.http.post(`${this.rutaAPI}PedidoCripto/check/${idTransaccion}`, JSON.stringify(body), { headers });
+    const request$ = this.http.post(`${this.rutaAPI}PedidoCripto/check/${idTransaccion}`, JSON.stringify(body), { headers });
     return await lastValueFrom(request$) as boolean;
 
   }
@@ -226,13 +236,13 @@ export class APIService {
   // ------------------------------ Peticiones Admin ------------------------------
 
   async obtenerTodosProductos(): Promise<Producto[]> {
-    const request$ = await this.http.get(`${this.rutaAPI}Admin/listProducts`);
+    const request$ = this.http.get(`${this.rutaAPI}Admin/listProducts`);
     return await lastValueFrom(request$) as Producto[];
 
   }
 
   async obtenerUsuarioAdmin(id: number): Promise<Usuario> {
-    const request$ = await this.http.get(`${this.rutaAPI}Usuarios/` + id)
+    const request$ = this.http.get(`${this.rutaAPI}Usuarios/` + id)
     const usuario = await lastValueFrom(request$);
     return usuario as Usuario;
 
@@ -245,13 +255,20 @@ export class APIService {
   }
 
   private getRequestHeaders(): HttpHeaders {
-    return new HttpHeaders({ 'Content-Type': 'application/json' });
+    const token = this.getToken(); // Obtener el JWT
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}` // Agregar el JWT al encabezado de autorización
+    });
+  }
+  private getToken(): string {
+    return localStorage.getItem('JsonWebToken') || sessionStorage.getItem('JsonWebToken') || ''; // Obtener el JWT de localStorage o sessionStorage
   }
 
   private getRequestOptions(): any {
     return {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }),
       responseType: 'text'
     };
