@@ -1,6 +1,3 @@
-
-
-
 <div class="container">
     <!-- dirección de envío -->
     <div class="shipping-address right-align">
@@ -46,9 +43,13 @@
                     <p>{{carrito.totalCarritoEUR/eth}} €/ETH</p>
                 </div>
                 <hr>
-                <button class="btn btn-primary btn-block" (click)="comprarProductos()">Confirmar Pago</button>
+                <button class="btn btn-primary btn-block" (click)="comprarProductos()">{{textoPago}}</button>
             </div>
         </div>
     </div>
 </div>
 
+<div class="loader-container" *ngIf="esperaCompra == true"><!-- loader -->
+    <div class="loader"></div>
+    <div class="loader2"></div>
+</div>

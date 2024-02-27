@@ -46,6 +46,9 @@ export class DatosUsuarioComponent implements OnInit {
               request$ = await this.http.put("https://localhost:7281/api/Usuarios/modifyUser/"
                 + this.usuarioID, JSON.stringify(this.cuentaUser), { headers });
               await lastValueFrom(request$)
+              setTimeout(() => {
+                location.reload();
+              }, 1);
             } else {
               alert("Las contraseñas deben ser iguales.")
             }
@@ -57,6 +60,9 @@ export class DatosUsuarioComponent implements OnInit {
             request$ = await this.http.put("https://localhost:7281/api/Usuarios/modifyUser/"
               + this.usuarioID, JSON.stringify(this.cuentaUser), { headers });
             await lastValueFrom(request$)
+            setTimeout(() => {
+              location.reload();
+            }, 1);
           }
         } else {
           alert("La dirección no puede estar vacía")

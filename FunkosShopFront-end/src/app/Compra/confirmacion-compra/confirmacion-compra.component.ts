@@ -19,6 +19,8 @@ export class ConfirmacionCompraComponent implements OnInit {
   carrito: Carrito = new Carrito;
   usuario: Usuario = new Usuario;
   eth: number = 0;
+  esperaCompra: boolean = false;
+  textoPago: string = "Confirmar Pago";
 
   constructor(private api: APIService, private router: Router, private carritoService: TotalCarritoService) { }
 
@@ -73,6 +75,9 @@ export class ConfirmacionCompraComponent implements OnInit {
   }
 
   async comprarProductos() {
+    this.esperaCompra = true;
+    this.textoPago = "Espere...";
+
     const cuentaMetaMask = await this.cuentaMetaMask();
     let productos: ProductoCarrito[] = this.carrito.listaProductosCarrito;
     let transaccion = await this.api.comprarProductos(productos, cuentaMetaMask) as Transaccion;
@@ -94,10 +99,14 @@ export class ConfirmacionCompraComponent implements OnInit {
       this.router.navigateByUrl('');
       sessionStorage.removeItem('carrito');
       this.carritoService.cambiarTotal();
+      this.esperaCompra = false;
+      this.textoPago = "Confirmar Pago";
     }
   }
 
 }
+
+
 
 declare global {
   interface Window {
