@@ -24,11 +24,6 @@ export class APIService {
 
   // ------------------------------ Peticiones Usuario ------------------------------
 
-  async obtenerTodosUsuarios(): Promise<Usuario[]> {
-    const request$ = this.http.get(`${this.rutaAPI}Usuarios`);
-    return await lastValueFrom(request$) as Usuario[];
-
-  }
 
   async obtenerUsuario(): Promise<Usuario> {
     let usuarioID = this.getUsuarioID();
@@ -56,8 +51,6 @@ export class APIService {
 
     const decodedToken = this.helper.decodeToken(JWTID.toString());
 
-
-
     if (JWTID != null) {
       let jsonWebToken = JWTID.toString()
 
@@ -68,7 +61,6 @@ export class APIService {
       } else {
         sessionStorage.setItem('JsonWebToken', jsonWebToken);
         sessionStorage.setItem('usuarioID', decodedToken.id);
-        sessionStorage.setItem('role', decodedToken.role);
       }
       loggeado = true;
     }
@@ -88,11 +80,10 @@ export class APIService {
     return await lastValueFrom(request$) as Pedido;
   }
 
-  // ------------------------------ Peticiones Prodcutos ------------------------------
+  // ------------------------------ Peticiones Productos ------------------------------
 
   async obtenerProductos(): Promise<CategoriaProductos[]> {
-    const headers = this.getRequestHeaders(); // Obtener los encabezados con el JWT
-    const request$ = this.http.get(`${this.rutaAPI}Productos`, { headers }); // Pasar los encabezados en la solicitud
+    const request$ = this.http.get(`${this.rutaAPI}Productos`); // Pasar los encabezados en la solicitud
     return await lastValueFrom(request$) as CategoriaProductos[];
 
   }
@@ -120,8 +111,10 @@ export class APIService {
   }
 
   async cargarCarritoBBDD(): Promise<Carrito> {
+    
+    const headers = this.getRequestHeaders(); // Obtener los encabezados con el JWT
     let usuarioID = this.getUsuarioID();
-    const request$ = this.http.get(`${this.rutaAPI}Carritos/` + usuarioID);
+    const request$ = this.http.get(`${this.rutaAPI}Carritos/` + usuarioID, { headers });
     const carrito = await lastValueFrom(request$) as Carrito;
     carrito.totalCarritoEUR = this.totalCarrito(carrito)
     return carrito;
@@ -236,7 +229,8 @@ export class APIService {
   // ------------------------------ Peticiones Admin ------------------------------
 
   async obtenerTodosProductos(): Promise<Producto[]> {
-    const request$ = this.http.get(`${this.rutaAPI}Admin/listProducts`);
+    const headers = this.getRequestHeaders()
+    const request$ = this.http.get(`${this.rutaAPI}Admin/listProducts`, { headers });
     return await lastValueFrom(request$) as Producto[];
 
   }
@@ -245,6 +239,13 @@ export class APIService {
     const request$ = this.http.get(`${this.rutaAPI}Usuarios/` + id)
     const usuario = await lastValueFrom(request$);
     return usuario as Usuario;
+
+  }
+  
+  async obtenerTodosUsuarios(): Promise<Usuario[]> {
+    const headers = this.getRequestHeaders()
+    const request$ = this.http.get(`${this.rutaAPI}Admin/getUsers`, { headers });
+    return await lastValueFrom(request$) as Usuario[];
 
   }
 

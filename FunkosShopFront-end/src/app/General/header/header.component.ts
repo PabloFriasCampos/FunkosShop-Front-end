@@ -20,7 +20,9 @@ export class HeaderComponent implements OnInit {
 
   logged(): boolean {
     return this.auth.isLogged()
-
   }
 
+  isAdmin():boolean{
+    return this.auth.isAdmin()
+  }
 }
