@@ -6,14 +6,14 @@
   <div class="container">
     <h1>Lista de usuarios</h1>
     <div class="button-container">
-      <button class="admin-button" [routerLink]="'/adminUsuarios'">ADMIN USUARIOS</button>
-      <button class="admin-button" [routerLink]="'/adminProductos'">ADMIN PRODUCTOS</button>
+      <button class="admin-button btn btn-primary" [routerLink]="'/adminUsuarios'">ADMIN USUARIOS</button>
+      <button class="admin-button btn btn-primary" [routerLink]="'/adminProductos'">ADMIN PRODUCTOS</button>
     </div>
   </div>
 </header>
 
 
-    <div class="container">
+    <div class="container" id="caja">
         <!-- Detalles de la compra -->
         <div class="purchase-details right-align">
             <div>
@@ -21,12 +21,12 @@
                     <div>{{usuario.nombreUsuario}}</div>
                     <div>{{usuario.rol}}</div>
                     <div>
-                        <button>Eliminar</button>
-                        <button>Editar</button>
+                        <button class="btn btn-primary botones">Eliminar</button>
+                        <button class="btn btn-primary botones">Editar</button>
                     </div>
                 </div>
                 <hr>
             </div>
-                <button class="btn btn-primary">Añadir Usuario</button>
+                <button class="btn btn-primary" id="añadir">Añadir Usuario</button>
         </div>
     </div>

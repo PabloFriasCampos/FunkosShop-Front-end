@@ -1,7 +1,27 @@
 
-.btn-primary{
-width: 100%;
-height: 5rem;
+.botones{
+margin: 1rem;
+}
+.botones:hover{
+    background-color: #E7B10A;
+    border-color: #E7B10A;
+}
+.admin-button{
+margin: 1rem;
+background-color: #333;
+border-color: #d1d1d1;
+}
+.admin-button:hover{
+    background-color: #f8f9fa;
+    color: #1a1a1a;
+}
+#añadir{
+    width: 100%;
+    height: 5rem;
+}
+#añadir:hover{
+    background-color: #E7B10A;
+    border-color: #E7B10A;
 }
 .shipping-address {
     background-color: #f8f9fa;
@@ -40,7 +60,10 @@ height: 5rem;
     height: auto;
 }
 
-/* Media queries para pantallas de baja resolución */
+#caja{
+    margin-top: 2rem;
+}
+
 @media (max-width: 500px) {
     .purchase-details {
         padding: 10px;
@@ -73,3 +96,4 @@ background-color: #333;
 color: white;
 padding: 1rem;
 }
+
