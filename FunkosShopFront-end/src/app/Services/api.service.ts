@@ -130,19 +130,19 @@ export class APIService {
 
   async agregar(producto: Producto, cantidad: number) {
     if (this.authService.isLogged() && sessionStorage.getItem('carrito') == null) {
-      await this.agregarBBDD(producto, cantidad)
+     await this.agregarBBDD(producto, cantidad)
     } else {
-      await this.agregarLocal(producto, cantidad)
+     await this.agregarLocal(producto, cantidad)
 
     }
 
   }
 
   async agregarBBDD(producto: Producto, cantidad: number) {
-    const headers = this.getRequestHeaders();
+    const headers = this.getRequestHeaders()
     let idCarrito = this.getUsuarioID();
-    const request$ = this.http.post(`${this.rutaAPI}` + "ProductosCarrito/" + producto.productoID + "/" + idCarrito + "/" + cantidad, { headers });
-    await lastValueFrom(request$);
+    const request$ = this.http.post(`${this.rutaAPI}ProductosCarrito/` + producto.productoID + "/" + idCarrito + "/" + cantidad, JSON.stringify("body"), { headers });
+    await lastValueFrom(request$)
   }
 
   async agregarLocal(producto: Producto, cantidad: number) {
@@ -265,7 +265,7 @@ export class APIService {
     });
   }
   private getToken(): string {
-    return localStorage.getItem('JsonWebToken') || sessionStorage.getItem('JsonWebToken') || ''; // Obtener el JWT de localStorage o sessionStorage
+    return sessionStorage.getItem('JsonWebToken') || localStorage.getItem('JsonWebToken') || ''; // Obtener el JWT de localStorage o sessionStorage
   }
 
   private getRequestOptions(): any {
