@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
+import { APIService } from 'src/app/Services/api.service';
 import { TotalCarritoService } from 'src/app/Services/total-carrito.service';
 import { Usuario } from 'src/app/model/usuario';
 
@@ -18,21 +19,24 @@ export class DatosUsuarioComponent implements OnInit {
   addressToModify: string = "";
   usuarioID: string = "";
 
-  constructor(private http: HttpClient, private totalCarrito: TotalCarritoService) { }
+  constructor(private http: HttpClient, private totalCarrito: TotalCarritoService, private api: APIService) { }
 
   async ngOnInit(): Promise<void> {
+    this.obtieneDatos()
+  }
+
+  async obtieneDatos() {
+    const headers = this.api.getRequestHeaders()
     this.usuarioID = sessionStorage.getItem('usuarioID') ?? localStorage.getItem('usuarioID') ?? "";
-    const request$ = await this.http.get("https://localhost:7281/api/Usuarios/" + this.usuarioID)
+    const request$ = await this.http.get("https://localhost:7281/api/Usuarios/" + this.usuarioID, { headers })
     this.cuentaUser = await lastValueFrom(request$) as Usuario;
     this.nameUserToModify = this.cuentaUser.nombreUsuario;
     this.correoUserToModify = this.cuentaUser.correo;
     this.addressToModify = this.cuentaUser.direccion;
-
   }
-
   async modificaDatos() {
 
-    const headers = { 'Content-Type': 'application/json' };
+    const headers = this.api.getRequestHeaders()
     let request$
     if (this.nameUserToModify.trim().length > 0) {
       if (this.correoUserToModify.trim().length > 0) {

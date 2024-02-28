@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
 import { APIService } from 'src/app/Services/api.service';
 import { Producto } from 'src/app/model/producto';
 
@@ -10,9 +12,11 @@ import { Producto } from 'src/app/model/producto';
 })
 export class AdminProductoComponent implements OnInit {
 
+
+  rutaAPI: string = 'https://localhost:7281/api/Admin';
   producto: Producto = new Producto;
 
-  constructor(private activatedRoute: ActivatedRoute, private api: APIService) { }
+  constructor(private activatedRoute: ActivatedRoute, private api: APIService, private http: HttpClient) { }
 
   async ngOnInit(): Promise<void> {
     const id = await this.activatedRoute.snapshot.paramMap.get('productoID');
@@ -33,4 +37,10 @@ export class AdminProductoComponent implements OnInit {
 
   }
 
+  async modificaProducto(id: number){
+    const headers = this.api.getRequestHeaders()
+    const request$ = this.http.put(`${this.rutaAPI}` + "/modifyProduct/" +  this.producto.productoID, this.producto, { headers })
+    await lastValueFrom(request$)
+    
+  }
 }

@@ -22,7 +22,7 @@
                     <div>{{usuario.correo}}</div>
                     <div>{{usuario.rol}}</div>
                     <div>
-                        <button class="btn btn-primary botones">Eliminar</button>
+                        <button class="btn btn-primary botones"(click)="borrarUsuario(usuario.usuarioID)">Eliminar</button>
                         <button class="btn btn-primary botones" [routerLink]="'/adminUsuario/' + usuario.usuarioID">Editar</button>
                     </div>
                 </div>

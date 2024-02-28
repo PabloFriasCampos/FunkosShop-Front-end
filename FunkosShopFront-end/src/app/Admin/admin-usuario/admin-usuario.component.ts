@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
 import { APIService } from 'src/app/Services/api.service';
 import { Usuario } from 'src/app/model/usuario';
 
@@ -10,21 +12,24 @@ import { Usuario } from 'src/app/model/usuario';
 })
 export class AdminUsuarioComponent implements OnInit {
 
+  rutaAPI: string = "https://localhost:7281/api/Admin"
+  id: any;
   usuario: Usuario = new Usuario;
 
-  constructor(private activatedRoute: ActivatedRoute, private api: APIService) { }
+  constructor(private activatedRoute: ActivatedRoute, private api: APIService, private http: HttpClient) { }
 
   async ngOnInit(): Promise<void> {
-    const id = await this.activatedRoute.snapshot.paramMap.get('usuarioID');
-    if (id) {
-      await this.obtenerUsuario(+id)
-
+    this.id = await this.activatedRoute.snapshot.paramMap.get('usuarioID');
+    if (this.id) {
+      this.usuario = await this.api.obtenerUsuarioAdmin(+this.id);
     }
 
   }
 
-  async obtenerUsuario(id: number) {
-    this.usuario = await this.api.obtenerUsuarioAdmin(id);
+  async modificaUserRol(id: number){
+    const headers = this.api.getRequestHeaders();
+    const request$ = this.http.put(`${this.rutaAPI}` + "/modifyUserRole/" +  this.id, JSON.stringify(this.usuario.rol), {headers})
+    await lastValueFrom(request$)
 
   }
 

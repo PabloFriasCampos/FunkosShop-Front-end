@@ -23,6 +23,7 @@
               </tr>
               <tr>
                 <td>Rol</td>
+                <td><div>{{usuario.rol}}</div></td>
                 <td><select class="form-control" [(ngModel)]="usuario.rol">
                   <option value="USUARIO">USUARIO</option>
                   <option value="ADMIN">ADMIN</option>
@@ -36,7 +37,7 @@
 
     <div class="row">
       <div class="col">
-        <button class="btn btn-primary save-button">Guardar Cambios</button>
+        <button class="btn btn-primary save-button" (click)="modificaUserRol(usuario.usuarioID)">Guardar Cambios</button>
       </div>
     </div>
   </div>

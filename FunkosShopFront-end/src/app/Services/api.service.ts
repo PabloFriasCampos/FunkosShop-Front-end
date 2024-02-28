@@ -26,8 +26,9 @@ export class APIService {
 
 
   async obtenerUsuario(): Promise<Usuario> {
+    const headers = this.getRequestHeaders();
     let usuarioID = this.getUsuarioID();
-    const request$ = this.http.get(`${this.rutaAPI}Usuarios/` + usuarioID);
+    const request$ = this.http.get(`${this.rutaAPI}Usuarios/` + usuarioID, { headers });
     const resultado = await lastValueFrom(request$);
     return resultado as Usuario;
 
@@ -69,9 +70,10 @@ export class APIService {
   }
 
   async obtenerPedidosUsuario(): Promise<Pedido[]> {
+    const headers = this.getRequestHeaders()
     let usuarioID = this.getUsuarioID();
 
-    const request$ = this.http.get(`${this.rutaAPI}PedidoCripto/Usuario/${usuarioID}`);
+    const request$ = this.http.get(`${this.rutaAPI}PedidoCripto/Usuario/${usuarioID}`, { headers });
     return await lastValueFrom(request$) as Pedido[];
   }
 
@@ -139,9 +141,9 @@ export class APIService {
 
   async agregarBBDD(producto: Producto, cantidad: number) {
     const headers = this.getRequestHeaders();
-    let idCarrito = this.getUsuarioID();
-    const request$ = this.http.post("https://localhost:7281/api/ProductosCarrito/" + producto.productoID + "/" + idCarrito + "/" + cantidad, { headers });
-    await lastValueFrom(request$);
+    let idCarrito = +this.getUsuarioID();
+    const request$ = this.http.post(`${this.rutaAPI}ProductosCarrito/` + producto.productoID + "/" + idCarrito + "/" + cantidad, { headers });
+    await  lastValueFrom(request$);
   }
 
   async agregarLocal(producto: Producto, cantidad: number) {
@@ -236,7 +238,8 @@ export class APIService {
   }
 
   async obtenerUsuarioAdmin(id: number): Promise<Usuario> {
-    const request$ = this.http.get(`${this.rutaAPI}Usuarios/` + id)
+    const headers = this.getRequestHeaders()
+    const request$ = this.http.get(`${this.rutaAPI}Usuarios/` + id, { headers })
     const usuario = await lastValueFrom(request$);
     return usuario as Usuario;
 
@@ -255,7 +258,7 @@ export class APIService {
     return sessionStorage.getItem('usuarioID') || localStorage.getItem('usuarioID') || '';
   }
 
-  private getRequestHeaders(): HttpHeaders {
+  getRequestHeaders(): HttpHeaders {
     const token = this.getToken(); // Obtener el JWT
     return new HttpHeaders({
       'Content-Type': 'application/json',
