@@ -19,7 +19,7 @@ export class APIService {
   rutaAPI: string = 'https://localhost:7281/api/';
   rutaImages: string = 'https://localhost:7281/images/';
   helper = new JwtHelperService();
-  JWTID: string = '';
+
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   // ------------------------------ Peticiones Usuario ------------------------------
@@ -113,7 +113,7 @@ export class APIService {
   }
 
   async cargarCarritoBBDD(): Promise<Carrito> {
-    
+
     const headers = this.getRequestHeaders(); // Obtener los encabezados con el JWT
     let usuarioID = this.getUsuarioID();
     const request$ = this.http.get(`${this.rutaAPI}Carritos/` + usuarioID, { headers });
@@ -131,7 +131,6 @@ export class APIService {
   async agregar(producto: Producto, cantidad: number) {
     if (this.authService.isLogged() && sessionStorage.getItem('carrito') == null) {
       await this.agregarBBDD(producto, cantidad)
-
     } else {
       await this.agregarLocal(producto, cantidad)
 
@@ -141,9 +140,9 @@ export class APIService {
 
   async agregarBBDD(producto: Producto, cantidad: number) {
     const headers = this.getRequestHeaders();
-    let idCarrito = +this.getUsuarioID();
-    const request$ = this.http.post(`${this.rutaAPI}ProductosCarrito/` + producto.productoID + "/" + idCarrito + "/" + cantidad, { headers });
-    await  lastValueFrom(request$);
+    let idCarrito = this.getUsuarioID();
+    const request$ = this.http.post(`${this.rutaAPI}` + "ProductosCarrito/" + producto.productoID + "/" + idCarrito + "/" + cantidad, { headers });
+    await lastValueFrom(request$);
   }
 
   async agregarLocal(producto: Producto, cantidad: number) {
@@ -244,7 +243,7 @@ export class APIService {
     return usuario as Usuario;
 
   }
-  
+
   async obtenerTodosUsuarios(): Promise<Usuario[]> {
     const headers = this.getRequestHeaders()
     const request$ = this.http.get(`${this.rutaAPI}Admin/getUsers`, { headers });
