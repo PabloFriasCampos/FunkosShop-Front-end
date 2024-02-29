@@ -1,28 +1,28 @@
-<header class="header fixed-top">
-  <div class="container-fluid d-flex align-items-center justify-content-between">
-    <div class="logo">
-      <img [routerLink]="''" src="/assets/icon.jpeg" alt="Logo">
-    </div>
-    <div class="nav-buttons">
-      <button [routerLink]="'/catalog'" class="btn btn-light" id="catalogo"><i class="fas fa-book-open"></i>
-        Catálogo</button>
-      <button [routerLink]="'/aboutus'" class="btn btn-light" id="sobreNosotros"><i class="fas fa-info-circle"></i>
-        Sobre
-        nosotros</button>
-    </div>
-    <div class="nav-buttons">
-      <button [routerLink]="'/cart'" class="btn btn-light">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="badge badge-danger" *ngIf="cantidadCarrito > 0">{{cantidadCarrito}}</span>
-      </button>
-      <button [routerLink]="'/sesion'" class="btn btn-light" id="carrito" *ngIf="!logged()"><i
-          class="fas fa-sign-in-alt"></i>
-        Iniciar Sesión</button>
-      <button [routerLink]="'/user'" class="btn btn-light" id="carrito" *ngIf="logged()"><i class="fas fa-user"></i>
-        Perfil</button>
+  <header class="header fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+      <div class="logo">
+        <img [routerLink]="''" src="/assets/icon.jpeg" alt="Logo">
+      </div>
+      <div class="nav-buttons">
+        <button [routerLink]="'/catalog'" class="btn btn-light" id="catalogo"><i class="fas fa-book-open"></i>
+          Catálogo</button>
+        <button [routerLink]="'/aboutus'" class="btn btn-light" id="sobreNosotros"><i class="fas fa-info-circle"></i>
+          Sobre
+          nosotros</button>
+      </div>
+      <div class="nav-buttons">
+        <button [routerLink]="'/cart'" class="btn btn-light">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="badge badge-danger" *ngIf="cantidadCarrito > 0">{{cantidadCarrito}}</span>
+        </button>
+        <button [routerLink]="'/sesion'" class="btn btn-light" id="carrito" *ngIf="!logged()"><i
+            class="fas fa-sign-in-alt"></i>
+          Iniciar Sesión</button>
+        <button [routerLink]="'/user'" class="btn btn-light" id="carrito" *ngIf="logged()"><i class="fas fa-user"></i>
+          Perfil</button>
 
-      <button [routerLink]="'/adminUsuarios'" class="btn btn-light" *ngIf="isAdmin()"><i class="fas fa-shield-alt"></i>
-        ADMIN</button>
+        <button [routerLink]="'/adminUsuarios'" class="btn btn-light" *ngIf="isAdmin()"><i class="fas fa-shield-alt"></i>
+          ADMIN</button>
+      </div>
     </div>
-  </div>
-</header>
+  </header>

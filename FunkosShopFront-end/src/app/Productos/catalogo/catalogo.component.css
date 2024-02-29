@@ -1,154 +1,111 @@
-/*header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 2px solid black;
-}
+@import "~bootstrap/dist/css/bootstrap.min.css";
 
 .buscador {
-  background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 0px 5px;
-  background-size: 24px;
-  width: 500px;
-  border: transparent;
-  border-bottom: solid 1px #dedede;
-  padding: 10px 10px 10px 30px;
-  outline: none;
-  color: white;
+    background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 0px 5px;
+    background-size: 24px;
+    width: 500px auto;
+    height: 2rem;
+    border: transparent;
+    border-bottom: solid 1px #dedede;
+    padding: 10px 10px 10px 30px;
+    outline: none;
+    color: white;
+    margin-left: 0 auto;
 }
 
 .header {
-  position: sticky;
-  background-color: #535151;
-  padding: 10px 0;
-  z-index: 1000;
-  box-shadow: #000000;
-}
-
-.logo {
-  font-size: 1.5rem;
-}
-
-.logo img {
-  height: 40px;
-  width: auto;
-}
-
-.nav-buttons {
-  margin-right: 20px;
-}
-
-.nav-buttons button {
-  margin-left: 10px;
-}
-
-.nav-buttons .btn {
-  border: none;
-  background-color: #333;
-  color: #fff;
-}
-
-.nav-buttons .btn:hover {
-  background-color: #fff;
-  ;
-  color: #000000;
-}
-
-.nav-buttons .btn i {
-  margin-right: 5px;
-}
-
-.cta-btn {
-  background-color: #333;
-  color: #fff;
-  padding: 15px 30px;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  text-decoration: none;
-}
-
-.cta-btn:hover {
-  background-color: #E7B10A;
-  color: #fff;
-}
-
-.menu-icon {
-  background-color: transparent;
-  border: none;
-}
-
-.seccionCategoria {
-  padding: 10px;
-  color: #393939;
-}
-
-.seccionProductos {
-  padding: 10px;
-  color: #e6e6e6;
-}
-
-.productos {
-  background-color: #2b2e38;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  place-items: center;
-  gap: 2em;
-  padding: 2em;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.producto {
-  background: transparent;
-  backdrop-filter: blur(10px);
-  padding: 10px;
-  border-radius: 5px;
-  border: 3px solid #B12723;
-  box-shadow: 0 0 10px rgb(82, 82, 82);
-}
-
-.detalles {
-  display: flex;
-  justify-content: space-around;
-}
-
-.producto-imagen {
-  font-size: 18px;
-  font-weight: bold;
-  width: 100%;
-}
-
-.producto-nombre {
-  font-size: 17px;
+    position: sticky;
+    background-color: #535151;
+    padding: 10px 0;
+    z-index: 999;
+    box-shadow: #000000;
 }
 
 
-.glitch {
-  font-size: 3rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  position: relative;
-  font-family: Glitch;
-
-  text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
-    -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
-    0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+.product-card {
+    background-color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 18rem;
+    padding: 10px;
+    color: rgb(228, 228, 228);
+    margin-bottom: 20px;
+    margin-left: -10;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-@media (max-width :800px) {
-
-
-  .productos {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
+.product-card:hover {
+    background-color: #8b8a8a;
+    transform: translateY(-5px);
 }
 
-@media (max-width :500px) {
+.product-img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.5s ease;
+}
 
-  .productos {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.product-name {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.product-price {
+    color: #ccc;
+    margin-top: 5px;
+}
+
+.columna {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+    gap: 1em;
+
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.product-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.categoria {
+    color: #ffffff;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+
+@media (max-width :950px) {
+
+
+    .columna {
+display: grid;
+grid-template-columns: repeat(1, 1fr); /* Cambio a una sola columna */
+place-items: center;
+gap: 1em;
+border-radius: 10px;
+cursor: pointer;
+}
+.buscador {
+
+    margin-left: 0 auto;
+}
+.product-title {
+font-size: 30px;
+font-weight: bold;
+}
 
 }
-*/
+.filtro{
+margin-left: 5px;
+width: 14rem;
+}
+
