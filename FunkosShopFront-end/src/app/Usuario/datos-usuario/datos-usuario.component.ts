@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { APIService } from 'src/app/Services/api.service';
-import { TotalCarritoService } from 'src/app/Services/total-carrito.service';
 import { Usuario } from 'src/app/model/usuario';
 
 @Component({
@@ -19,7 +18,7 @@ export class DatosUsuarioComponent implements OnInit {
   addressToModify: string = "";
   usuarioID: string = "";
 
-  constructor(private http: HttpClient, private totalCarrito: TotalCarritoService, private api: APIService) { }
+  constructor(private http: HttpClient, private api: APIService) { }
 
   async ngOnInit(): Promise<void> {
     this.obtieneDatos()
@@ -78,14 +77,6 @@ export class DatosUsuarioComponent implements OnInit {
       alert("El nombre está vacío");
     }
 
-
-  }
-  logOut() {
-    sessionStorage.removeItem('usuarioID');
-    localStorage.removeItem('usuarioID');
-    sessionStorage.removeItem('JsonWebToken');
-    localStorage.removeItem('JsonWebToken');
-    this.totalCarrito.cambiarTotal();
 
   }
 

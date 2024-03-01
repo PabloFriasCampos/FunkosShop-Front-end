@@ -14,6 +14,7 @@ export class AdminProductoComponent implements OnInit {
 
 
   rutaAPI: string = 'https://localhost:7281/api/Admin';
+  rutaImagen: string = '';
   producto: Producto = new Producto;
 
   constructor(private activatedRoute: ActivatedRoute, private api: APIService, private http: HttpClient) { }
@@ -21,8 +22,8 @@ export class AdminProductoComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const id = await this.activatedRoute.snapshot.paramMap.get('productoID');
     if (id) {
-      await this.obtenerProducto(+id)
-
+      await this.obtenerProducto(+id);
+      this.rutaImagen = await this.api.urlFoto(+id);
     }
 
   }
@@ -32,15 +33,10 @@ export class AdminProductoComponent implements OnInit {
 
   }
 
-  urlImage(id: number) {
-    return this.api.urlFoto(id);
-
-  }
-
-  async modificaProducto(id: number){
+  async modificaProducto(id: number) {
     const headers = this.api.getRequestHeaders()
-    const request$ = this.http.put(`${this.rutaAPI}` + "/modifyProduct/" +  this.producto.productoID, this.producto, { headers })
+    const request$ = this.http.put(`${this.rutaAPI}` + "/modifyProduct/" + this.producto.productoID, this.producto, { headers })
     await lastValueFrom(request$)
-    
+
   }
 }

@@ -1,7 +1,7 @@
 <h1 class="titulo">Panel de Usuario</h1>
 
 <button [routerLink]="'/userDatos'" class="btn btn-primary">Datos personales</button>
-<button  class="btn btn-primary terminar">Cerrar Sesion</button>
+<button  class="btn btn-primary terminar" (click)="logOut()">Cerrar Sesion</button>
 <div class="container mt-5">
   <div class="row">
     <div class="col">       
