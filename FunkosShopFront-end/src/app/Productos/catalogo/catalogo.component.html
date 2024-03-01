@@ -1,41 +1,15 @@
 
-<head>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- 
-<header class="header fixed-top bg-dark">
-    <div class="container-fluid d-flex align-items-center justify-content-center">
-        <input class="buscador form-control mr-2" type="search" [(ngModel)]="buscadorFunko" (input)="aplicarFiltros()"
-            placeholder="Buscador">
-        <div class="dropdown">
-            <button class="filtro btn btn-secondary dropdown-toggle" type="button" id="filtroDropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Filtro
-            </button>
-            <div class="dropdown-menu" aria-labelledby="filtroDropdownMenuButton">
-                <a class="dropdown-item" href="#" (click)="opcionSeleccionada='sinFiltro'; aplicarFiltros()">Añadir/Eliminar filtro</a>
-                <a class="dropdown-item" href="#" (click)="opcionSeleccionada='MenorPrecio'; aplicarFiltros()">Precio: De menor a mayor</a>
-                <a class="dropdown-item" href="#" (click)="opcionSeleccionada='MayorPrecio'; aplicarFiltros()">Precio: De mayor a menor</a>
-                <a class="dropdown-item" href="#" (click)="opcionSeleccionada='LetraA_Z'; aplicarFiltros()">Ordenar: De la "A" a la "Z"</a>
-                <a class="dropdown-item" href="#" (click)="opcionSeleccionada='LetraZ_A'; aplicarFiltros()">Ordenar: De la "Z" a la "A"</a>
-            </div>
-        </div>
-    </div>
-</header> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-
-</head>
 <header class="header fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-center">
-        <input class="buscador" type="search" [(ngModel)]="buscadorFunko" (input)="aplicarFiltros()"
-            placeholder="Buscador">
-        <select class="filtro" [(ngModel)]="opcionSeleccionada" (change)="aplicarFiltros()">
-            <option value="sinFiltro" selected> Añadir/Eliminar filtro </option>
-            <option value="MenorPrecio"> Precio: De menor a mayor </option>
-            <option value="MayorPrecio"> Precio: De mayor a menor </option>
-            <option value="LetraA_Z"> Ordenar: De la "A" a la "Z" </option>
-            <option value="LetraZ_A"> Ordenar: De la "Z" a la "A" </option>
+        <input class="buscador form-control mr-2" type="search" [(ngModel)]="buscadorFunko" (input)="aplicarFiltros()"
+        placeholder="Buscador">
+        <select class="filtro btn btn-secondary dropdown-toggle" [(ngModel)]="opcionSeleccionada" (change)="aplicarFiltros()">
+            <option class="dropdown-item" value="sinFiltro" selected> Añadir/Eliminar filtro </option>
+            <option class="dropdown-item" value="MenorPrecio"> Precio: De menor a mayor </option>
+            <option  class="dropdown-item"value="MayorPrecio"> Precio: De mayor a menor </option>
+            <option class="dropdown-item" value="LetraA_Z"> Ordenar: De la "A" a la "Z" </option>
+            <option  class="dropdown-item"value="LetraZ_A"> Ordenar: De la "Z" a la "A" </option>
         </select>
     </div>
 </header>
