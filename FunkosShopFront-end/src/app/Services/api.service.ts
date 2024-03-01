@@ -107,9 +107,8 @@ export class APIService {
   async cargarCarrito(): Promise<Carrito> {
     if (this.authService.isLogged() && !this.existeCarrito()) {
       return this.cargarCarritoBBDD();
-
     } else {
-      return this.cargarCarritoLocal();
+      return this.cargarCarritoLocal()
     }
   }
 
@@ -125,15 +124,18 @@ export class APIService {
 
   async cargarCarritoLocal(): Promise<Carrito> {
     let carrito: Carrito = JSON.parse(sessionStorage.getItem('carrito')!) as Carrito;
-    carrito.totalCarritoEUR = this.totalCarrito(carrito)
+    if (carrito != null) {
+      carrito.totalCarritoEUR = this.totalCarrito(carrito)
+    }
+
     return carrito;
   }
 
   async agregar(producto: Producto, cantidad: number) {
     if (this.authService.isLogged() && sessionStorage.getItem('carrito') == null) {
-     await this.agregarBBDD(producto, cantidad)
+      await this.agregarBBDD(producto, cantidad)
     } else {
-     await this.agregarLocal(producto, cantidad)
+      await this.agregarLocal(producto, cantidad)
 
     }
 

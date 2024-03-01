@@ -1,6 +1,3 @@
-
-
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -9,31 +6,37 @@
 </head>
 
 
-    <div class="container">
-        <div class="purchase-details right-align">
-            <div>
+<div class="container">
+    <div class="purchase-details right-align">
+        <div>
+            <p *ngIf="carrito == null; else carritolleno">Carrito vacío</p>
+
+            <ng-template #carritolleno>
                 <div class="order-item" *ngFor="let producto of carrito.listaProductosCarrito">
                     <div class="product-image">
-                        <img [src]="'https://localhost:7281/images/' + producto.producto.productoID + '.png'" alt="Imagen del Producto" class="rounded-image">
+                        <img [src]="'https://localhost:7281/images/' + producto.producto.productoID + '.png'"
+                            alt="Imagen del Producto" class="rounded-image">
                     </div>
                     <div class="nombre-producto">{{producto.producto.nombreProducto}}</div>
                     <div class="quantity-controls">
                         <button class="btn btn-primary" (click)="actualizarCantidad(-1, producto)">-</button>
                         <span class="cantidad-producto">{{producto.cantidadProducto}}</span>
-                        <button class="btn btn-primary"(click)="actualizarCantidad(1, producto)">+</button>
+                        <button class="btn btn-primary" (click)="actualizarCantidad(1, producto)">+</button>
                     </div>
-                    <div  (click)="eliminarProducto(producto)">X</div>
+                    <div (click)="eliminarProducto(producto)">X</div>
                     <div>{{(producto.producto.precioEUR * producto.cantidadProducto).toFixed(2)}}€</div>
                 </div>
                 <hr>
-            </div>
-            <div class="order-item">
-                <button class="btn btn-primary" [routerLink]="'/confirm'">Tramitar Compra</button>
-                <button class="btn btn-primary" [routerLink]="'/catalog'">Seguir comprando</button>
-                <strong>Total:</strong>
-                <strong>{{(carrito.totalCarritoEUR).toFixed(2)}}€</strong>
-            </div>
+                <div class="order-item">
+                    <button class="btn btn-primary" [routerLink]="'/confirm'">Tramitar Compra</button>
+                    <button class="btn btn-primary" [routerLink]="'/catalog'">Seguir comprando</button>
+                    <strong>Total:</strong>
+                    <strong>{{(carrito.totalCarritoEUR).toFixed(2)}}€</strong>
+                </div>
+            </ng-template>
+
         </div>
     </div>
+</div>
 
-    <ngx-toast-notifier></ngx-toast-notifier>
+<ngx-toast-notifier></ngx-toast-notifier>
