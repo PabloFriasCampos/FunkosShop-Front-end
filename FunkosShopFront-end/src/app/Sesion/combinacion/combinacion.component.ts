@@ -41,7 +41,7 @@ export class CombinacionComponent {
             if (this.usuarioSignUp.direccion.trim().length > 0) {
               this.usuarioSignUp.correo = this.usuarioSignUp.correo.replaceAll(" ", "")
               await this.api.registrarUsuario(this.usuarioSignUp)
-              //alert("Registro compleado")
+              this.botonToggle()
 
             }
             else {
@@ -71,7 +71,7 @@ export class CombinacionComponent {
 
       try {
         let logged: Boolean = await this.api.iniciarSesion(this.usuarioLogIn, this.recuerdame);
-        
+
 
         if (logged) {
           if (this.redirectTo != null) {
