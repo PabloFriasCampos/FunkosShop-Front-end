@@ -8,7 +8,13 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex; 
   flex-direction: column; 
-  background-color: #ccc;
+  background-color:#ffffff;
+  border-radius: 10px;
+}
+.titulo {
+  color: #ffffff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
 .user-image {
   max-width: 100px;
@@ -20,11 +26,25 @@
 }
 .table-container {
   flex-grow: 1; 
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  text-align: center;
 }
-.save-button {
-  margin-top: 20px;
+.row{
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
 }
 .btn{
     height: 5rem;
     width: 100%;
+
+}
+.row2{
+  width: 100%;
+}
+.form-control{
+  
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
