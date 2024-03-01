@@ -78,7 +78,8 @@ export class APIService {
   }
 
   async obtenerPedido(id: number): Promise<Pedido> {
-    const request$ = this.http.get(`${this.rutaAPI}PedidoCripto/${id}`);
+    const headers = this.getRequestHeaders()
+    const request$ = this.http.get(`${this.rutaAPI}PedidoCripto/${id}`, { headers });
     return await lastValueFrom(request$) as Pedido;
   }
 
