@@ -35,38 +35,30 @@ export class CombinacionComponent {
 
     const headers = { 'Content-Type': 'application/json' };
 
-    if (this.usuarioSignUp.nombreUsuario.trim().length > 0) {
-      if (this.usuarioSignUp.correo.trim().length > 0) {
-        if (this.usuarioSignUp.contrasena.trim().length > 0) {
-          if (this.usuarioSignUp.contrasena == this.repetirContrasena) {
-            if (this.usuarioSignUp.direccion.trim().length > 0) {
-              this.usuarioSignUp.correo = this.usuarioSignUp.correo.replaceAll(" ", "")
-              await this.api.registrarUsuario(this.usuarioSignUp)
-              this.botonToggle()
-              this.ngxToastService.onSuccess('Te has registrado con éxito','')
-            }
-            else {
-              this.ngxToastService.onInfo('La dirección no puede estar vacía','')
-            }
-          } else {
-            this.ngxToastService.onInfo('Las contraseñas deben ser iguales','')
-          }
-        } else {
-          this.ngxToastService.onInfo('La contraseña no puede estar vacía','')
-        }
-      } else {
-        this.ngxToastService.onInfo('El correo no puede estar vacío','')
-      }
+    if (!(this.usuarioSignUp.nombreUsuario.trim().length > 0)) {
+      this.ngxToastService.onInfo('El nombre no puede estar vacío', '');
+    }
+    else if (!(this.usuarioSignUp.correo.trim().length > 0)) {
+      this.ngxToastService.onInfo('El correo no puede estar vacío', '')
+    } else if (!(this.usuarioSignUp.contrasena.trim().length > 0)) {
+      this.ngxToastService.onInfo('La contraseña no puede estar vacía', '')
+    } else if (!(this.usuarioSignUp.contrasena == this.repetirContrasena)) {
+      this.ngxToastService.onInfo('Las contraseñas deben ser iguales', '')
+    } else if (!(this.usuarioSignUp.direccion.trim().length > 0)) {
+      this.ngxToastService.onInfo('La dirección no puede estar vacía', '')
     } else {
-      this.ngxToastService.onInfo('El nombre no puede estar vacío','');
+      this.usuarioSignUp.correo = this.usuarioSignUp.correo.replaceAll(" ", "")
+      await this.api.registrarUsuario(this.usuarioSignUp)
+      this.botonToggle()
+      this.ngxToastService.onSuccess('Te has registrado con éxito', '')
     }
   }
 
   async iniciarSesion() {
 
-    if (this.usuarioLogIn.correo.length == 0 || this.usuarioLogIn.contrasena.length == 0) {
+    if (this.usuarioLogIn.correo.trim().length == 0 || this.usuarioLogIn.contrasena.trim().length == 0) {
 
-      this.ngxToastService.onInfo('Introduce correo y contraseña','');
+      this.ngxToastService.onInfo('Introduce correo y contraseña', '');
 
     } else {
 
@@ -83,7 +75,7 @@ export class CombinacionComponent {
 
         }
       } catch (error) {
-        this.ngxToastService.onWarning('Error al iniciar sesion','')
+        this.ngxToastService.onWarning('Error al iniciar sesion', '')
       }
     }
     this.totalCarrito.cambiarTotal();
