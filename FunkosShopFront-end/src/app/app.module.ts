@@ -19,6 +19,11 @@ import { ListaUsuariosComponent } from './Admin/lista-usuarios/lista-usuarios.co
 import { ListaProductosComponent } from './Admin/lista-productos/lista-productos.component';
 import { AdminProductoComponent } from './Admin/admin-producto/admin-producto.component';
 import { AdminUsuarioComponent } from './Admin/admin-usuario/admin-usuario.component';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { NgxToastNotifierModule } from 'ngx-toast-notifier';
+import { timeout } from 'rxjs';
 
 
 
@@ -45,7 +50,18 @@ import { AdminUsuarioComponent } from './Admin/admin-usuario/admin-usuario.compo
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    NgxToastNotifierModule.forRoot(
+      {timeOut: 5000,
+        bgColors: {
+          success: '#54a254',
+          info: '#1976d2',
+          warning: '#FF9B00',
+          danger: '#da2d2d',
+        }
+      })
   ],
   providers: [],
   bootstrap: [AppComponent]

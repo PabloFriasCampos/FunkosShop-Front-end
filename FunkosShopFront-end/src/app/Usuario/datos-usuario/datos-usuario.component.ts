@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { APIService } from 'src/app/Services/api.service';
 import { Usuario } from 'src/app/model/usuario';
+import { NgxToastService } from 'ngx-toast-notifier';
 
 @Component({
   selector: 'app-datos-usuario',
@@ -18,7 +19,7 @@ export class DatosUsuarioComponent implements OnInit {
   addressToModify: string = "";
   usuarioID: string = "";
 
-  constructor(private http: HttpClient, private api: APIService) { }
+  constructor(private http: HttpClient, private api: APIService, private ngxToastService: NgxToastService) { }
 
   async ngOnInit(): Promise<void> {
     this.obtieneDatos()
@@ -49,11 +50,12 @@ export class DatosUsuarioComponent implements OnInit {
               request$ = await this.http.put("https://localhost:7281/api/Usuarios/modifyUser/"
                 + this.usuarioID, JSON.stringify(this.cuentaUser), { headers });
               await lastValueFrom(request$)
+              this.ngxToastService.onSuccess('Los cambios se han guardado con éxito.','')
               setTimeout(() => {
                 location.reload();
               }, 1);
             } else {
-              alert("Las contraseñas deben ser iguales.")
+              this.ngxToastService.onInfo('Las contraseñas deben ser iguales.','')
             }
           } else {
             this.cuentaUser.nombreUsuario = this.nameUserToModify
@@ -66,15 +68,16 @@ export class DatosUsuarioComponent implements OnInit {
             setTimeout(() => {
               location.reload();
             }, 1);
+            this.ngxToastService.onSuccess('Los cambios se han realizado con éxito', '')
           }
         } else {
-          alert("La dirección no puede estar vacía")
+          this.ngxToastService.onInfo('La dirección no puede estar vacía','')
         }
       } else {
-        alert("Correo incorrecto")
+        this.ngxToastService.onInfo('Correo incorrecto','')
       }
     } else {
-      alert("El nombre está vacío");
+      this.ngxToastService.onInfo('El nombre está vacío','');
     }
 
 

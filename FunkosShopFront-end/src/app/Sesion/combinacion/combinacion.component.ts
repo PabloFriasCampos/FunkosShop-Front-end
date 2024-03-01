@@ -4,6 +4,7 @@ import { isEmpty } from 'rxjs';
 import { APIService } from 'src/app/Services/api.service';
 import { TotalCarritoService } from 'src/app/Services/total-carrito.service';
 import { Usuario } from 'src/app/model/usuario';
+import { NgxToastService } from 'ngx-toast-notifier';
 
 @Component({
   selector: 'app-combinacion',
@@ -22,7 +23,7 @@ export class CombinacionComponent {
   recuerdame: boolean = false;
 
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private totalCarrito: TotalCarritoService, private api: APIService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private totalCarrito: TotalCarritoService, private api: APIService, private ngxToastService: NgxToastService) {
     const queryParams = this.activatedRoute.snapshot.queryParamMap;
 
     if (queryParams.has(this.PARAM_KEY)) {
@@ -42,22 +43,22 @@ export class CombinacionComponent {
               this.usuarioSignUp.correo = this.usuarioSignUp.correo.replaceAll(" ", "")
               await this.api.registrarUsuario(this.usuarioSignUp)
               this.botonToggle()
-
+              this.ngxToastService.onSuccess('Te has registrado con éxito','')
             }
             else {
-              alert("La dirección no puede estar vacía")
+              this.ngxToastService.onInfo('La dirección no puede estar vacía','')
             }
           } else {
-            alert("Las contraseñas deben ser iguales")
+            this.ngxToastService.onInfo('Las contraseñas deben ser iguales','')
           }
         } else {
-          alert("La contraseña no puede estar vacía")
+          this.ngxToastService.onInfo('La contraseña no puede estar vacía','')
         }
       } else {
-        alert("El correo no puede estar vacío")
+        this.ngxToastService.onInfo('El correo no puede estar vacío','')
       }
     } else {
-      alert("El nombre no puede estar vacío");
+      this.ngxToastService.onInfo('El nombre no puede estar vacío','');
     }
   }
 
@@ -65,7 +66,7 @@ export class CombinacionComponent {
 
     if (this.usuarioLogIn.correo.length == 0 || this.usuarioLogIn.contrasena.length == 0) {
 
-      alert("Introduce correo y contraseña");
+      this.ngxToastService.onInfo('Introduce correo y contraseña','');
 
     } else {
 
@@ -82,7 +83,7 @@ export class CombinacionComponent {
 
         }
       } catch (error) {
-        alert("Error del catch: Usuario o contraseña incorrecto")
+        this.ngxToastService.onWarning('Error al iniciar sesion','')
       }
     }
     this.totalCarrito.cambiarTotal();
@@ -117,5 +118,4 @@ export class CombinacionComponent {
     }
 
   }
-
 }
