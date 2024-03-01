@@ -20,6 +20,8 @@ import { ListaProductosComponent } from './Admin/lista-productos/lista-productos
 import { AdminProductoComponent } from './Admin/admin-producto/admin-producto.component';
 import { AdminUsuarioComponent } from './Admin/admin-usuario/admin-usuario.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,

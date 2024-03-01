@@ -19,6 +19,7 @@
   background-color: #f8f9fa;
   padding: 20px;
   border-radius: 5px;
+
 }
 
 .order-item {
@@ -44,11 +45,7 @@
   border-radius: 5px;
 }
 
-.contenedor {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* Dos columnas */
-}
+
 
 .elemento2 {
   grid-column: 2;
