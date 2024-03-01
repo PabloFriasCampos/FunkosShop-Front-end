@@ -193,7 +193,8 @@ export class APIService {
   // ------------------------------ Peticiones Compra ------------------------------
 
   async obtenerETH(): Promise<number> {
-    const request$ = this.http.get(`${this.rutaAPI}PedidoCripto/ETH`);
+    const headers = this.getRequestHeaders();
+    const request$ = this.http.get(`${this.rutaAPI}PedidoCripto/ETH`, { headers });
     return await lastValueFrom(request$) as number;
 
   }
