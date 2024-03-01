@@ -14,7 +14,7 @@
     </div>
 </header>
 <div class="container" *ngFor="let categoria of funkosFiltrados">
-    <h1 class="categoria" *ngIf="categoria.productos.length > 0">{{categoria.categoria}}</h1>
+    <h1 class="categoria lobster-regular" *ngIf="categoria.productos.length > 0">{{categoria.categoria}}</h1>
     <div class="columna">
         <div class="columna" *ngIf="categoria.productos.length>0">
             <div class="product-card" *ngFor="let producto of categoria.productos"

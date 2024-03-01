@@ -1,7 +1,7 @@
 
 
 <div class="container">
-    <h1>Producto</h1>
+    <h1 class="lobster-regular">Producto</h1>
     <div class="row">
       <div class="col-md-4">
         <div class="admin-card">
@@ -17,7 +17,7 @@
                 <td><input type="text" class="form-control" placeholder="Nombre del Producto" [(ngModel)]="producto.nombreProducto"></td>
               </tr>
               <tr>
-                <td>Descripcion</td><!--En caso de que no esté creado el usuario que ponga null y si esta creado que aqui ponga sus datos-->
+                <td>Descripcion</td>
                 <td><input type="text" class="form-control" placeholder="Descripcion" [(ngModel)]="producto.descripcion"></td>
               </tr>
               <tr>
@@ -25,12 +25,12 @@
                 <td><input type="text" class="form-control" placeholder="Precio en €" [(ngModel)]="producto.precioEUR"></td>
               </tr>
               <tr>
-                <td>Stock</td><!--En caso de que no esté creado el usuario que ponga null y si esta creado que aqui ponga sus datos-->
+                <td>Stock</td>
                 <td><input type="text" class="form-control" placeholder="Stock" [(ngModel)]="producto.stock"></td>
               </tr>
               <tr>
                 <td>Imagen</td><!--En caso de que no esté creado el usuario que ponga null y si esta creado que aqui ponga sus datos-->
-                <td><div>Aqui se implementará la lógica para subir una nueva imagen</div></td>
+                <td><input type="text" class="form-control" placeholder="Implementar logica para imagen"></td>
               </tr>
           </table>
         </div>

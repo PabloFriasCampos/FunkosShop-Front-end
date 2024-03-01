@@ -1,18 +1,19 @@
 
 .admin-card {
-    margin-top: 20px;
-    height: 20rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex; 
-    flex-direction: column; 
-    background-color: #ccc;
+  margin-top: 20px;
+  height: 20rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding:0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex; 
+  flex-direction: column; 
+  background-color:#ffffff;
+  border-radius: 10px;
   }
 
   .user-image {
-    max-width: 100px;
+    max-width:80%;
     border-radius: 50%;
     align-self: center; 
   }
