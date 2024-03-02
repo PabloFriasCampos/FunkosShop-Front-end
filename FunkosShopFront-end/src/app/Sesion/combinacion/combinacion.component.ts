@@ -48,9 +48,10 @@ export class CombinacionComponent {
       this.ngxToastService.onInfo('La dirección no puede estar vacía', '')
     } else {
       this.usuarioSignUp.correo = this.usuarioSignUp.correo.replaceAll(" ", "")
-      await this.api.registrarUsuario(this.usuarioSignUp)
-      this.botonToggle()
-      this.ngxToastService.onSuccess('Te has registrado con éxito', '')
+      if (await this.api.registrarUsuario(this.usuarioSignUp)) {
+        this.botonToggle()
+      }
+
     }
   }
 

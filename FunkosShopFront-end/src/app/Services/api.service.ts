@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { ErrorHandler, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { Carrito } from '../model/carrito';
 import { AuthService } from './auth.service';
@@ -10,6 +10,7 @@ import { CategoriaProductos } from '../model/categoria-productos';
 import { Producto } from '../model/producto';
 import { Pedido } from '../model/pedido';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { NgxToastService } from 'ngx-toast-notifier';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class APIService {
   rutaImages: string = 'https://localhost:7281/images/';
   helper = new JwtHelperService();
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService, private ngxToastService: NgxToastService) { }
 
   // ------------------------------ Peticiones Usuario ------------------------------
 
@@ -34,10 +35,17 @@ export class APIService {
 
   }
 
-  async registrarUsuario(usuarioSignUp: Usuario) {
-    const options = this.getRequestOptions();
-    let request$ = this.http.post(`${this.rutaAPI}Usuarios/signup`, JSON.stringify(usuarioSignUp), options);
-    await lastValueFrom(request$);
+  async registrarUsuario(usuarioSignUp: Usuario): Promise<boolean> {
+    try {
+      const options = this.getRequestOptions();
+      let request$ = this.http.post(`${this.rutaAPI}Usuarios/signup`, JSON.stringify(usuarioSignUp), options)
+      await lastValueFrom(request$);
+      this.ngxToastService.onSuccess("Registro completado", "")
+      return true
+    } catch (error) {
+      this.ngxToastService.onDanger("Usuario ya registrado", "")
+      return false
+    }
   }
 
   async iniciarSesion(usuarioLogIn: Usuario, recuerdame: boolean): Promise<Boolean> {
