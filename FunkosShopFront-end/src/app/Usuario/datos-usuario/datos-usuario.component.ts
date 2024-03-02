@@ -51,9 +51,6 @@ export class DatosUsuarioComponent implements OnInit {
                 + this.usuarioID, JSON.stringify(this.cuentaUser), { headers });
               await lastValueFrom(request$)
               this.ngxToastService.onSuccess('Los cambios se han guardado con éxito.','')
-              setTimeout(() => {
-                location.reload();
-              }, 1);
             } else {
               this.ngxToastService.onInfo('Las contraseñas deben ser iguales.','')
             }
