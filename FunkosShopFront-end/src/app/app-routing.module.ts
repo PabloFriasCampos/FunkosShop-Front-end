@@ -15,6 +15,7 @@ import { ListaProductosComponent } from './Admin/lista-productos/lista-productos
 import { ListaUsuariosComponent } from './Admin/lista-usuarios/lista-usuarios.component';
 import { AdminProductoComponent } from './Admin/admin-producto/admin-producto.component';
 import { AdminUsuarioComponent } from './Admin/admin-usuario/admin-usuario.component';
+import { CrearProductoComponent } from './Admin/crear-producto/crear-producto.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'adminUsuarios', component: ListaUsuariosComponent, canActivate: [authGuard] },
   { path: 'adminProducto/:productoID', component: AdminProductoComponent, canActivate: [authGuard] },
   { path: 'adminUsuario/:usuarioID', component: AdminUsuarioComponent, canActivate: [authGuard] },
+  { path: 'adminCreateProducto', component: CrearProductoComponent, canActivate: [authGuard] },
 
 ];
 

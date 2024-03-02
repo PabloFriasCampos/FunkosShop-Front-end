@@ -29,8 +29,10 @@
                 <td><input type="text" class="form-control" placeholder="Stock" [(ngModel)]="producto.stock"></td>
               </tr>
               <tr>
-                <td>Imagen</td><!--En caso de que no esté creado el usuario que ponga null y si esta creado que aqui ponga sus datos-->
-                <td><input type="text" class="form-control" placeholder="Implementar logica para imagen"></td>
+                <td>Imagen</td>
+                <td><label>Archivo de imagen
+                    <input type="file" (change)="onFileSelected($event)" accept="image/png" />
+                  </label></td>
               </tr>
           </table>
         </div>
@@ -39,7 +41,7 @@
 
     <div class="row">
       <div class="col">
-        <button class="btn btn-primary save-button" (click)="modificaProducto(producto.productoID)">Guardar Cambios</button>
+        <button class="btn btn-primary save-button" (click)="modificaProducto()">Guardar Cambios</button>
       </div>
     </div>
   </div>

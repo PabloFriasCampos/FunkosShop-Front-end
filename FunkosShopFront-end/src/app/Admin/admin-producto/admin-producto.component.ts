@@ -12,10 +12,10 @@ import { Producto } from 'src/app/model/producto';
 })
 export class AdminProductoComponent implements OnInit {
 
-
   rutaAPI: string = 'https://localhost:7281/api/Admin';
   rutaImagen: string = '';
   producto: Producto = new Producto;
+  selectedFile: File | null = null;
 
   constructor(private activatedRoute: ActivatedRoute, private api: APIService, private http: HttpClient) { }
 
@@ -33,10 +33,15 @@ export class AdminProductoComponent implements OnInit {
 
   }
 
-  async modificaProducto(id: number) {
+  async modificaProducto() {
     const headers = this.api.getRequestHeaders()
     const request$ = this.http.put(`${this.rutaAPI}` + "/modifyProduct/" + this.producto.productoID, this.producto, { headers })
-    await lastValueFrom(request$)
+    await lastValueFrom(request$);
+    this.api.subirImagen(this.selectedFile!, this.producto.productoID.toString())
 
+  }
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0] as File;
   }
 }

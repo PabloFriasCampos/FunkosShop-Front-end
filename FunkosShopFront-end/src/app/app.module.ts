@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgxToastNotifierModule } from 'ngx-toast-notifier';
 import { timeout } from 'rxjs';
+import { CrearProductoComponent } from './Admin/crear-producto/crear-producto.component';
 
 
 
@@ -44,7 +45,8 @@ import { timeout } from 'rxjs';
     ListaUsuariosComponent,
     ListaProductosComponent,
     AdminProductoComponent,
-    AdminUsuarioComponent
+    AdminUsuarioComponent,
+    CrearProductoComponent
   ],
   imports: [
     BrowserModule,

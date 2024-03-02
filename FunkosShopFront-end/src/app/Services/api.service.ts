@@ -261,6 +261,33 @@ export class APIService {
 
   }
 
+  async crearProducto(producto: Producto, img: File) {
+    const headers = this.getRequestHeaders();
+    const request$ = this.http.post(`${this.rutaAPI}Admin/newProduct`, producto, { headers });
+    let id = await lastValueFrom(request$) as string;
+    this.subirImagen(img, id);
+
+  }
+
+  async subirImagen(img: File, id: string) {
+    const formData = new FormData();
+    formData.append('image', img as File);
+
+    const token = this.getToken()
+
+    const options: any = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html, application/xhtml+xml, */*',
+        'Authorization': `Bearer ${token}`
+      }),
+      responseType: 'text'
+    };
+
+    const request$ = this.http.post<string>(`${this.rutaAPI}Admin/image/${id}`, formData, options);
+    await lastValueFrom(request$);
+
+  }
+
   // ------------------------------ Funciones internas ------------------------------
 
   private getUsuarioID(): string {
