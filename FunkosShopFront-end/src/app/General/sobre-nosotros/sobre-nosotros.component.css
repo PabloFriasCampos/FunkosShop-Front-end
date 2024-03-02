@@ -8,7 +8,16 @@
 .about-us {
   background: transparent;
   backdrop-filter: blur(100px);
-  padding: 50px 0;
+  padding: 2rem 1rem;
+  margin: 1rem;
+  width: auto;
+  border-radius: 20px;
+}
+
+.infoEmpresa {
+  background: transparent;
+  backdrop-filter: blur(100px);
+  padding: 2rem 1rem;
   margin: 1rem;
   width: auto;
   border-radius: 20px;
@@ -25,10 +34,10 @@
 .values {
   background: transparent;
   backdrop-filter: blur(100px);
-  padding: 50px 0;
+  padding: 2rem 1rem;
   margin: 1rem;
-  border-radius: 20px;
   width: auto;
+  border-radius: 20px;  
 }
 
 .team-member {
