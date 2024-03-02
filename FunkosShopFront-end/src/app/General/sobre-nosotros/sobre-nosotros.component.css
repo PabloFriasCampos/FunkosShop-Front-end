@@ -218,14 +218,7 @@
 
 }
 
-/*subrayado
-.tituloAbout{
-  text-decoration: underline;
-}
-.tituloValores{
-  text-decoration: underline;
-}
-*/
+
 .header-section {
   position: relative;
   background-image: url('/assets/icon.jpeg');
@@ -255,4 +248,10 @@
 .values {
   position: relative;
   z-index: 2;
+}
+
+@media (max-width: 575.98px) {
+.header-section {
+    margin-bottom:8rem ;
+}
 }
