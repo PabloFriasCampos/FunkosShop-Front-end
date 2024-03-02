@@ -25,7 +25,9 @@ th:not(:last-child),
 td:not(:last-child) {
     border-right: none;
 }
-
+.container{
+    border-radius: 2px;
+}
 @media screen and (max-width: 600px) {
     th, td {
         display: block;
