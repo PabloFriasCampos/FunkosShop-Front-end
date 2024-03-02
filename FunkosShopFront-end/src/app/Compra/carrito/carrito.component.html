@@ -19,11 +19,13 @@
                     </div>
                     <div class="nombre-producto">{{producto.producto.nombreProducto}}</div>
                     <div class="quantity-controls">
-                        <button class="btn btn-primary" (click)="actualizarCantidad(-1, producto)">-</button>
+                        <button class="btn btn-primary cantidad" (click)="actualizarCantidad(-1, producto)">-</button>
                         <span class="cantidad-producto">{{producto.cantidadProducto}}</span>
-                        <button class="btn btn-primary" (click)="actualizarCantidad(1, producto)">+</button>
+                        <button class="btn btn-primary cantidad" (click)="actualizarCantidad(1, producto)">+</button>
                     </div>
-                    <div (click)="eliminarProducto(producto)">X</div>
+                    <div class="eliminar" (click)="eliminarProducto(producto)">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>                    
                     <div>{{(producto.producto.precioEUR * producto.cantidadProducto).toFixed(2)}}€</div>
                 </div>
                 <hr>

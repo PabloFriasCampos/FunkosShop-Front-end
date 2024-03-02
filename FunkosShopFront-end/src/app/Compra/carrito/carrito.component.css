@@ -7,6 +7,22 @@
     margin-bottom: 20px;
     border-radius: 5px;
 }
+.eliminar {
+    width: 30px;
+    height: 30px;
+    color: #ffffff;
+    background-color: red;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.eliminar i {
+    color: white;
+}
+
 
 .purchase-details {
     background-color: #f8f9fa;
@@ -67,6 +83,9 @@ margin-top: 2rem;
     }
     .quantity-controls button {
         padding: 5px;
+    }
+    .cantidad{
+        width: 2rem;
     }
 
 }
