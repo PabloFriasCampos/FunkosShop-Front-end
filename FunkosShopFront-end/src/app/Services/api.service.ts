@@ -42,13 +42,11 @@ export class APIService {
 
   async iniciarSesion(usuarioLogIn: Usuario, recuerdame: boolean): Promise<Boolean> {
     const options = this.getRequestOptions();
-
     let JWTID;
     let loggeado: boolean = true;
 
     const request$ = this.http.post(`${this.rutaAPI}Usuarios/login`, JSON.stringify(usuarioLogIn), options);
     JWTID = await lastValueFrom(request$)
-
 
     const decodedToken = this.helper.decodeToken(JWTID.toString());
 
