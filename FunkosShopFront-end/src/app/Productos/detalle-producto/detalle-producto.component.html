@@ -1,30 +1,42 @@
-
 <html lang="es">
+
 <head>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
-    <div class="container">
-        <div class="product-details">
-            <div class="product-image">
-                <img [src]="imageUrl" alt="Imagen del Producto" class="rounded-image">
-                <p>Stock: {{producto.stock}}</p>
-            </div>
-            <div class="product-info">
-                <h2 class="nombre">{{producto.nombreProducto}}</h2>
-                <p class="product-description">{{producto.descripcion}}</p>
-                <p class="product-price">{{producto.precioEUR}}€</p>
-                <p class="precio">TOTAL: {{(producto.precioEUR * cantidad).toFixed(2)}}€</p>
-            </div>
+<div class="container">
+    <div class="product-details">
+        <div class="product-image">
+            <img [src]="imageUrl" alt="Imagen del Producto" class="rounded-image">
+            <p *ngIf="producto.stock>0; else sinStock">
+                Stock: {{producto.stock}}</p>
+
+
+            <ng-template #sinStock>
+                <p>Sin stock disponible.</p>
+            </ng-template>
+        </div>
+        <div class="product-info">
+
+            <h2 class="nombre">{{producto.nombreProducto}}</h2>
+            <p>ID. de Producto: {{producto.productoID}}</p>
+            <p class="product-description">{{producto.descripcion}}</p>
+            <p class="product-price">{{producto.precioEUR}}€</p>
+        </div>
+        <div *ngIf="producto.stock>0">
             <div class="quantity-controls">
                 <button class="btn btn-primary" (click)="actualizarCantidad(-1)">-</button>
                 <input class="cantidad" [(ngModel)]="cantidad">
                 <button class="btn btn-primary" (click)="actualizarCantidad(1)">+</button>
+                <p class="precio">TOTAL: {{(producto.precioEUR * cantidad).toFixed(2)}}€</p>
             </div>
             <button class="btn-buy" (click)="agregar()">Añadir al carrito</button>
         </div>
 
+
     </div>
+
+</div>
 
 </html>
