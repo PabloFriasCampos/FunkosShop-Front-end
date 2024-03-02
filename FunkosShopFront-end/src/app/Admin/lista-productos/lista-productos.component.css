@@ -4,6 +4,7 @@ header {
   padding: 1rem;
 }
 
+
 .admin-button{
   margin: 1rem;
   background-color: #333;
@@ -13,7 +14,7 @@ header {
       background-color: #f8f9fa;
       color: #1a1a1a;
   }
-/* Estos botones so para lo de eliminar y editar pero aun no están*/
+
   .botones{
     margin: 1rem;
     }
@@ -92,5 +93,24 @@ header {
     flex-direction: column;
 
 
+  }
+  .container {
+    margin: 0 auto;
+
+  }
+  
+}
+@media screen and (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+  }
+
+  .button-container {
+    flex-direction: column;
+    margin-right: 1rem;
+  }
+
+  .admin-button {
+    margin-bottom: 10px; /* Ajusta el espacio entre los botones en la vista vertical */
   }
 }

@@ -6,9 +6,16 @@ margin: 1rem;
     background-color: #E7B10A;
     border-color: #E7B10A;
 }
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    }
+    
 .admin-button{
-margin: 1rem;
+
 background-color: #333;
+margin: 1rem;
 border-color: #d1d1d1;
 }
 .admin-button:hover{
@@ -89,11 +96,22 @@ border-color: #d1d1d1;
     }
     .quantity-controls button {
         padding: 5px;
+        
     }
-}
-header {
-background-color: #333;
-color: white;
-padding: 1rem;
+
 }
 
+@media screen and (max-width: 768px) {
+    .header-container {
+      flex-direction: column;
+    }
+  
+    .button-container {
+      flex-direction: column;
+      margin-right: 1rem;
+    }
+  
+    .admin-button {
+      margin-bottom: 10px; /* Ajusta el espacio entre los botones en la vista vertical */
+    }
+  }
