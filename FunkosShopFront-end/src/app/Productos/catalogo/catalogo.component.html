@@ -1,29 +1,40 @@
-
-
 <header class="header fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-center">
         <input class="buscador form-control mr-2" type="search" [(ngModel)]="buscadorFunko" (input)="aplicarFiltros()"
-        placeholder="Buscador">
-        <select class="filtro btn btn-secondary dropdown-toggle" [(ngModel)]="opcionSeleccionada" (change)="aplicarFiltros()">
+            placeholder="Buscador">
+        <select class="filtro btn btn-secondary dropdown-toggle" [(ngModel)]="opcionSeleccionada"
+            (change)="aplicarFiltros()">
             <option class="dropdown-item" value="sinFiltro" selected> Añadir/Eliminar filtro </option>
             <option class="dropdown-item" value="MenorPrecio"> Precio: De menor a mayor </option>
-            <option  class="dropdown-item"value="MayorPrecio"> Precio: De mayor a menor </option>
+            <option class="dropdown-item" value="MayorPrecio"> Precio: De mayor a menor </option>
             <option class="dropdown-item" value="LetraA_Z"> Ordenar: De la "A" a la "Z" </option>
-            <option  class="dropdown-item"value="LetraZ_A"> Ordenar: De la "Z" a la "A" </option>
+            <option class="dropdown-item" value="LetraZ_A"> Ordenar: De la "Z" a la "A" </option>
         </select>
     </div>
 </header>
-<div class="container" *ngFor="let categoria of funkosFiltrados">
-    <h1 class="categoria lobster-regular" *ngIf="categoria.productos.length > 0">{{categoria.categoria}}</h1>
-    <div class="columna">
-        <div class="columna" *ngIf="categoria.productos.length>0">
-            <div class="product-card" *ngFor="let producto of categoria.productos"
-                [routerLink]="'/product/' + producto.productoID">
-                <img [src]="this.urlImage(producto.productoID)" class="producto-imagen"
-                    alt="Producto 1" class="product-img">
-                <h3 class="product-name">{{producto.nombreProducto}}</h3>
-                <p class="product-price">{{producto.precioEUR}}€</p>
+<div *ngIf="prodCount==0; else listaFiltrada">
+    <h2>No se han encontrado funkos con esa búsqueda.</h2>
+</div>
+<ng-template #listaFiltrada>
+    <div class="container" *ngFor="let categoria of funkosFiltrados">
+
+        <h1 class="categoria lobster-regular" *ngIf="categoria.productos.length > 0">{{categoria.categoria}}</h1>
+        <div class="columna">
+            <div class="columna" *ngIf="categoria.productos.length>0">
+                <div class="product-card" *ngFor="let producto of categoria.productos"
+                    [routerLink]="'/product/' + producto.productoID">
+                    <img [src]="this.urlImage(producto.productoID)" class="producto-imagen" alt="Producto 1"
+                        class="product-img">
+                    <h3 class="product-name">{{producto.nombreProducto}}</h3>
+                    <p class="product-price">{{producto.precioEUR}}€</p>
+                    <p class="stock" *ngIf="producto.stock>0; else stockagotado">Stock disponible: {{producto.stock}}
+                        ud.
+                    </p>
+                    <ng-template #stockagotado>
+                        <p>Sin stock</p>
+                    </ng-template>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

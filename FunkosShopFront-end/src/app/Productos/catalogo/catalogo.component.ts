@@ -14,7 +14,7 @@ export class CatalogoComponent implements OnInit {
   todosFunkos: CategoriaProductos[] = []
   buscadorFunko: String = ''
   busquedaActual: String = ''
-
+  prodCount: number = 10;
   opcionSeleccionada: String = 'sinFiltro' // Filtro por defecto
   sinFiltro = true
 
@@ -28,6 +28,7 @@ export class CatalogoComponent implements OnInit {
   async obtenerProductos() {
     this.todosFunkos = await this.api.obtenerProductos();
     this.funkosFiltrados = this.todosFunkos;
+    
 
   }
 
@@ -56,6 +57,7 @@ export class CatalogoComponent implements OnInit {
       const productosFiltrados = categoria.productos.filter(producto =>
         producto.nombreProducto.toLowerCase().includes(nombreBuscado)
       );
+      this.prodCount=productosFiltrados.length
       // Devuelve el producto buscado
       return {
         categoria: categoria.categoria,
