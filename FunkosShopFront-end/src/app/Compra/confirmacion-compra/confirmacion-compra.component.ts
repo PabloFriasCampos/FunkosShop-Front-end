@@ -42,6 +42,7 @@ export class ConfirmacionCompraComponent implements OnInit {
     if (typeof window.ethereum == 'undefined') {
       // throw new Error('MetaMask no está instalado');
       this.ngxToastService.onInfo('Instala MetaMask para realizar el pago','')
+      this.esperaCompra = false;
     }
 
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -96,7 +97,7 @@ export class ConfirmacionCompraComponent implements OnInit {
       : 'Transacción fallida :(';
 
     this.ngxToastService.onInfo(transactionMessage,'')
-
+    
     if (transaccionExitosa) {
       this.router.navigateByUrl('');
       sessionStorage.removeItem('carrito');
