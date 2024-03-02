@@ -6,6 +6,7 @@ import { Carrito } from 'src/app/model/carrito';
 import { ProductoCarrito } from 'src/app/model/producto-carrito';
 import { Transaccion } from 'src/app/model/transaccion';
 import { Usuario } from 'src/app/model/usuario';
+import { NgxToastService } from 'ngx-toast-notifier';
 
 @Component({
   selector: 'app-confirmacion-compra',
@@ -22,13 +23,13 @@ export class ConfirmacionCompraComponent implements OnInit {
   esperaCompra: boolean = false;
   textoPago: string = "Confirmar Pago";
 
-  constructor(private api: APIService, private router: Router, private carritoService: TotalCarritoService) { }
+  constructor(private api: APIService, private router: Router, private carritoService: TotalCarritoService, private ngxToastService: NgxToastService) { }
 
   async ngOnInit(): Promise<void> {
 
     this.carrito = await this.api.cargarCarrito();
     if (this.carrito.listaProductosCarrito.length == 0) {
-      alert('No hay productos en el carrito');
+      this.ngxToastService.onWarning('No hay productos en el carrito','');
       this.router.navigateByUrl('cart');
 
     }
@@ -39,7 +40,8 @@ export class ConfirmacionCompraComponent implements OnInit {
 
   private async cuentaMetaMask(): Promise<string> {
     if (typeof window.ethereum == 'undefined') {
-      throw new Error('MetaMask no está instalado');
+      // throw new Error('MetaMask no está instalado');
+      this.ngxToastService.onInfo('Instala MetaMask para realizar el pago','')
     }
 
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -93,7 +95,7 @@ export class ConfirmacionCompraComponent implements OnInit {
       ? 'Transacción realizada con éxito :D'
       : 'Transacción fallida :(';
 
-    alert(transactionMessage)
+    this.ngxToastService.onInfo(transactionMessage,'')
 
     if (transaccionExitosa) {
       this.router.navigateByUrl('');

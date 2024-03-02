@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxToastService } from 'ngx-toast-notifier';
 import { APIService } from 'src/app/Services/api.service';
 import { TotalCarritoService } from 'src/app/Services/total-carrito.service';
 import { Carrito } from 'src/app/model/carrito';
@@ -13,7 +14,7 @@ export class CarritoComponent implements OnInit {
 
   carrito: Carrito = new Carrito;
 
-  constructor(private totalCarrito: TotalCarritoService, private api: APIService) { }
+  constructor(private totalCarrito: TotalCarritoService, private api: APIService, private ngxToastService: NgxToastService) { }
 
   async ngOnInit(): Promise<void> {
     this.carrito = await this.api.cargarCarrito();
@@ -36,7 +37,7 @@ export class CarritoComponent implements OnInit {
 
   eliminarProducto(producto: ProductoCarrito) {
     this.actualizarCantidad(-producto.cantidadProducto, producto)
-
+    this.ngxToastService.onInfo('Producto eliminado del carrito', '')
   }
 
   actualizarTotal() {
