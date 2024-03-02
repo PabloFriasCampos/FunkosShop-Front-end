@@ -53,6 +53,7 @@
 .quantity-controls {
     display: flex;
     align-items: center;
+    margin-top: 5rem;
 }
 .btn-primary:hover {
     background-color: #E7B10A;

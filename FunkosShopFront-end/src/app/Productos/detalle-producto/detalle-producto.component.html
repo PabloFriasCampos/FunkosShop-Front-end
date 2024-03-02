@@ -29,12 +29,11 @@
                 <button class="btn btn-primary" (click)="actualizarCantidad(-1)">-</button>
                 <input class="cantidad" [(ngModel)]="cantidad">
                 <button class="btn btn-primary" (click)="actualizarCantidad(1)">+</button>
-                <p class="precio">TOTAL: {{(producto.precioEUR * cantidad).toFixed(2)}}€</p>
+                <div class="precio">TOTAL: {{(producto.precioEUR * cantidad).toFixed(2)}}€</div>
             </div>
-            <button class="btn-buy" (click)="agregar()">Añadir al carrito</button>
         </div>
 
-
+        <button class="btn-buy" (click)="agregar()">Añadir al carrito</button>
     </div>
 
 </div>
