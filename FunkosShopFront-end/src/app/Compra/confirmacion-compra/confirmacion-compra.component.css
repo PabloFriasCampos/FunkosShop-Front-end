@@ -34,9 +34,10 @@
 }
 
 .right-align {
-  margin-left: -10rem;
+  margin-left: -5rem;
   margin-right: 0 auto;
   width: 60rem;
+  
 }
 
 .summary {
@@ -49,9 +50,10 @@
 
 .elemento2 {
   grid-column: 2;
+  margin-right: -3rem;
   /* Se coloca en la segunda columna */
   margin-top: -25rem;
-  margin-right: -10rem;
+
 }
 
 /* Estilos para pantallas medianas */
