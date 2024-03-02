@@ -105,6 +105,9 @@ export class ConfirmacionCompraComponent implements OnInit {
       this.carritoService.cambiarTotal();
       this.esperaCompra = false;
       this.textoPago = "Confirmar Pago";
+    } else { // Si falla la transacción el loader desaparece
+      this.esperaCompra = false;
+      this.textoPago = "Confirmar Pago";
     }
   }
 
