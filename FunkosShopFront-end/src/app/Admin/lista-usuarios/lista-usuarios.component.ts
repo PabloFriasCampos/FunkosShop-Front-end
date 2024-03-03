@@ -26,11 +26,11 @@ export class ListaUsuariosComponent implements OnInit {
     this.usuarios = await this.api.obtenerTodosUsuarios() as Usuario[];
   }
   async borrarUsuario(id: number){
-    const headers = this.api.getRequestHeaders()
-    const request$ = this.http.delete(`${this.rutaAPI}` + "/deleteUser/" + id, { headers })
-    await lastValueFrom(request$)
-    this.obtenerUsuarios()
-    this.ngxToastService.onDanger('Se ha eliminado este usuario','')
+      const headers = this.api.getRequestHeaders()
+      const request$ = this.http.delete(`${this.rutaAPI}` + "/deleteUser/" + id, { headers })
+      await lastValueFrom(request$)
+      this.obtenerUsuarios()
+      this.ngxToastService.onDanger('Se ha eliminado este usuario','')
   }
 
 }

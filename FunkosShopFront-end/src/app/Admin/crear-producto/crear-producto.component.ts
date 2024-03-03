@@ -20,8 +20,16 @@ export class CrearProductoComponent {
   }
 
   crearProducto() {
-    this.api.crearProducto(this.producto, this.selectedFile!);
-    this.ngxToastService.onInfo('Producto creado correctamente','El producto ya se muestra en la página web')
+    if(this.producto.nombreProducto == ""){
+      this.ngxToastService.onInfo('Error en el nombre del producto','')
+    } else if (this.producto.precioEUR == 0){
+      this.ngxToastService.onInfo('Error en el precio del producto','')
+    } else if(this.producto.categoria == ""){
+      this.ngxToastService.onInfo('Error en la categoría del producto','')
+    } else {
+      this.api.crearProducto(this.producto, this.selectedFile!);
+      this.ngxToastService.onInfo('Producto creado correctamente','El producto ya se muestra en la página web')
+    }
   }
 
 }
