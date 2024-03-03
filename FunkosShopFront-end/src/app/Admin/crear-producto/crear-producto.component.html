@@ -1,3 +1,4 @@
+
 <div class="container">
   <h1 class="lobster-regular">Crear Producto</h1>
   <div class="row">
@@ -29,9 +30,9 @@
           </tr>
           <tr class="form-group">
             <td>Imagen</td>
-            <td><label>Archivo de imagen
-                <input type="file" (change)="onFileSelected($event)" accept="image/png" />
-              </label></td>
+            <td>
+                <input type="file" class="form-control"(change)="onFileSelected($event)" accept="image/png" />
+              </td>
           </tr>
         </table>
       </div>

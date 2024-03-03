@@ -1,37 +1,55 @@
+
 .admin-card {
   margin-top: 20px;
-  height: 24rem;
-  /* Ajuste de la altura para mostrar todas las filas */
+  height: 25rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 0.5rem;
+  padding:0.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  background-color: #ffffff;
+  display: flex; 
+  flex-direction: column; 
+  background-color:#ffffff;
   border-radius: 10px;
-}
+  }
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
 
-.user-image {
-  max-width: 80%;
-  border-radius: 50%;
-  align-self: center;
-}
+  .table td {
+    border: none; /* Elimina todos los bordes de las celdas */
+  }
 
-.rol {
-  align-self: center;
-}
+  .rol {
+    align-self: center; 
+  }
+  .table-container {
+    flex-grow: 1; 
+  }
+  .save-button {
+    margin-top: 1rem;
+  }
+  .btn{
+      height: 5rem;
+      width: 100%;
+  }
 
-.table-container {
-  flex-grow: 1;
-}
+  @media (max-width: 998px) {
+    .form-control{
+      width: 85%;
 
-.save-button {
-  margin-top: 20px;
-  /* Ajuste del margen superior */
-}
+    }
+    .anchura{
+      width: auto;
+    }
+    .user-image{
+      margin-top: -3rem;
+    }
+  }
 
-.btn {
-  height: 5rem;
-  width: 100%;
-}
+  @media (max-width: 998px) {
+
+    .user-image{
+      margin-top: 1rem;
+    }
+  }

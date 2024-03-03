@@ -78,8 +78,9 @@
 }
 
 .categoria {
+    font-size: 6rem;
     color: #ffffff;
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: black;
 }
 
@@ -102,7 +103,12 @@ cursor: pointer;
 font-size: 30px;
 font-weight: bold;
 }
-
+.categoria {
+    font-size: 2rem;
+    color: #ffffff;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
 }
 .filtro{
 margin-left: 5px;
