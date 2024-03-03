@@ -35,10 +35,19 @@ export class AdminProductoComponent implements OnInit {
 
   async modificaProducto() {
     const headers = this.api.getRequestHeaders()
-    const request$ = this.http.put(`${this.rutaAPI}` + "/modifyProduct/" + this.producto.productoID, this.producto, { headers })
-    await lastValueFrom(request$);
-    this.api.subirImagen(this.selectedFile!, this.producto.productoID.toString())
-    this.ngxToastService.onInfo('Se ha modificado el producto con éxito','')
+    if (this.producto.nombreProducto.trim().length == 0) {
+      this.ngxToastService.onDanger('El nombre no puede estar vacío', '')
+    } else if (this.producto.descripcion.trim().length == 0) {
+      this.ngxToastService.onDanger('La descripción no puede estar vacía', '')
+    } else if (this.producto.precioEUR.toString().trim().length == 0) {
+      this.ngxToastService.onDanger('El precio no puede estar vacío', '')
+    } else {
+      this.producto.precioEUR = +this.producto.precioEUR.toString().replace(',', '.')
+      const request$ = this.http.put(`${this.rutaAPI}` + "/modifyProduct/" + this.producto.productoID, this.producto, { headers })
+      await lastValueFrom(request$);
+      this.api.subirImagen(this.selectedFile!, this.producto.productoID.toString())
+      this.ngxToastService.onInfo('Se ha modificado el producto con éxito', '')
+    }
   }
 
   onFileSelected(event: any) {

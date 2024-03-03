@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { APIService } from 'src/app/Services/api.service';
@@ -49,10 +49,14 @@ export class DatosUsuarioComponent implements OnInit {
               this.cuentaUser.contrasena = this.passwordUserToModify
               request$ = await this.http.put("https://localhost:7281/api/Usuarios/modifyUser/"
                 + this.usuarioID, JSON.stringify(this.cuentaUser), { headers });
-              await lastValueFrom(request$)
-              this.ngxToastService.onSuccess('Los cambios se han guardado con éxito.','')
+              let peticion = await lastValueFrom(request$) as Number
+              if (peticion != 1) {
+                this.ngxToastService.onDanger('Email ya en uso, no se ha guardado ningún cambio.', '')
+              } else {
+                this.ngxToastService.onSuccess('Los cambios se han guardado con éxito.', '')
+              }
             } else {
-              this.ngxToastService.onInfo('Las contraseñas deben ser iguales.','')
+              this.ngxToastService.onInfo('Las contraseñas deben ser iguales.', '')
             }
           } else {
             this.cuentaUser.nombreUsuario = this.nameUserToModify
@@ -61,20 +65,24 @@ export class DatosUsuarioComponent implements OnInit {
             this.cuentaUser.contrasena = ""
             request$ = await this.http.put("https://localhost:7281/api/Usuarios/modifyUser/"
               + this.usuarioID, JSON.stringify(this.cuentaUser), { headers });
-            await lastValueFrom(request$)
-            setTimeout(() => {
+            let peticion = await lastValueFrom(request$) as Number
+            if (peticion != 1) {
+              this.ngxToastService.onDanger('Email ya en uso, no se ha guardado ningún cambio.', '')
+            } else {
+              this.ngxToastService.onSuccess('Los cambios se han guardado con éxito.', '')
+            }
+            /*setTimeout(() => {
               location.reload();
-            }, 1);
-            this.ngxToastService.onSuccess('Los cambios se han realizado con éxito', '')
+            }, 1);*/
           }
         } else {
-          this.ngxToastService.onInfo('La dirección no puede estar vacía','')
+          this.ngxToastService.onInfo('La dirección no puede estar vacía', '')
         }
       } else {
-        this.ngxToastService.onInfo('Correo incorrecto','')
+        this.ngxToastService.onInfo('Correo incorrecto', '')
       }
     } else {
-      this.ngxToastService.onInfo('El nombre está vacío','');
+      this.ngxToastService.onInfo('El nombre está vacío', '');
     }
 
 
