@@ -76,7 +76,7 @@ export class CombinacionComponent {
 
         }
       } catch (error) {
-        this.ngxToastService.onWarning('Error al iniciar sesion', '')
+        this.ngxToastService.onDanger('Error al iniciar sesión', '')
       }
     }
     this.totalCarrito.cambiarTotal();

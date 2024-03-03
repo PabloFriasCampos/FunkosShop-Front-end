@@ -11,7 +11,14 @@
   background-color:#ffffff;
   border-radius: 10px;
   }
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
 
+  .table td {
+    border: none; /* Elimina todos los bordes de las celdas */
+  }
   .user-image {
     max-width:80%;
     border-radius: 50%;
@@ -24,10 +31,29 @@
     flex-grow: 1; 
   }
   .save-button {
-    margin-top: 20px;
+    margin-top: 1rem;
   }
   .btn{
       height: 5rem;
       width: 100%;
   }
-  
+
+  @media (max-width: 998px) {
+    .form-control{
+      width: 85%;
+
+    }
+    .anchura{
+      width: auto;
+    }
+    .user-image{
+      margin-top: -3rem;
+    }
+  }
+
+  @media (max-width: 998px) {
+
+    .user-image{
+      margin-top: 1rem;
+    }
+  }

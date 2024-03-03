@@ -31,7 +31,7 @@ export class AdminUsuarioComponent implements OnInit {
     const headers = this.api.getRequestHeaders();
     const request$ = this.http.put(`${this.rutaAPI}` + "/modifyUserRole/" +  this.id, JSON.stringify(this.usuario.rol), {headers})
     await lastValueFrom(request$)
-    this.ngxToastService.onInfo('Los datos del usuario han sido modificados','')
+    this.ngxToastService.onSuccess('Los datos del usuario han sido modificados','')
   }
 
 }
