@@ -27,6 +27,10 @@
                 <td>Direccion de Envio</td>
                 <td colspan="2"><input type="text" class="form-control" placeholder="Modifica tu Direccion de Envio"[(ngModel)]="addressToModify"></td>
             </tr>
+            <tr>
+                <td>Rol</td>
+                <td colspan="2"><p>{{cuentaUser.rol}}</p></td>
+            </tr>
         </tbody>
         <td class="d-flex justify-content-end"><button type="button" class="btn btn-primary"  (click)="modificaDatos()">Guardar cambios</button></td>
     </table>
