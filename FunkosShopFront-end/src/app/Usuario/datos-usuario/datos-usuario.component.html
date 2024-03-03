@@ -4,11 +4,6 @@
     <h1 class="titulo">Datos de Usuario</h1> 
    </div>
     <table class="table">
-        <thead>
-            <tr>
-<div  class="d-flex justify-content-center">Datos Personales </div>
-            </tr>
-        </thead>
         <tbody>
             <tr>
                 <td>Nombre de Usuario</td>
@@ -29,7 +24,7 @@
             </tr>
             <tr>
                 <td>Rol</td>
-                <td colspan="2"><p>{{cuentaUser.rol}}</p></td>
+                <td colspan="2"><p class="form-control">{{cuentaUser.rol}}</p></td>
             </tr>
         </tbody>
         <td class="d-flex justify-content-end"><button type="button" class="btn btn-primary"  (click)="modificaDatos()">Guardar cambios</button></td>
