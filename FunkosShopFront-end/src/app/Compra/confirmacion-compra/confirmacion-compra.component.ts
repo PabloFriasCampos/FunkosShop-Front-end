@@ -86,12 +86,8 @@ export class ConfirmacionCompraComponent implements OnInit {
     let productos: ProductoCarrito[] = this.carrito.listaProductosCarrito;
     let transaccion = await this.api.comprarProductos(productos, cuentaMetaMask) as Transaccion;
 
-    console.log(transaccion);
-
     const txHash = await this.realizarTransaccion(transaccion);
     const transaccionExitosa = await this.api.checkCompra(transaccion.id, txHash);
-
-    console.log('Transacción realizada: ' + transaccionExitosa);
 
     const transactionMessage = transaccionExitosa
       ? 'Transacción realizada con éxito :D'
